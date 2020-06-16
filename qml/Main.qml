@@ -23,6 +23,10 @@ App {
     Informationchange{
         id:informationchangpage
     }
+    PlayInterface{
+            id:playerinterfacepage
+        }
+
 
     Scene{
         anchors.fill: parent;
