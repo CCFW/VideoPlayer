@@ -1,0 +1,8 @@
+{
+    "title": "SearchUI",
+    "identifier": "com.yourcompany.wizardEVAP.SearchUI",
+    "orientation": "auto",
+    "versioncode": 1,
+    "versionname": "1.0.0",
+    "stage": "test"
+}
