@@ -38,7 +38,8 @@ RESOURCES += #    resources.qrc # uncomment for publishing
 
 
 # The .cpp file which was generated for your project. Feel free to hack it.
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    Mysql.cpp
 
 
 android {
@@ -60,4 +61,10 @@ macx {
 }
 
 DISTFILES += \
-    qml/Informationchange.qml
+    Playinterface.qml \
+    qml/Informationchange.qml \
+    qml/Home.qml \
+    qml/ContactModel.qml
+
+HEADERS += \
+    Mysql.h

@@ -88,7 +88,7 @@ Page{
                         anchors.centerIn: parent
                         smooth: true
                         visible: false
-                        source: "../assets/1.jpg"
+                        source: "../../assets/1.jpg"
                     }
                     Rectangle {
                         id: maskchange

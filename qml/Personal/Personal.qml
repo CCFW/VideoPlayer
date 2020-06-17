@@ -19,6 +19,7 @@ Page {
         width: parent.width
         height: parent.height
 
+        id:content
         spacing: 30
 
         RowLayout{
@@ -28,6 +29,9 @@ Page {
             Button{
                 text: qsTr("返回")
                 flat: true
+                onClicked: {
+                    stackView.pop()
+                }
             }
 
             Text {
@@ -60,7 +64,7 @@ Page {
                     anchors.centerIn: parent
                     smooth: true
                     visible: false
-                    source: "../assets/1.jpg"
+                    source: "../../assets/1.jpg"
                 }
                 Rectangle {
                     id: mask
@@ -138,7 +142,7 @@ Page {
                             focus: true
                             id: historyiamge
                             anchors.fill: parent
-                            source: tabBar.currentIndex !== 0?"../assets//historyclick.png":"../assets/history.png"
+                            source: tabBar.currentIndex !== 0?"../../assets/historyclick.png":"../../assets/history.png"
                         }
 
                     }
@@ -150,7 +154,7 @@ Page {
                             focus: true
                             id: downloadimage
                             anchors.fill: parent
-                            source: tabBar.currentIndex !== 0?"../assets/downloadclick.png":"../assets/download.png"
+                            source: tabBar.currentIndex !== 0?"../../assets/downloadclick.png":"../../assets/download.png"
                         }
                     }
                 }

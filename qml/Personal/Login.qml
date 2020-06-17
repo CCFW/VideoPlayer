@@ -4,12 +4,15 @@ import QtQuick.Layouts 1.1
 
 Page {
     id: loginPage
-    title: qsTr("注册")
-    width: 1080
-    height: 960
+    title: qsTr("登录")
+
 
     //  backgroundColor: Qt.rgba(0,0,0, 0.75)
     useSafeArea: false
+
+
+
+
 
     Rectangle {
         id: loginForm
@@ -33,13 +36,13 @@ Page {
             Layout.bottomMargin: dp(12)
             Layout.columnSpan: 2
             Layout.alignment: Qt.AlignHCenter
-            text: "注册"
+            text: "登录"
             font.pixelSize: sp(20)
         }
 
 
         AppText {
-            text: qsTr("昵称")
+            text: qsTr("帐号")
             font.pixelSize: sp(12)
         }
 
@@ -50,6 +53,7 @@ Page {
             font.pixelSize: sp(14)
             borderColor: Theme.tintColor
             borderWidth: !Theme.isAndroid ? dp(2) : 0
+
         }
 
         // password text and field
@@ -67,20 +71,6 @@ Page {
             borderWidth: !Theme.isAndroid ? dp(2) : 0
             echoMode: TextInput.Password
         }
-        AppText {
-            text: qsTr("确认密码")
-            font.pixelSize: sp(12)
-        }
-
-        AppTextField {
-            id: txtPasswordagin
-            Layout.preferredWidth: dp(200)
-            showClearButton: true
-            font.pixelSize: sp(14)
-            borderColor: Theme.tintColor
-            borderWidth: !Theme.isAndroid ? dp(2) : 0
-            echoMode: TextInput.Password
-        }
 
         Column {
             Layout.fillWidth: true
@@ -89,27 +79,22 @@ Page {
 
 
             AppButton {
-                text: qsTr("注册")
+                text: qsTr("登录")
                 flat: false
-//                anchors.centerIn:parent
-                Layout.fillWidth: true
-                Layout.columnSpan: 2
-                Layout.topMargin: dp(12)
                 anchors.horizontalCenter: parent.horizontalCenter
                 onClicked: {
                     stackView.pop()
                 }
             }
-//            AppButton {
-//                text: qsTr("登录")
-//                flat: false
-////                anchors.horizontalCenter: parent.horizontalCenter
-//                onClicked: {
-//                }
-//            }
 
-
-
+            AppButton {
+                text: qsTr("还没有帐号？马上注册")
+                flat: true
+                anchors.horizontalCenter: parent.horizontalCenter
+                onClicked: {
+                    stackView.push(registerpage)
+                }
+            }
         }
     }
 
