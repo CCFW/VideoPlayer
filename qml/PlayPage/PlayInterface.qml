@@ -705,7 +705,6 @@ Rectangle{
                                 //也会发出此信号。
                                 onExited: {jiShu.color="white"}
                                 cursorShape: Qt.PointingHandCursor
-
                             }
                         }
                         //                        //首先是一个渐变的矩形框
