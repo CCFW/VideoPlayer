@@ -39,7 +39,8 @@ RESOURCES += \   #    resources.qrc # uncomment for publishing
 
 
 # The .cpp file which was generated for your project. Feel free to hack it.
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    Discuss.cpp
 
 
 android {
@@ -59,4 +60,11 @@ win32 {
 macx {
     ICON = macx/app_icon.icns
 }
+
+DISTFILES += \
+    qml/PlayInterface.qml \
+    qml/TextItem.qml
+
+HEADERS += \
+    Discuss.h
 

@@ -12,5 +12,7 @@
         <file>images/fullScreen.png</file>
         <file>images/volume0.png</file>
         <file>images/volume1.png</file>
+        <file>images/video/vedio1.mp4</file>
+        <file>images/avatar.jpg</file>
     </qresource>
 </RCC>
