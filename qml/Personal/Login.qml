@@ -1,20 +1,15 @@
 import Felgo 3.0
 import QtQuick 2.0
 import QtQuick.Layouts 1.1
-
+import QtQuick.Dialogs 1.2 as QQD
 Page {
     id: loginPage
     title: qsTr("登录")
-    width: 1080
-    height: 960
+
 
     //  backgroundColor: Qt.rgba(0,0,0, 0.75)
     useSafeArea: false
-
-
-
-
-
+    property alias personalaccount: txtUsername.text
     Rectangle {
         id: loginForm
         anchors.centerIn: parent
@@ -54,6 +49,7 @@ Page {
             font.pixelSize: sp(14)
             borderColor: Theme.tintColor
             borderWidth: !Theme.isAndroid ? dp(2) : 0
+
         }
 
         // password text and field
@@ -77,13 +73,28 @@ Page {
             Layout.columnSpan: 2
             Layout.topMargin: dp(12)
 
-
             AppButton {
                 text: qsTr("登录")
                 flat: false
                 anchors.horizontalCenter: parent.horizontalCenter
                 onClicked: {
-                    stackView.pop()
+                    if(sql.loginvefied(txtUsername.text,txtPassword.text) == 1){
+                        personalpage.personaltext = sql.getname()
+                        personalpage.iamgefile = sql.getavatar()
+                        loginsucess.open()
+                        txtUsername.text = ""
+                        txtPassword.text = ""
+                    }
+                    else if(sql.loginvefied(txtUsername.text,txtPassword.text) == 0){
+                        loginfalut.open()
+                    }
+                    else if(sql.loginvefied(txtUsername.text,txtPassword.text) == 2){
+                        registerfalut.open()
+                    }
+                    else if(sql.loginvefied(txtUsername.text,txtPassword.text) == 3){
+                        nullfalut.open()
+                    }
+
                 }
             }
 
@@ -92,9 +103,65 @@ Page {
                 flat: true
                 anchors.horizontalCenter: parent.horizontalCenter
                 onClicked: {
+                    txtUsername.text = ""
+                    txtPassword.text = ""
                     stackView.push(registerpage)
                 }
             }
+        }
+    }
+
+    Dialog{
+        id: loginsucess
+        title: "登录成功！"
+        positiveActionLabel: "确定"
+        negativeActionLabel: "取消"
+        onCanceled:{
+            loginsucess.close()
+        }
+
+        onAccepted: {
+            loginsucess.close()
+            stackView.pop()
+        }
+    }
+    Dialog{
+        id: loginfalut
+        title: "密码错误！"
+        positiveActionLabel: "确定"
+        negativeActionLabel: "取消"
+        onCanceled: {
+            loginfalut.close()
+        }
+
+        onAccepted: {
+            loginfalut.close()
+        }
+    }
+    Dialog{
+        id: nullfalut
+        title: "帐号和密码不能为空！"
+        positiveActionLabel: "确定"
+        negativeActionLabel: "取消"
+        onCanceled: {
+            nullfalut.close()
+        }
+
+        onAccepted: {
+            nullfalut.close()
+        }
+    }
+    Dialog{
+        id: registerfalut
+        title: "未有该帐号，请先注册！"
+        positiveActionLabel: "确定"
+        negativeActionLabel: "取消"
+        onCanceled: {
+            registerfalut.close()
+        }
+        onAccepted: {
+            registerfalut.close()
+            stackView.push(registerpage)
         }
     }
 

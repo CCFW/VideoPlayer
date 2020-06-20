@@ -13,12 +13,15 @@ Page {
     height: 960
     visible: true
 
+    property alias personaltext:personalname.text
+    property alias iamgefile: pesonaliamge.source
 
     ColumnLayout{
 
         width: parent.width
         height: parent.height
 
+        id:content
         spacing: 30
 
         RowLayout{
@@ -28,6 +31,9 @@ Page {
             Button{
                 text: qsTr("返回")
                 flat: true
+                onClicked: {
+                    stackView.push(searchhomepage)
+                }
             }
 
             Text {
@@ -60,7 +66,7 @@ Page {
                     anchors.centerIn: parent
                     smooth: true
                     visible: false
-                    source: "../assets/1.jpg"
+                    source: sql.getavatar()
                 }
                 Rectangle {
                     id: mask
@@ -77,7 +83,12 @@ Page {
                     MouseArea{
                         anchors.fill: parent
                         onClicked: {
-                            stackView.push(loginpage)
+                            var id = sql.getid()
+                            if(id ==0){
+                                stackView.push(loginpage)
+                            }else{
+                                persondialog.open()
+                            }
                         }
 
                     }
@@ -86,7 +97,7 @@ Page {
 
             Text{
                 id:personalname
-                text:qsTr("个人名称")
+                text:sql.getname()
             }
 
             Button{
@@ -95,10 +106,13 @@ Page {
                 width: 10
                 //flat: true
                 onClicked: {
-                    //                        stackview.push(infomaltioncomponent)
-                    //                        infomaltion.visible=true
-                    //mainwindow.visible=false
-                    stackView.push(informationchangpage)
+                    var id = sql.getid()
+                    if(id == 0){
+                        withlogindialog.open()
+                    }else{
+                        informationchangpage.informationimage = sql.getavatar()
+                        stackView.push(informationchangpage)
+                    }
                 }
             }
             Button{
@@ -107,7 +121,15 @@ Page {
                 width: 10
                 // flat: true
                 onClicked: {
-                    exitdialog.open()
+                    var id = sql.getid();
+                    if(id == 0){
+                        exitdialogagin.open()
+                    }else{
+
+                        exitdialog.open()
+                    }
+
+
                 }
             }
         }
@@ -138,7 +160,7 @@ Page {
                             focus: true
                             id: historyiamge
                             anchors.fill: parent
-                            source: tabBar.currentIndex !== 0?"../assets//historyclick.png":"../assets/history.png"
+                            source: tabBar.currentIndex !== 0?"../../assets/historyclick.png":"../../assets/history.png"
                         }
 
                     }
@@ -150,7 +172,7 @@ Page {
                             focus: true
                             id: downloadimage
                             anchors.fill: parent
-                            source: tabBar.currentIndex !== 0?"../assets/downloadclick.png":"../assets/download.png"
+                            source: tabBar.currentIndex !== 0?"../../assets/downloadclick.png":"../../assets/download.png"
                         }
                     }
                 }
@@ -188,17 +210,66 @@ Page {
         }
     }
 
-    QQD.Dialog{
-        id:exitdialog
-        width: 150
-        height: 100
-        Text {
-            color: "red"
-            id: dialogtext
-            text: qsTr("是否要退出当前登录?")
+    Dialog{
+        id: withlogindialog
+        title: "请先登录！"
+        positiveActionLabel: "确定"
+        negativeActionLabel: "取消"
+        //                anchors.centerIn: loginPage
+        onCanceled:{
+            withlogindialog.close()
+        }
+
+        onAccepted: {
+            stackView.push(loginpage)
+            withlogindialog.close()
         }
     }
+    Dialog{
+        id: exitdialogagin
+        title: "您已经退出登录!"
+        positiveActionLabel: "确定"
+        negativeActionLabel: "取消"
+        //                anchors.centerIn: loginPage
+        onCanceled:{
+            exitdialogagin.close()
+        }
 
+        onAccepted: {
+            exitdialogagin.close()
+        }
+    }
+    Dialog{
+        id: exitdialog
+        title: "是否要退出当前登录？"
+        positiveActionLabel: "确定"
+        negativeActionLabel: "取消"
+        //                anchors.centerIn: loginPage
+        onCanceled:{
+            exitdialog.close()
+        }
+
+        onAccepted: {
+            sql.exitlogin()
+            personalpage.iamgefile = sql.getavatar()
+            personalname.text = sql.getname()
+            exitdialog.close()
+        }
+    }
+    Dialog{
+        id: persondialog
+        title: "您已经登录，无需重复登录"
+        positiveActionLabel: "确定"
+        negativeActionLabel: "取消"
+        //                anchors.centerIn: loginPage
+        onCanceled:{
+            persondialog.close()
+        }
+
+        onAccepted: {
+            persondialog.close()
+        }
+    }
 
 }
 
