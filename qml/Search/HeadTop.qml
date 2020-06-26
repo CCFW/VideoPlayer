@@ -2,6 +2,9 @@ import QtQuick 2.0
 
 Rectangle{
     //头像
+
+    property alias searchimage: touxiang.source
+
     Image {
         id: touxiang
         anchors.right: parent.right
@@ -11,6 +14,12 @@ Rectangle{
         width: 32
         height: 32
         source: "../../assets/touxiang.png"
+        MouseArea{
+            anchors.fill: parent
+            onClicked: {
+                stackView.push(personalpage)
+            }
+        }
     }
     //返回按钮
     Image{
@@ -22,5 +31,11 @@ Rectangle{
         anchors.top: parent.top
         anchors.topMargin: 10
         source: "../../assets/back.png"
+        MouseArea{
+            anchors.fill: parent
+            onClicked: {
+                stackView.pop()
+            }
+        }
     }
 }

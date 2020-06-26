@@ -12,9 +12,11 @@ Page {
     width: 1080
     height: 960
     visible: true
+    anchors.fill: parent
 
     property alias personaltext:personalname.text
     property alias iamgefile: pesonaliamge.source
+//    property alias withlogindialog: withlogindialog
 
     ColumnLayout{
 
@@ -32,7 +34,7 @@ Page {
                 text: qsTr("返回")
                 flat: true
                 onClicked: {
-                    stackView.push(searchhomepage)
+                    stackView.pop()
                 }
             }
 
