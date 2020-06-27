@@ -9,6 +9,7 @@ Page{
 
     width: 1080
     height: 960
+//    anchors.fill: personalpage
 
     property alias informationimage: pesonaliamgechange.source
     Rectangle{

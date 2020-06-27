@@ -81,6 +81,10 @@ Page {
                     if(sql.loginvefied(txtUsername.text,txtPassword.text) == 1){
                         personalpage.personaltext = sql.getname()
                         personalpage.iamgefile = sql.getavatar()
+                        danMuSql.setId(sql.getid())
+                        homepage.homepageimage = sql.getavatar()
+//                        searchhomepage.searchpageimage = sql.getavatar()
+//                        searchheadtoppage.searchimage = sql.getavatar()
                         loginsucess.open()
                         txtUsername.text = ""
                         txtPassword.text = ""
