@@ -9,6 +9,7 @@ Page{
 
     width: 1080
     height: 960
+    anchors.fill: parent
 
     property alias informationimage: pesonaliamgechange.source
     Rectangle{
@@ -166,7 +167,7 @@ Page{
 
         Dialog{
             id: nullfalut
-            title: "当前页面所有信息不能为空，请检查后再提交！"
+            title: "新旧密码不能为空！！！"
             positiveActionLabel: "确定"
             negativeActionLabel: "取消"
             onCanceled: {
@@ -231,6 +232,48 @@ Page{
                 successdilog.close()
             }
         }
+        Dialog{
+            id: imagesuccessdilog
+            title: "头像修改成功！"
+            positiveActionLabel: "确定"
+            negativeActionLabel: "取消"
+            onCanceled: {
+                imagesuccessdilog.close()
+            }
+
+            onAccepted: {
+                stackView.pop()
+                imagesuccessdilog.close()
+            }
+        }
+        Dialog{
+            id: imagetextsuccessdilog
+            title: "头像和昵称修改成功！"
+            positiveActionLabel: "确定"
+            negativeActionLabel: "取消"
+            onCanceled: {
+                imagetextsuccessdilog.close()
+            }
+
+            onAccepted: {
+                stackView.pop()
+                imagetextsuccessdilog.close()
+            }
+        }
+        Dialog{
+            id: textsuccessdilog
+            title: "昵称修改成功！"
+            positiveActionLabel: "确定"
+            negativeActionLabel: "取消"
+            onCanceled: {
+                textsuccessdilog.close()
+            }
+
+            onAccepted: {
+                stackView.pop()
+                textsuccessdilog.close()
+            }
+        }
         RowLayout{
             spacing: 100
             x:parent.width/2-300
@@ -252,11 +295,29 @@ Page{
                     }
                     else if(result == 3){
                         samepasswordfault.open()
+                    }else if(result == 4){
+                        personalpage.iamgefile = sql.getavatar()
+                        homepage.homepageimage = sql.getavatar()
+                        imagesuccessdilog.open()
+                    }else if(result == 5){
+                        personalpage.iamgefile = sql.getavatar()
+                        homepage.homepageimage = sql.getavatar()
+                        personalpage.personaltext = sql.getname()
+                        imagetextsuccessdilog.open()
+                    }
+                    else if(result == 6){
+                         personalpage.personaltext = sql.getname()
+                        textsuccessdilog.open()
                     }
 
-                    else{
+                    else if(result == 7){
                         personalpage.iamgefile = sql.getavatar()
+                        homepage.homepageimage = sql.getavatar()
+                        personalpage.personaltext = sql.getname()
                         successdilog.open()
+                        passwordinput1.text = ""
+                        passwordinput2.text = ""
+                        passwordinput3.text = ""
                     }
                 }
             }

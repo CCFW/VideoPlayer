@@ -5,6 +5,9 @@ Rectangle{
     id:home
     width: parent.width
     height: parent.height
+
+//    property alias searchpageimage: touxiang.source
+
     TitleBar{
         id:titlebar
         z:3
@@ -20,7 +23,7 @@ Rectangle{
     Rectangle{
         id:bglistview
         anchors.fill: parent
-//        color: "linen"//内容部分的背景颜色
+        //        color: "linen"//内容部分的背景颜色
         color: "#F9F9F9"
 
 
@@ -58,7 +61,7 @@ Rectangle{
                     color: bglistview.color
 
                     opacity: 0.9
-//                    border.width: 1
+                    //                    border.width: 1
 
                     Image {
                         id: moveimage
@@ -80,8 +83,9 @@ Rectangle{
                             onEntered: moveimage.scale=1.05
                             onExited: moveimage.scale=1
                             onClicked: {
-                                stackView.push(playerinterfacepage)
-                                playerinterfacepage.mediaPlayer.play()
+                                stackView.push(playInterface)
+                                playInterface.mediaPlayer.play()
+
                             }
                         }
 
@@ -130,7 +134,7 @@ Rectangle{
 
                             Rectangle{
                                 width: 50;height: 50
-    //                                color: "linen"
+                                //                                color: "linen"
                                 color: bglistview.color
                                 Rectangle{
                                     id:inauthology
@@ -147,12 +151,12 @@ Rectangle{
 
                                     }
 
-                                Text{
-                                    id:authologyNum
-                                    text:index+1
-                                    anchors.horizontalCenter: parent.horizontalCenter
-                                    anchors.verticalCenter: parent.verticalCenter
-                                }
+                                    Text{
+                                        id:authologyNum
+                                        text:index+1
+                                        anchors.horizontalCenter: parent.horizontalCenter
+                                        anchors.verticalCenter: parent.verticalCenter
+                                    }
                                 }
                             }
                         }
@@ -180,6 +184,47 @@ Rectangle{
                 height: 50
                 anchors.top: parent.top
             }
+//           Rectangle{
+//               id:touxiangrectangle
+//               color: "black"
+//               width: parent.width
+//               height: 50
+//               anchors.top: parent.top
+//               Image {
+//                   id: touxiang
+//                   anchors.right: parent.right
+//                   anchors.rightMargin: 20
+//                   anchors.top: parent.top
+//                   anchors.topMargin: 10
+//                   width: 32
+//                   height: 32
+//                   source: "../../assets/touxiang.png"
+//                   MouseArea{
+//                       anchors.fill: parent
+//                       onClicked: {
+//                           stackView.push(personalpage)
+//                       }
+//                   }
+//               }
+//               //返回按钮
+//               Image{
+//                   id:backbutton
+//                   width: 30
+//                   height: 30
+//                   anchors.left: parent.left
+//                   anchors.leftMargin: 20
+//                   anchors.top: parent.top
+//                   anchors.topMargin: 10
+//                   source: "../../assets/back.png"
+//                   MouseArea{
+//                       anchors.fill: parent
+//                       onClicked: {
+//                           stackView.pop()
+//                       }
+//                   }
+//               }
+
+//           }
 
             TitleBar{
                 id:search_re

@@ -2,8 +2,10 @@ import Felgo 3.0
 import QtQuick 2.0
 import QtQuick.Controls 2.5
 import "./Personal"
-import "./Player"
+import "./PlayPage"
 import "./Search"
+import "./Home"
+
 App {
     // You get free licenseKeys from https://felgo.com/licenseKey
     // With a licenseKey you can:
@@ -17,9 +19,13 @@ App {
     height: 960
 
     id:mainwindow
+    Home{
+        id:homepage
+    }
     Personal{
         id:personalpage
     }
+
     Login{
         id:loginpage
     }
@@ -31,10 +37,17 @@ App {
     }
     SearchHome{
         id:searchhomepage
-
     }
-    Playerinterface{
-        id:playerinterfacepage
+
+    PlayInterface{
+        id: playInterface
+    }
+
+    TextItem{
+        id: textItem
+    }
+    HeadTop{
+        id:searchheadtoppage
     }
 
     Scene{
@@ -42,7 +55,7 @@ App {
         StackView{
             id:stackView
             anchors.fill: parent
-            initialItem: personalpage
+            initialItem: homepage
         }
     }
 }

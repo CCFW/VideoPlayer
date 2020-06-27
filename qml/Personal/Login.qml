@@ -81,9 +81,20 @@ Page {
                     if(sql.loginvefied(txtUsername.text,txtPassword.text) == 1){
                         personalpage.personaltext = sql.getname()
                         personalpage.iamgefile = sql.getavatar()
+                        danMuSql.setId(sql.getid())
+                        danMuSql.setName(sql.getname())
+                        homepage.homepageimage = sql.getavatar()
+                        console.log(homepage.homepageimage)
+//                        searchhomepage.searchpageimage = sql.getavatar()
+//                        searchheadtoppage.searchimage = sql.getavatar()
+
+                        searchheadtoppage.searchimage = sql.getavatar()
+                        console.log(searchheadtoppage.searchimage)
+//                        searchhomepage.searchpageimage = sql.getavatar()
                         loginsucess.open()
                         txtUsername.text = ""
                         txtPassword.text = ""
+                        playInterface.controlComment2Visible = false
                     }
                     else if(sql.loginvefied(txtUsername.text,txtPassword.text) == 0){
                         loginfalut.open()

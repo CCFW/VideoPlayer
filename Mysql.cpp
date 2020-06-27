@@ -197,32 +197,50 @@ void Mysql::exitlogin()
 
 int Mysql::informationmadofy(QString name, QString oldpassword, QString newpassword1, QString newpassword2)
 {
-    //    QSqlQuery ql;
-    //    QString strql = "select u_name from User ";
-    //    ql.exec(strql);
-    //    bool result = false;
-    //    while (ql.next()) {
-    //        if(ql.value(0).toString() == name){
-    //            result = true;
-    //        }
-    //    }
-
-    if( name == "" || oldpassword == "" || newpassword1 == "" || newpassword2 == ""){
+    if( name == m_name && m_avatar == temp_avatar && (oldpassword == "" || newpassword1 == "" || newpassword2 == "")){
         return 0;
     }
-    else if (newpassword1 != newpassword2){
+    else if (newpassword1 != newpassword2 && newpassword1 != "" && newpassword2 != ""){
         return 1;
     }
-    else if (oldpassword != getpassword()){
+    else if (oldpassword != getpassword() && oldpassword != ""){
         return 2;
     }
-    else if(oldpassword == newpassword1){
+    else if(oldpassword == newpassword1 && oldpassword != "" && newpassword1 != ""){
         return 3;
     }
-    //    else if(result){
-    //        return 4;
-    //    }
-    else{
+    else if(m_avatar != temp_avatar && m_name == name && (oldpassword == "" || newpassword1 == "" || newpassword2 == "")){
+        QSqlQuery ql;
+        QString avatarpath = temp_avatar;
+        ql.prepare("update User set u_avatar = ? where u_id = ?");
+        ql.addBindValue(avatarpath);
+        ql.addBindValue(getid());
+        ql.exec();
+        setavatar(avatarpath);
+        return 4;
+    }
+    else if(m_avatar != temp_avatar && m_name != name && (oldpassword == "" || newpassword1 == "" || newpassword2 == "")){
+        QSqlQuery ql;
+        QString avatarpath = temp_avatar;
+        QString strql = QString("update User set u_name = '%1' where u_id = '%2'").arg(name).arg(getid());
+        ql.exec(strql);
+        ql.prepare("update User set u_avatar = ? where u_id = ?");
+        ql.addBindValue(avatarpath);
+        ql.addBindValue(getid());
+        ql.exec();
+        setavatar(avatarpath);
+        setname(name);
+        return 5;
+    }
+    else if(m_avatar == temp_avatar && m_name != name && (oldpassword == "" || newpassword1 == "" || newpassword2 == "")){
+        QSqlQuery ql;
+        QString strql = QString("update User set u_name = '%1'  where u_id = '%3'").arg(name).arg(getid());
+        ql.exec(strql);
+        setname(name);
+        return 6;
+    }
+//    if(m_avatar != temp_avatar && m_name != name && oldpassword != "" && newpassword1 != "" && newpassword2 != "")
+    else if(oldpassword != "" && newpassword1 != "" && newpassword2 != ""){
         QSqlQuery ql;
         setname(name);
         setpassword(newpassword1);
@@ -239,18 +257,15 @@ int Mysql::informationmadofy(QString name, QString oldpassword, QString newpassw
         QString strql = QString("update User set u_name = '%1' ,u_password = '%2'  where u_id = '%3'").arg(name).arg(newpassword1).arg(getid());
         ql.exec(strql);
 
-//        QString strql1 = QString("update User set u_avatar = '%1' where u_id = '%3'").arg(var).arg(getid());
-//        ql.exec(strql1);
-//        QString strql1 = "update User set u_avatar = ? where u_id = ?";
+        //        QString strql1 = QString("update User set u_avatar = '%1' where u_id = '%3'").arg(var).arg(getid());
+        //        ql.exec(strql1);
+        //        QString strql1 = "update User set u_avatar = ? where u_id = ?";
         ql.prepare("update User set u_avatar = ? where u_id = ?");
         ql.addBindValue(avatarpath);
         ql.addBindValue(getid());
         ql.exec();
         setavatar(avatarpath);
-
-
-
-        return 4;
+        return 7;
     }
 }
 

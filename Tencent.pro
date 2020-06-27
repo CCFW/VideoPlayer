@@ -42,7 +42,9 @@ RESOURCES += #    resources.qrc # uncomment for publishing
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += main.cpp \
     Imagefile.cpp \
-    Mysql.cpp
+    Mysql.cpp \
+    Discuss.cpp \
+    VideoInfo.cpp
 
 
 android {
@@ -65,8 +67,11 @@ macx {
 
 DISTFILES += \
     Playinterface.qml \
-    qml/Informationchange.qml
+    qml/Informationchange.qml \
+    qml/PlayPage/DialogInfo.qml
 
 HEADERS += \
     Imagefile.h \
-    Mysql.h
+    Mysql.h \
+    Discuss.h \
+    VideoInfo.h
