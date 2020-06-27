@@ -3,7 +3,11 @@
 <plist version="1.0">
 <dict>
     <key>CFBundleDisplayName</key>
+<<<<<<< HEAD
     <string>SearchUI</string>
+=======
+    <string>Tencent</string>
+>>>>>>> 32956a2018994ef01a477319ba9ff69b76e50f50
     <key>CFBundleExecutable</key>
     <string>${EXECUTABLE_NAME}</string>
     <key>CFBundleIdentifier</key>

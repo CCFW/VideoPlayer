@@ -13,7 +13,11 @@ allprojects {
     repositories {
         maven { url 'https://maven.google.com' }
         jcenter()
+<<<<<<< HEAD
         maven { url 'https://sdk.v-play.net/maven/' }
+=======
+        maven { url 'https://install.felgo.com/maven/' }
+>>>>>>> 32956a2018994ef01a477319ba9ff69b76e50f50
     }
 }
 
@@ -22,8 +26,13 @@ apply plugin: 'com.android.application'
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+<<<<<<< HEAD
     implementation "com.android.support:support-core-utils:27.1.0"
     implementation "com.android.support:appcompat-v7:27.1.0"
+=======
+    implementation "com.android.support:support-core-utils:28.0.0"
+    implementation "com.android.support:appcompat-v7:28.0.0"
+>>>>>>> 32956a2018994ef01a477319ba9ff69b76e50f50
 
 }
 
@@ -41,6 +50,7 @@ android {
      * Changing them manually might break the compilation!
      *******************************************************/
 
+<<<<<<< HEAD
     compileSdkVersion androidCompileSdkVersion.toInteger()
     buildToolsVersion androidBuildToolsVersion
 
@@ -48,6 +58,24 @@ android {
       applicationId = productIdentifier
       versionCode = productVersionCode.toInteger()
       versionName = productVersionName
+=======
+    compileSdkVersion    androidCompileSdkVersion.toInteger()
+    buildToolsVersion    androidBuildToolsVersion
+
+    defaultConfig {
+      targetSdkVersion   androidCompileSdkVersion.toInteger()
+      applicationId    = productIdentifier
+      versionCode      = productVersionCode.toInteger()
+      versionName      = productVersionName
+
+      int qtVersionNr = project.hasProperty("qtVersionInt") ? qtVersionInt.toInteger() : 5132
+      if (qtVersionNr < 5140) {
+        resValue('array', 'load_local_libs', "")
+      } else if (qtVersionNr >= 5140) {
+        resValue('array', 'bundled_in_lib', "")
+        resValue('array', 'bundled_in_assets', "")
+      }
+>>>>>>> 32956a2018994ef01a477319ba9ff69b76e50f50
     }
 
     sourceSets {

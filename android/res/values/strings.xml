@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+<<<<<<< HEAD
   <string name="app_name">SearchUI</string>
+=======
+  <string name="app_name">Tencent</string>
+>>>>>>> 32956a2018994ef01a477319ba9ff69b76e50f50
 </resources>
