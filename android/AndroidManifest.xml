@@ -1,5 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
+<<<<<<< HEAD
 <manifest package="com.yourcompany.wizardEVAP.Tencent" xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="1.0" android:versionCode="1" android:installLocation="auto">
+=======
+<manifest package="com.yourcompany.wizardEVAP.M" xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="1.0" android:versionCode="1" android:installLocation="auto">
+>>>>>>> ead37ff90a1d04541b6e15d7c39ae1001da5207b
     <application android:hardwareAccelerated="true" android:name="net.vplay.helper.VPlayApplication" android:label="@string/app_name" android:icon="@drawable/ic_launcher" android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
         <activity android:configChanges="orientation|uiMode|screenLayout|screenSize|smallestScreenSize|layoutDirection|locale|fontScale|keyboard|keyboardHidden|navigation"
                   android:name="net.vplay.helper.VPlayActivity"
@@ -19,7 +23,10 @@
             <meta-data android:name="android.app.bundle_local_qt_libs" android:value="-- %%BUNDLE_LOCAL_QT_LIBS%% --"/>
             <meta-data android:name="android.app.bundled_in_lib_resource_id" android:resource="@array/bundled_in_lib"/>
             <meta-data android:name="android.app.bundled_in_assets_resource_id" android:resource="@array/bundled_in_assets"/>
+<<<<<<< HEAD
             <meta-data android:name="android.app.load_local_libs_resource_id" android:resource="@array/load_local_libs"/>
+=======
+>>>>>>> ead37ff90a1d04541b6e15d7c39ae1001da5207b
             <!-- Run with local libs -->
             <meta-data android:name="android.app.use_local_qt_libs" android:value="-- %%USE_LOCAL_QT_LIBS%% --"/>
             <meta-data android:name="android.app.libs_prefix" android:value="/data/local/tmp/qt/"/>
@@ -64,7 +71,11 @@
         </provider>
 
     </application>
+<<<<<<< HEAD
     <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="28"/>
+=======
+    <uses-sdk android:minSdkVersion="16" android:targetSdkVersion="26"/>
+>>>>>>> ead37ff90a1d04541b6e15d7c39ae1001da5207b
     <supports-screens android:largeScreens="true" android:normalScreens="true" android:anyDensity="true" android:smallScreens="true"/>
 
     <!-- The following comment will be replaced upon deployment with default permissions based on the dependencies of the application.
