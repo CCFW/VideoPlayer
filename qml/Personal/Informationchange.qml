@@ -7,9 +7,12 @@ import QtQuick.Dialogs 1.2 as QQD
 
 Page{
 
-    width: 1080
-    height: 960
-
+    id:informationdetailepage
+//    width: 1080
+//    height: 960
+////    anchors.fill: parent
+    width: parent.width
+    height: parent.height
     property alias informationimage: pesonaliamgechange.source
     Rectangle{
         color: "white"
@@ -18,9 +21,12 @@ Page{
         id:infomaltion
         width: parent.width
         height: parent.height
+        anchors.fill: parent
         AppText {
-            x:parent.width/2-150
-            height: parent.height/8
+//            x:parent.width/2-150
+//            height: parent.height/8
+            leftPadding: parent.width/2-150
+            topPadding: 50
             id: infomaltiontext
             text: qsTr("修改个人信息")
             Layout.topMargin: dp(8)
@@ -29,14 +35,21 @@ Page{
             Layout.alignment: Qt.AlignHCenter
             //                    font.pointSize: 30
         }
-        RowLayout{
 
-            x:parent.width/2-300
-            y:parent.height-infomaltiontext.height-700
+
+
+
+
+
+        RowLayout{
+            id:infomaltionlayout
+//            anchors.fill: parent
+            anchors.top:infomaltiontext.bottom
+            anchors.topMargin: 50
+            anchors.left: parent.left
+            anchors.leftMargin: parent.width/2.99
+//            anchors.topMargin: 100
             ColumnLayout{
-                //                        y:parent.height-(parent.height-infomaltiontext.height)
-                //                        x:parent.width/2-250
-                y:parent.height-infomaltiontext.height-700
                 spacing: 30
 
                 AppText {
@@ -75,9 +88,11 @@ Page{
                 }
 
             }
+
+
             ColumnLayout{
                 spacing: 5
-                y:parent.height-infomaltiontext.height-700
+//                y:parent.height-infomaltiontext.height-700
                 //                     x:parent.width/2-300
                 Item {
                     visible: true
@@ -89,7 +104,7 @@ Page{
                         anchors.centerIn: parent
                         smooth: true
                         visible: false
-//                        source: "../../assets/1.jpg"
+                        //                        source: "../../assets/1.jpg"
                         source: sql.getavatar()
                     }
                     Rectangle {
@@ -109,7 +124,7 @@ Page{
                             onClicked: {
                                 sql.getavatorpath()
                                 pesonaliamgechange.source = sql.gettempavatar()
-//                                personalpage.iamgefile = sql.getavatar()
+                                //                                personalpage.iamgefile = sql.getavatar()
                             }
                         }
                     }
@@ -118,7 +133,7 @@ Page{
 
                     id:nichenginput
                     text: personalpage.personaltext
-//                    text: qsTr("请输入新昵称")
+                    //                    text: qsTr("请输入新昵称")
                     //                            font.pointSize: 15
                     Layout.preferredWidth: dp(200)
                     showClearButton: true
@@ -127,9 +142,9 @@ Page{
                     borderWidth: !Theme.isAndroid ? dp(2) : 0
                 }
                 AppTextField{
-                    x:400
+//                    x:400
                     id:passwordinput1
-//                    text: qsTr("请输入旧密码")
+                    //                    text: qsTr("请输入旧密码")
                     //                            font.pointSize: 15
                     Layout.preferredWidth: dp(200)
                     showClearButton: true
@@ -138,9 +153,9 @@ Page{
                     borderWidth: !Theme.isAndroid ? dp(2) : 0
                 }
                 AppTextField{
-                    x:400
+//                    x:400
                     id:passwordinput2
-//                    text: qsTr("请输入新密码")
+                    //                    text: qsTr("请输入新密码")
                     //                            font.pointSize: 15
                     Layout.preferredWidth: dp(200)
                     showClearButton: true
@@ -149,9 +164,9 @@ Page{
                     borderWidth: !Theme.isAndroid ? dp(2) : 0
                 }
                 AppTextField{
-                    x:400
+//                    x:400
                     id:passwordinput3
-//                    text: qsTr("请再次输入新密码")
+                    //                    text: qsTr("请再次输入新密码")
                     //                            font.pointSize: 15
                     Layout.preferredWidth: dp(200)
                     showClearButton: true
@@ -164,77 +179,16 @@ Page{
         }
 
 
-        Dialog{
-            id: nullfalut
-            title: "当前页面所有信息不能为空，请检查后再提交！"
-            positiveActionLabel: "确定"
-            negativeActionLabel: "取消"
-            onCanceled: {
-                nullfalut.close()
-            }
 
-            onAccepted: {
-                nullfalut.close()
-            }
-        }
-        Dialog{
-            id: newpasswordfalut
-            title: "两次输入的密码不一致！"
-            positiveActionLabel: "确定"
-            negativeActionLabel: "取消"
-            onCanceled: {
-                newpasswordfalut.close()
-            }
-
-            onAccepted: {
-                newpasswordfalut.close()
-            }
-        }
-
-        Dialog{
-            id: oldpasswordfalut
-            title: "密码输入错误！"
-            positiveActionLabel: "确定"
-            negativeActionLabel: "取消"
-            onCanceled: {
-                oldpasswordfalut.close()
-            }
-
-            onAccepted: {
-                oldpasswordfalut.close()
-            }
-        }
-        Dialog{
-            id: samepasswordfault
-            title: "新旧密码一致！请重新输入"
-            positiveActionLabel: "确定"
-            negativeActionLabel: "取消"
-            onCanceled: {
-                samepasswordfault.close()
-            }
-
-            onAccepted: {
-                samepasswordfault.close()
-            }
-        }
-        Dialog{
-            id: successdilog
-            title: "修改成功！"
-            positiveActionLabel: "确定"
-            negativeActionLabel: "取消"
-            onCanceled: {
-                successdilog.close()
-            }
-
-            onAccepted: {
-                stackView.pop()
-                successdilog.close()
-            }
-        }
         RowLayout{
-            spacing: 100
-            x:parent.width/2-300
-            y:parent.height/2
+//            anchors.fill: parent
+            anchors.top:infomaltionlayout.bottom
+            anchors.topMargin: 40
+            anchors.left: parent.left
+            anchors.leftMargin: parent.width/3
+            spacing: 50
+//            x:parent.width/2-300
+//            y:parent.height/2
             AppButton{
                 id:quedingbutton
                 text: qsTr("确定")
@@ -252,11 +206,32 @@ Page{
                     }
                     else if(result == 3){
                         samepasswordfault.open()
+                    }else if(result == 4){
+                        personalpage.iamgefile = sql.getavatar()
+                        homepage.homepageimage = sql.getavatar()
+//                        searchhomepage.searchpageimage =sql.getavatar()
+                        imagesuccessdilog.open()
+                    }else if(result == 5){
+                        personalpage.iamgefile = sql.getavatar()
+                        homepage.homepageimage = sql.getavatar()
+//                        searchhomepage.searchpageimage =sql.getavatar()
+                        personalpage.personaltext = sql.getname()
+                        imagetextsuccessdilog.open()
+                    }
+                    else if(result == 6){
+                        personalpage.personaltext = sql.getname()
+                        textsuccessdilog.open()
                     }
 
-                    else{
+                    else if(result == 7){
                         personalpage.iamgefile = sql.getavatar()
+                        homepage.homepageimage = sql.getavatar()
+//                        searchhomepage.searchpageimage =sql.getavatar()
+                        personalpage.personaltext = sql.getname()
                         successdilog.open()
+                        passwordinput1.text = ""
+                        passwordinput2.text = ""
+                        passwordinput3.text = ""
                     }
                 }
             }
@@ -274,6 +249,115 @@ Page{
         }
 
 
+    }
+    Dialog{
+        id: nullfalut
+        title: "新旧密码不能为空！！！"
+        positiveActionLabel: "确定"
+        negativeActionLabel: "取消"
+        onCanceled: {
+            nullfalut.close()
+        }
+
+        onAccepted: {
+            nullfalut.close()
+        }
+    }
+    Dialog{
+        id: newpasswordfalut
+        title: "两次输入的密码不一致！"
+        positiveActionLabel: "确定"
+        negativeActionLabel: "取消"
+        onCanceled: {
+            newpasswordfalut.close()
+        }
+
+        onAccepted: {
+            newpasswordfalut.close()
+        }
+    }
+
+    Dialog{
+        id: oldpasswordfalut
+        title: "密码输入错误！"
+        positiveActionLabel: "确定"
+        negativeActionLabel: "取消"
+        onCanceled: {
+            oldpasswordfalut.close()
+        }
+
+        onAccepted: {
+            oldpasswordfalut.close()
+        }
+    }
+    Dialog{
+        id: samepasswordfault
+        title: "新旧密码一致！请重新输入"
+        positiveActionLabel: "确定"
+        negativeActionLabel: "取消"
+        onCanceled: {
+            samepasswordfault.close()
+        }
+
+        onAccepted: {
+            samepasswordfault.close()
+        }
+    }
+    Dialog{
+        id: successdilog
+        title: "修改成功！"
+        positiveActionLabel: "确定"
+        negativeActionLabel: "取消"
+        onCanceled: {
+            successdilog.close()
+        }
+
+        onAccepted: {
+            stackView.pop()
+            successdilog.close()
+        }
+    }
+    Dialog{
+        id: imagesuccessdilog
+        title: "头像修改成功！"
+        positiveActionLabel: "确定"
+        negativeActionLabel: "取消"
+        onCanceled: {
+            imagesuccessdilog.close()
+        }
+
+        onAccepted: {
+            stackView.pop()
+            imagesuccessdilog.close()
+        }
+    }
+    Dialog{
+        id: imagetextsuccessdilog
+        title: "头像和昵称修改成功！"
+        positiveActionLabel: "确定"
+        negativeActionLabel: "取消"
+        onCanceled: {
+            imagetextsuccessdilog.close()
+        }
+
+        onAccepted: {
+            stackView.pop()
+            imagetextsuccessdilog.close()
+        }
+    }
+    Dialog{
+        id: textsuccessdilog
+        title: "昵称修改成功！"
+        positiveActionLabel: "确定"
+        negativeActionLabel: "取消"
+        onCanceled: {
+            textsuccessdilog.close()
+        }
+
+        onAccepted: {
+            stackView.pop()
+            textsuccessdilog.close()
+        }
     }
 }
 

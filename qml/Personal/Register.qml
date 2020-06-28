@@ -18,6 +18,19 @@ Page {
         radius: dp(4)
     }
 
+    Image {
+        anchors.left: parent.left
+        anchors.leftMargin: 20
+        width: 30
+        height: 30
+        source: "../../assets/back.png"
+        MouseArea{
+            anchors.fill: parent
+            onClicked: {
+                stackView.pop()
+            }
+        }
+    }
 
     GridLayout {
         id: content

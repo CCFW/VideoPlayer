@@ -5,6 +5,15 @@ Rectangle{
     id:home
     width: parent.width
     height: parent.height
+
+    property alias listmodes: model1
+    property alias flag: home.flag
+    property int flag: 0
+    //    property alias search_re: search_re
+    //    property alias seacrchtext: titletext.text
+
+    SearchModel{id:model1}
+
     TitleBar{
         id:titlebar
         z:3
@@ -20,9 +29,8 @@ Rectangle{
     Rectangle{
         id:bglistview
         anchors.fill: parent
-//        color: "linen"//内容部分的背景颜色
+        //        color: "linen"//内容部分的背景颜色
         color: "#F9F9F9"
-
 
         ScrollView{
             id:control
@@ -35,8 +43,7 @@ Rectangle{
                 id:view
                 anchors.fill: parent
                 width: parent.width
-                model:SearchModel{}
-
+                model:model1
 
                 header:headerdeleget
 
@@ -58,7 +65,7 @@ Rectangle{
                     color: bglistview.color
 
                     opacity: 0.9
-//                    border.width: 1
+                    //                    border.width: 1
 
                     Image {
                         id: moveimage
@@ -80,8 +87,26 @@ Rectangle{
                             onEntered: moveimage.scale=1.05
                             onExited: moveimage.scale=1
                             onClicked: {
-                                stackView.push(playerinterfacepage)
-                                playerinterfacepage.mediaPlayer.play()
+                                view.currentIndex=index
+                                personalpage.personalpageview = true
+                                var id = sql.getid()
+                                if(id != 0){
+                                    var flag = sql.historysave(model1.get(view.currentIndex).title)
+                                    console.log("flag : "+flag)
+                                    if(flag == 1){
+                                        personalpage.historylistview.append({"title":model1.get(view.currentIndex).title,"director":model1.get(view.currentIndex).director,"introduce":model1.get(view.currentIndex).introduce,"role":model1.get(view.currentIndex).role,"portrait":model1.get(view.currentIndex).portrait})
+
+                                        if(personalpage.historylistview.get(0).title == ""){
+                                            personalpage.historylistview.remove(0)
+                                        }
+                                    }
+
+                                }
+
+                                //                                view.currentIndex=index
+                                //                                console.log("currentIndex"+view.currentIndex)
+
+                                //                                console.log("dataManage"+model1.get(view.currentIndex).title)
                             }
                         }
 
@@ -96,7 +121,7 @@ Rectangle{
 
                         Text {
                             id: titletext
-                            text: '<pre>电视剧  '+'<font size="5" color="orange">'+title+'</font>'+'</pre>'
+                            text: '<pre>视频  '+'<font size="5" color="orange">'+title+'</font>'+'</pre>'
                         }
                         Row{
                             spacing: 200
@@ -106,7 +131,7 @@ Rectangle{
                             }
                             Text {
                                 id: actortext
-                                text: "主演："+actor
+                                text: "主演："+role
                             }
                         }
                         Text {
@@ -121,7 +146,7 @@ Rectangle{
                             height: 150
                             cellWidth: 50
                             cellHeight: 50
-                            model: 24
+                            model:episodes
 
                             delegate: authologyDelegate
                         }
@@ -130,7 +155,7 @@ Rectangle{
 
                             Rectangle{
                                 width: 50;height: 50
-    //                                color: "linen"
+                                //                                color: "linen"
                                 color: bglistview.color
                                 Rectangle{
                                     id:inauthology
@@ -147,12 +172,13 @@ Rectangle{
 
                                     }
 
-                                Text{
-                                    id:authologyNum
-                                    text:index+1
-                                    anchors.horizontalCenter: parent.horizontalCenter
-                                    anchors.verticalCenter: parent.verticalCenter
-                                }
+                                    Text{
+                                        id:authologyNum
+
+                                        text:index+1
+                                        anchors.horizontalCenter: parent.horizontalCenter
+                                        anchors.verticalCenter: parent.verticalCenter
+                                    }
                                 }
                             }
                         }
@@ -163,6 +189,7 @@ Rectangle{
             }
         }
     }
+
     Component{
         id:headerdeleget
         Rectangle{

@@ -1,11 +1,14 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.5
-
+import Felgo 3.0
 Rectangle{
     id:titlebar
     width: parent.width
     height: 70
     color: "whitesmoke"
+
+    property alias searchInputlater: searchlater.placeholderText
+
     Rectangle {
         id: searchBkgnd;
 
@@ -24,13 +27,27 @@ Rectangle{
             anchors.verticalCenter: parent.verticalCenter
             width: parent.width/4*3
             height: parent.height-2
-            TextInput{
+            //            TextInput{
+            //                clip: true
+            //                width: parent.width
+            //                autoScroll:true
+            //                color: "gray"
+            //                anchors.verticalCenter: parent.verticalCenter
+            //                text: homepage.searchInputText; renderType: TextInput.NativeRendering; font.hintingPreference: Font.PreferVerticalHinting
+            //            }
+            TextField{
+                id:searchlater
                 clip: true
                 width: parent.width
+                height: parent.height+2
+                background: transparent
                 autoScroll:true
                 color: "gray"
                 anchors.verticalCenter: parent.verticalCenter
-                text: "传闻中的陈千千"; renderType: TextInput.NativeRendering; font.hintingPreference: Font.PreferVerticalHinting
+                renderType: TextInput.NativeRendering; font.hintingPreference: Font.PreferVerticalHinting
+                onAccepted: {
+                        searchInputText.text=searchInputText.text
+                }
             }
         }
         Rectangle{
@@ -39,6 +56,33 @@ Rectangle{
             height: parent.height
             color: "green"
             radius:14;
+            MouseArea{
+                id:sea
+                anchors.fill: parent
+                onClicked: {
+
+                    //输入关键字为空的情况
+                    if(searchlater.text==""){
+                        searchDiaolognull.open()
+                    }else if(dataManage.setKey(searchlater.text)==0){//不为空，搜索匹配
+                        var count=searchhomepage.listmodes.count
+                        for(var i=0; i<count;i++){
+                            searchhomepage.listmodes.remove(i)
+                        }
+                        for(var i=0; i<dataManage.getName().length;i++){
+                            searchhomepage.listmodes.append({"title":dataManage.getName()[i],"director":dataManage.getDirector()[i],"introduce": dataManage.getIntroduce()[i],"role":dataManage.getRole()[i],"episodes":dataManage.getEpisodes()[i],"portrait":dataManage.getmoveImage()[i]})
+                        }
+                        searchhomepage.listmodes.remove(0)
+                        searchlater.text=""
+                         dataManage.clearVector()
+                    }else if(dataManage.setKey(searchlater.text)==-1){//不为空但是输入的关键字不匹配的情况
+                        searchDiaologno.open()
+                    }
+
+
+                }
+
+            }
             Image {
                 id: searchImg
                 source: "../../assets/search.png"
@@ -54,6 +98,30 @@ Rectangle{
                 text: qsTr("搜索")
                 font.pointSize: 15;
             }
+        }
+    }
+    Dialog{
+        id: searchDiaolognull
+        title: "搜索框不能为空，请重新输入"
+        positiveActionLabel: "确定"
+        negativeActionLabel: "取消"
+        onCanceled:{
+            searchDiaolognull.close()
+        }
+        onAccepted: {
+            searchDiaolognull.close()
+        }
+    }
+    Dialog{
+        id: searchDiaologno
+        title: "没有搜索到您输入的视频相关信息，请重新输入"
+        positiveActionLabel: "确定"
+        negativeActionLabel: "取消"
+        onCanceled:{
+            searchDiaologno.close()
+        }
+        onAccepted: {
+            searchDiaologno.close()
         }
     }
 }

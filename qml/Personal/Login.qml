@@ -18,7 +18,19 @@ Page {
         height: content.height + dp(960)
         radius: dp(4)
     }
-
+    Image {
+        anchors.left: parent.left
+        anchors.leftMargin: 20
+        width: 30
+        height: 30
+        source: "../../assets/back.png"
+        MouseArea{
+            anchors.fill: parent
+            onClicked: {
+                stackView.pop()
+            }
+        }
+    }
 
     GridLayout {
         id: content
@@ -81,9 +93,33 @@ Page {
                     if(sql.loginvefied(txtUsername.text,txtPassword.text) == 1){
                         personalpage.personaltext = sql.getname()
                         personalpage.iamgefile = sql.getavatar()
+                        danMuSql.setId(sql.getid())
+                        danMuSql.setName(sql.getname())
+                        homepage.homepageimage = sql.getavatar()
+//                        searchhomepage.searchpageimage =sql.getavatar()
                         loginsucess.open()
                         txtUsername.text = ""
                         txtPassword.text = ""
+                        playInterface.controlComment2Visible = false
+
+                        //历史记录
+                        sql.gethistroys()
+                        console.log(sql.gettileName().length)
+                        if(sql.gettileName().length == 0){
+                            personalpage.personalpageview = false
+                        }else{
+                            personalpage.personalpageview = true
+//                            sql.gethistroys()
+                             console.log(sql.gettileName().length)
+                            for(var i=0; i<sql.gettileName().length;i++){
+
+                                personalpage.historylistview.append({"title":sql.gettileName()[i],"director":sql.getDirector()[i],"introduce":sql.getIntroduce()[i],"role":sql.getRole()[i],"portrait":sql.getEpisodes()[i]})
+                                if(personalpage.historylistview.get(0).title == ""){
+                                    personalpage.historylistview.remove(0)
+                                }
+                            }
+                        }
+
                     }
                     else if(sql.loginvefied(txtUsername.text,txtPassword.text) == 0){
                         loginfalut.open()
@@ -97,6 +133,8 @@ Page {
 
                 }
             }
+
+
 
             AppButton {
                 text: qsTr("还没有帐号？马上注册")

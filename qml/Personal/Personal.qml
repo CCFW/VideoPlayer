@@ -1,60 +1,66 @@
-import Felgo 3.0
+
 import QtQuick 2.0
-import QtQuick.Controls 2.0
+import QtQuick.Controls 2.5
 import QtQuick.Layouts 1.2
 import QtGraphicalEffects 1.0
+import QtQuick.Layouts 1.13
 import QtQuick.Dialogs 1.2 as QQD
 import ".."
+import Felgo 3.0
 Page {
+    property alias historylistview: model1
+    property alias personalpageview: bar3.visible
+    HistoryModel{
+        id:model1
 
+    }
 
     id:mainwindow
-    width: 1080
-    height: 960
-    visible: true
+    width: parent.width
+    height: parent.height
+
 
     property alias personaltext:personalname.text
     property alias iamgefile: pesonaliamge.source
 
     ColumnLayout{
-
-        width: parent.width
-        height: parent.height
+        anchors.fill: parent
 
         id:content
-        spacing: 30
+        spacing: 20
 
         RowLayout{
-            height: parent.height/6
+            //            Layout.alignment: Qt.AlignCenter
+            //            anchors.left: parent.left
+            //            anchors.leftMargin: 10
             id:bar1
-
-            Button{
-                text: qsTr("返回")
-                flat: true
-                onClicked: {
-                    stackView.push(searchhomepage)
+            spacing: 10
+            Image {
+                width: 30
+                height: 30
+                source: "../../assets/back.png"
+                MouseArea{
+                    anchors.fill: parent
+                    onClicked: {
+                        stackView.pop()
+                    }
                 }
             }
-
-            Text {
-                width: parent.width
-                height: 50
-                id: text
-                text: qsTr("个人中心")
-                font.pointSize: 10
-                //  color: "#00BFFF"
-
+            Image {
+                id: personalimage
+                source: "../../assets/personal.png"
             }
         }
 
 
         RowLayout{
-            height: parent.height/6
+            Layout.alignment: Qt.AlignLeft
+            //            anchors.leftMargin: 30
             id:bar2
             spacing: 10
             Text {
-                id: leftmagint
-                text: qsTr("       ")
+                id: personalkongbaitext
+                text: qsTr("   ")
             }
             Item {
                 visible: true
@@ -135,80 +141,205 @@ Page {
         }
 
 
-
         RowLayout{
-            Item{
-                visible: true
-                id:bar3
-                height: parent.height/6
-                //            width: parent
-
-
-
-
-
-                TabBar{
-                    height: 40
-                    id:tabBar
-                    width: 250
-                    currentIndex: personalswipeview.currentIndex
-                    TabButton {
-                        id:historybar
-                        width: tabBar.width/2
-                        //text: qsTr("历史记录")
-                        Image {
-                            focus: true
-                            id: historyiamge
-                            anchors.fill: parent
-                            source: tabBar.currentIndex !== 0?"../../assets/historyclick.png":"../../assets/history.png"
-                        }
-
-                    }
-                    TabButton {
-                        id:downloadbar
-                        width: tabBar.width/2
-                        //text: qsTr("我的下载")
-                        Image {
-                            focus: true
-                            id: downloadimage
-                            anchors.fill: parent
-                            source: tabBar.currentIndex !== 0?"../../assets/downloadclick.png":"../../assets/download.png"
-                        }
-                    }
+            Button{
+                //                text: qsTr("历史记录")
+                Image {
+                    id: historybuttonimage
+                    anchors.fill: parent
+                    source: view.currentIndex == 0?"../../assets/historyclick.png":"../../assets/history.png"
+                    //                    source: "../../assets/history.png"
+                }
+                onClicked: {
+//                    stackView.push(historypage)
+                    //                    historybuttonimage.source = "../../assets/historyclick.png"
+                    view.currentIndex = 0
                 }
             }
+            Button{
+                //                text: qsTr("我的下载")
+                Image {
+                    id: downloadbuttonimag
+                    anchors.fill: parent
+                    source: view.currentIndex == 1 ? "../../assets/downloadclick.png":"../../assets/download.png"
+                    //                    source: "../../assets/download.png"
+                }
+                onClicked: {
+                    //                    downloadbuttonimag.source = "../../assets/downloadclick.png"
+                    view.currentIndex = 1
+                }
+
+            }
+
+            //            TabBar{
+            ////                height: 40
+            //                id:tabBar
+            ////                width: 250
+            ////                    currentIndex: personalswipeview.currentIndex
+            //                TabButton {
+            //                    id:historybar
+            //                    width: tabBar.width/2
+            //                    //text: qsTr("历史记录")
+            //                    Image {
+            //                        focus: true
+            //                        id: historyiamge
+            //                        anchors.fill: parent
+            //                        source: tabBar.currentIndex !== 0?"../../assets/historyclick.png":"../../assets/history.png"
+            //                    }
+
+            //                }
+            //                TabButton {
+            //                    id:downloadbar
+            //                    width: tabBar.width/2
+            //                    //text: qsTr("我的下载")
+            //                    Image {
+            //                        focus: true
+            //                        id: downloadimage
+            //                        anchors.fill: parent
+            //                        source: tabBar.currentIndex !== 0?"../../assets/downloadclick.png":"../../assets/download.png"
+            //                    }
+            //                }
+            //            }
 
         }
-        Rectangle {
-            anchors.topMargin: 0
-            color: "red"
-            visible: true
-            height: 800
-            //            height:parent.height-bar1.height-bar2.height-bar3.height
+        RowLayout{
+            //            anchors.top: content.bottom
+            //            anchors.topMargin: 0
+            id:toorbarlayot
             width: parent.width
-            SwipeView{
-                //                anchors.rightMargin: 0
-                //                anchors.bottomMargin: 0
-                //                anchors.leftMargin: 0
-                //                anchors.topMargin: 0
-                id:personalswipeview
-                enabled: opacity
-                anchors.fill: parent
-                currentIndex: tabBar.currentIndex
-                opacity: 0
+            height: parent.height/1.5
+            Item{
                 width: parent.width
                 height: parent.height
-                History{
-                    id:historypage
+                visible: true
+                id:bar3
+                SwipeView {
 
+                    id: view
+                    currentIndex: 0
+                    anchors.fill: parent
+                    Item {
+                        id: secondPage
+                        //                        History{
+                        //                        }
+                        Rectangle{
+                            id:bglistview
+                            anchors.fill: parent
+//                            color: "#F9F9F9"
+                            //        color: "red"
+                            ScrollView{
+                                id:control
+                                anchors.fill: parent
+                                width: parent.width
+                                focus: true
+                                ScrollBar.horizontal.policy: ScrollBar.AlwaysOn
+                                ScrollBar.vertical.policy: ScrollBar.AlwaysOn
+                                ListView{
+                                    spacing: 50
+                                    id:views
+                                    anchors.fill: parent
+                                    width: parent.width
+                                    model:model1
+
+
+
+                                    delegate:Rectangle{
+                                        id:delegate
+                                        width: views.width/4*3
+//                                        anchors.right: parent.right
+//                                        anchors.rightMargin: views.width/8
+                                        height: 100
+                                        color: bglistview.color
+
+                                        opacity: 0.9
+                                        //                    border.width: 1
+
+                                        Image {
+                                            id: moveimage
+                                            source: portrait
+                                            width: 80
+                                            height: 100
+                                            anchors.verticalCenter: parent.verticalCenter
+                                            anchors.left: parent.left
+                                            anchors.leftMargin: 20
+
+                                            MouseArea{
+                                                id: mouseArea
+                                                anchors.fill: parent
+                                                //此属性保存是否处理悬停事件。默认情况下，鼠标事件仅在响应按钮事件或按下按钮时处理。悬停允许处理所有鼠标事件，即使没有按下鼠标按钮。
+                                                hoverEnabled: true
+                                                enabled: true
+                                                onPressed: moveimage.opacity=0.5
+                                                onReleased: moveimage.opacity=1
+                                                onEntered: moveimage.scale=1.05
+                                                onExited: moveimage.scale=1
+                                                onClicked: {
+                                                    stackView.push(playInterface)
+                                                    playInterface.mediaPlayer.play()
+
+                                                }
+                                            }
+
+                                        }
+                                        Column{
+                                            spacing:10
+                                            anchors.left: moveimage.right
+                                            anchors.leftMargin: 30
+                                            anchors.top: parent.top
+                                            anchors.topMargin: 0
+                                            height: parent.height
+
+                                            Text {
+                                                id: titletext
+                                                text: '<pre>电视剧  '+'<font size="4" color="orange">'+title+'</font>'+'</pre>'
+                                            }
+                                            Row{
+                                                spacing: 100
+                                                Text {
+                                                    id: directortext
+                                                    text: "导演："+director
+                                                }
+                                                Text {
+                                                    id: actortext
+                                                    text: "主演："+role
+                                                }
+                                            }
+                                            Text {
+                                                id: introduceText
+                                                width: delegate.width-moveimage.width-100
+                                                text: "简介:"+'<font color="gray">'+introduce+'</font>'
+                                                wrapMode: Text.WordWrap //换行
+                                            }
+
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+                    Item {
+                        id: thirdPage
+                        Download{
+                        }
+                    }
                 }
-                Download{
-                    id:dowloadpage
+
+                PageIndicator {
+                    id: indicator
+                    count: view.count
+                    currentIndex: view.currentIndex
+                    anchors.bottom: view.bottom
+                    anchors.horizontalCenter: parent.horizontalCenter
                 }
 
             }
+
         }
+
     }
+
+
 
     Dialog{
         id: withlogindialog
@@ -251,6 +382,9 @@ Page {
 
         onAccepted: {
             sql.exitlogin()
+            sql.clearVector()
+            personalpage.historylistview.clear()
+            //            danMuSql.playExit()
             personalpage.iamgefile = sql.getavatar()
             personalname.text = sql.getname()
             exitdialog.close()
