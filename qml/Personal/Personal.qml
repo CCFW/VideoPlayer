@@ -22,6 +22,7 @@ Page {
 
     property alias personaltext:personalname.text
     property alias iamgefile: pesonaliamge.source
+//    property alias withlogindialog: withlogindialog
 
     ColumnLayout{
         anchors.fill: parent
@@ -36,7 +37,7 @@ Page {
             id:bar1
             spacing: 10
             Image {
-                width: 30
+                wdth: 30
                 height: 30
                 source: "../../assets/back.png"
                 MouseArea{
@@ -44,6 +45,7 @@ Page {
                     onClicked: {
                         stackView.pop()
                     }
+
                 }
             }
             Image {

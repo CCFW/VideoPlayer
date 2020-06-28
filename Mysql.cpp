@@ -323,6 +323,7 @@ int Mysql::informationmadofy(QString name, QString oldpassword, QString newpassw
         return 6;
     }
     //    if(m_avatar != temp_avatar && m_name != name && oldpassword != "" && newpassword1 != "" && newpassword2 != "")
+
     else if(oldpassword != "" && newpassword1 != "" && newpassword2 != ""){
         QSqlQuery ql;
         setname(name);

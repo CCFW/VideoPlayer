@@ -28,5 +28,6 @@ ListModel {
     // 2. Update the list model:
     onFirstValueChanged: {
         if(completed) setProperty(0);
+
     }
 }

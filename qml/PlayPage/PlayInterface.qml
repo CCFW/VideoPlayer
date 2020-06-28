@@ -376,6 +376,7 @@ Rectangle{
                             //                            danMuOpen.visible = true
                             danMuComment.visible = false
                             controlComment2.visible = false
+
                         }
                     }
                 }
@@ -571,7 +572,6 @@ Rectangle{
             anchors.topMargin: 20
             Text {
                 id: jieMuInfoText
-//                anchors.fill: parent
                 text: qsTr("视频")
                 font.pixelSize: 30
                 color: "Green"
@@ -948,6 +948,7 @@ Rectangle{
                             withlogindialog.open()
                             //                            danMuComment.visible = false
                             //                            controlComment2.visible = false
+
                         }else{
                             controlComment.visible=false
                             controlComment1.visible=true
@@ -1057,6 +1058,7 @@ Rectangle{
         }
 
     }
+
 
     //如果未登录点击右下角的写评论弹出的提示对话框
     Dialog{

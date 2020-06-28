@@ -1,3 +1,4 @@
+
 ﻿import QtQuick 2.0
 import QtQuick.Controls 2.5
 import "../Search"
@@ -22,7 +23,6 @@ Rectangle {
         currentIndex: indicator.currentIndex
         width: 1000
         height: 300
-
         Item{
             Image {
                 id:img1
@@ -82,7 +82,7 @@ Rectangle {
             //            anchors.bottomMargin: 10
             ToolButton{
                 id:button1
-                text: qsTr("shouye")
+                text: qsTr("首页")
                 //                onClicked:
 
             }
@@ -90,10 +90,20 @@ Rectangle {
                 id:button2
                 anchors.left: button1.left
                 anchors.leftMargin: button1.width
-                text: qsTr("dianshiju")
+                text: qsTr("电视剧")
                 //                        onClicked: stack.push(tv)
 
             }
+            //                ToolButton{
+            //                    id:button3
+            //                    anchors.left: button2.left
+            //                    anchors.leftMargin: button2.width
+            //                    text: qsTr("denglu")
+            //                    onClicked:{
+            //                        stackView.push(loginpage)
+            //                    }
+
+            //                }
         }
 
         Rectangle{
