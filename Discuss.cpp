@@ -33,12 +33,10 @@ void Discuss::danMu(QString comment){
     //    int rand_id = MIN + (rand()%(MAX-MIN+1));
     //    qDebug() << rand_id;
     int id = 0;
-    
     vector<int>temp;
     QSqlQuery sqlQuery;
     QString strql1 = "select d_id from Discuss";
     sqlQuery.exec(strql1);
-    
     //查找discuss数据表当前d_id的最大值
     while(sqlQuery.next()){
         id = sqlQuery.value(0).toInt();

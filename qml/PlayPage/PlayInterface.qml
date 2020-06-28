@@ -7,9 +7,11 @@ import QtQuick.Controls 1.4 as Controls14
 import QtQuick.Window 2.3
 import QtQuick.Controls.Styles 1.4
 import QtGraphicalEffects 1.0
+
 import QtQuick.Controls 2.5 as Controls25
 
 //import QtQuick.Dialogs 1.2 as QQD
+
 
 //Rectangle {
 
@@ -28,6 +30,7 @@ Rectangle{
     property int flag: 0
     property alias mediaPlayer: mediaPlayer
     property alias controlComment2Visible: controlComment2.visible
+
 
     Rectangle{
         id: playWindow
@@ -71,7 +74,6 @@ Rectangle{
             //            autoPlay: true
             volume: volumeControl.value
             //                loops: MediaPlayer.Infinite
-
             //此信号在回放停止时发出。相应的处理程序是onstop。当视频播放完过后，暂停键显示
             onStopped: {
                 pauseKey.visible=true
@@ -623,7 +625,6 @@ Rectangle{
                     }
                 }
             }
-
         }
 
         Rectangle{
@@ -787,6 +788,7 @@ Rectangle{
             width: parent.width / 1.1
             height: parent.height / 1.2
             //            height: operation.height
+
             color: "transparent"
             anchors.top: jieMuInfo.bottom
             anchors.topMargin: 20
@@ -800,12 +802,12 @@ Rectangle{
             }
             Rectangle{
                 id: rectangle
+
                 width: parent.width
                 height: parent.height
                 anchors.top: allComment.bottom
                 anchors.topMargin: 20
                 color: "transparent"
-
                 Component{
                     id: contactDelegate1
 
@@ -910,6 +912,7 @@ Rectangle{
 //                        anchors.right: parent.right
 //                    }
                 }
+
 
             }
         }
