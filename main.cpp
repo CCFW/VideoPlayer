@@ -4,6 +4,7 @@
 #include "MoveDB.h"
 
 #include <QQmlContext>
+
 // uncomment this line to add the Live Client Module and use live reloading with your custom C++ code
 //#include <FelgoLiveClient>
 
@@ -11,6 +12,7 @@
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
+<<<<<<< HEAD
 
     QQmlApplicationEngine engine;
     FelgoApplication felgo;
@@ -31,6 +33,5 @@ int main(int argc, char *argv[])
     felgo.setPreservePlatformFonts(true);
 
     engine.load(QUrl(felgo.mainQmlFileName()));
-
     return app.exec();
 }

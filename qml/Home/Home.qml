@@ -3,7 +3,6 @@ import QtQuick.Controls 2.5
 import "../Search"
 import Felgo 3.0
 
-
 Rectangle {
     id:main
     visible: true

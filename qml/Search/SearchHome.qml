@@ -6,11 +6,13 @@ Rectangle{
     width: parent.width
     height: parent.height
 
+
     property alias listmodes: model1
     property alias searchDialog: searchDialog
 
 
     SearchModel{id:model1}
+
 
     TitleBar{
         id:titlebar
@@ -27,8 +29,10 @@ Rectangle{
     Rectangle{
         id:bglistview
         anchors.fill: parent
+
         //        color: "linen"//内容部分的背景颜色
         color: "#F9F9F9"
+
 
         ScrollView{
             id:control
@@ -41,7 +45,9 @@ Rectangle{
                 id:view
                 anchors.fill: parent
                 width: parent.width
+
                 model:model1
+
 
                 header:headerdeleget
 
@@ -63,7 +69,9 @@ Rectangle{
                     color: bglistview.color
 
                     opacity: 0.9
+
                     //                    border.width: 1
+
 
                     Image {
                         id: moveimage
@@ -73,6 +81,7 @@ Rectangle{
                         anchors.verticalCenter: parent.verticalCenter
                         anchors.left: parent.left
                         anchors.leftMargin: 20
+
 
                         Rectangle{
                             anchors.bottom: moveimage.bottom
@@ -92,6 +101,7 @@ Rectangle{
                         }
                         }
 
+
                         MouseArea{
                             id: mouseArea
                             anchors.fill: parent
@@ -102,6 +112,13 @@ Rectangle{
                             onReleased: moveimage.opacity=1
                             onEntered: moveimage.scale=1.05
                             onExited: moveimage.scale=1
+
+
+                            onClicked: {
+                                stackView.push(playerinterfacepage)
+                                playerinterfacepage.mediaPlayer.play()
+                            }
+
                         }
 
                     }
@@ -125,7 +142,9 @@ Rectangle{
                             }
                             Text {
                                 id: actortext
+
                                 text: "主演："+role
+
                             }
                         }
                         Text {
@@ -140,7 +159,9 @@ Rectangle{
                             height: 150
                             cellWidth: 50
                             cellHeight: 50
+
                             model:episodes
+
 
                             delegate: authologyDelegate
                         }
@@ -149,7 +170,9 @@ Rectangle{
 
                             Rectangle{
                                 width: 50;height: 50
+
                                 //                                color: "linen"
+
                                 color: bglistview.color
                                 Rectangle{
                                     id:inauthology
@@ -193,6 +216,7 @@ Rectangle{
             id:headerItem
             width: home.width
             height: 170
+
 
             //头部
             HeadTop{

@@ -7,6 +7,7 @@ Rectangle{
         onClicked: menu.open()
         opacity: 0
 
+
         function chooseTime(min,max){
             var countnum=searchhomepage.listmodes.count
             for(var i=countnum-1; i>=0;i--){

@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.5
 import Felgo 3.0
+
 Rectangle{
     id:titlebar
     width: parent.width
@@ -25,6 +26,7 @@ Rectangle{
             anchors.verticalCenter: parent.verticalCenter
             width: parent.width/4*3
             height: parent.height-2
+
             TextField{
                 id:searchlater
                 clip: true
@@ -38,6 +40,7 @@ Rectangle{
                 onAccepted: {
                     searchInputText.text=searchInputText.text
                 }
+
             }
         }
         Rectangle{
@@ -46,6 +49,7 @@ Rectangle{
             height: parent.height
             color: "green"
             radius:14;
+
             MouseArea{
                 id:sea
                 anchors.fill: parent
