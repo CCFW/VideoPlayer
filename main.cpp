@@ -31,6 +31,5 @@ int main(int argc, char *argv[])
     felgo.setPreservePlatformFonts(true);
 
     engine.load(QUrl(felgo.mainQmlFileName()));
-
     return app.exec();
 }

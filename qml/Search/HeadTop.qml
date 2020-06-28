@@ -22,6 +22,7 @@ Rectangle{
         anchors.top: parent.top
         anchors.topMargin: 10
         source: "../../assets/back.png"
+
         MouseArea{
             anchors.fill: parent
             onClicked: {
@@ -31,5 +32,6 @@ Rectangle{
                 searchhomepage.listmodes.clear()
             }
         }
+
     }
 }

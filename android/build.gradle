@@ -41,22 +41,6 @@ android {
      * Changing them manually might break the compilation!
      *******************************************************/
 
-    compileSdkVersion    androidCompileSdkVersion.toInteger()
-    buildToolsVersion    androidBuildToolsVersion
-
-    defaultConfig {
-      targetSdkVersion   androidCompileSdkVersion.toInteger()
-      applicationId    = productIdentifier
-      versionCode      = productVersionCode.toInteger()
-      versionName      = productVersionName
-
-      int qtVersionNr = project.hasProperty("qtVersionInt") ? qtVersionInt.toInteger() : 5132
-      if (qtVersionNr < 5140) {
-        resValue('array', 'load_local_libs', "")
-      } else if (qtVersionNr >= 5140) {
-        resValue('array', 'bundled_in_lib', "")
-        resValue('array', 'bundled_in_assets', "")
-      }
     }
 
     sourceSets {
