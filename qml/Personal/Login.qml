@@ -18,6 +18,7 @@ Page {
         height: content.height + dp(960)
         radius: dp(4)
     }
+
     Image {
         anchors.left: parent.left
         anchors.leftMargin: 20
@@ -31,6 +32,7 @@ Page {
             }
         }
     }
+
 
     GridLayout {
         id: content
@@ -94,6 +96,7 @@ Page {
                         personalpage.personaltext = sql.getname()
                         personalpage.iamgefile = sql.getavatar()
                         danMuSql.setId(sql.getid())
+
                         danMuSql.setName(sql.getname())
                         homepage.homepageimage = sql.getavatar()
 //                        searchhomepage.searchpageimage =sql.getavatar()
@@ -119,6 +122,7 @@ Page {
                             }
                         }
 
+
                     }
                     else if(sql.loginvefied(txtUsername.text,txtPassword.text) == 0){
                         loginfalut.open()
@@ -132,7 +136,6 @@ Page {
 
                 }
             }
-
 
 
             AppButton {

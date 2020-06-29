@@ -3,6 +3,7 @@ import QtQuick 2.0
 import QtQuick.Controls 2.5
 import Felgo 3.0
 
+
 Rectangle {
     id:coverflow
     //    color:"black"
@@ -221,6 +222,7 @@ Rectangle {
 
         Rectangle{
             id:a
+
             anchors.right: parent.right
             width: parent.width/4
             height: parent.height
@@ -263,6 +265,7 @@ Rectangle {
             }
 
 
+
             Text {
                 id: searchtext
                 anchors.left: searchImg.right
@@ -272,8 +275,6 @@ Rectangle {
             }
         }
     }
-
-
 
     Rectangle{
         id:moive
@@ -553,6 +554,7 @@ Rectangle {
                 id:listview2
                 //                x:60
 //                y:52
+
                 width: parent.width
                 //                height: 466
                 height: 400

@@ -29,7 +29,6 @@ void VideoInfo::introduce(){
     vector<QString> string;
 
 
-
     string.push_back("月上重火");
     string.push_back("隐秘的角落");
     string.push_back("怪你过分美丽");
@@ -65,6 +64,7 @@ QString VideoInfo::getIntroduce(){
 
 //    qDebug() << count;
 //    qDebug() <<temp[count];
+
 
     return temp[count];
 }

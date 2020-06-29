@@ -26,6 +26,7 @@ public:
     Q_INVOKABLE QString getDanMu();
     Q_INVOKABLE int getDanMuCount();
     Q_INVOKABLE void setId(int id);
+
     Q_INVOKABLE void setName(QString name);
     Q_INVOKABLE void setComments(QString comments);
     Q_INVOKABLE QString getComments();
@@ -35,12 +36,14 @@ public:
 
     vector<int> getId();
 
+
 private:
     QGuiApplication *m_app;
     QQmlApplicationEngine *m_engine;
     int m_id;
     QString m_name;
     QString m_avatar;
+
 };
 
 #endif // DISCUSS_H

@@ -15,7 +15,9 @@ Mysql::Mysql(QGuiApplication& app, QQmlApplicationEngine &engine)
 
     db.setHostName("localhost");
     db.setUserName("root");
+
     db.setPassword("mysql");
+
     db.setDatabaseName("VideoPlayer");
     if(!db.open()){
         qDebug()<<"failed";
@@ -24,7 +26,9 @@ Mysql::Mysql(QGuiApplication& app, QQmlApplicationEngine &engine)
 
     }
     m_id = 0;
+
     ve_id = 0;
+
     m_name = "请登录";
     m_password = "";
     m_account = 0;
@@ -100,6 +104,7 @@ int Mysql::loginvefied(QString account,QString password)
 //    qDebug() << account;
 //    qDebug() << password;
 
+
     if(account == "" || password == ""){
         return 3;
     }
@@ -114,19 +119,12 @@ int Mysql::loginvefied(QString account,QString password)
             setpassword(ql.value(2).toString());
             setaccount(ql.value(3).toInt());
 
-
-            //            //从数据库读取照片
-            //            QByteArray byteText;
-            //            byteText = ql.value(4).toByteArray();
-            //            QPixmap pix;
-            //            pix.loadFromData(byteText,"png");
-            //            qDebug()<<""+pix;
             setavatar(ql.value(4).toString());
             sethistory(ql.value(5).toString());
             setdownload(ql.value(6).toString());
 
             //            qDebug() <<m_id;
-//            qDebug() <<"name = " +m_name;
+
             //            qDebug() <<"password = " +m_password;
             //            qDebug() <<m_account;
             //            qDebug() <<"avatar = " +m_avatar;
@@ -152,9 +150,7 @@ int Mysql::registersave(QString name, QString password1, QString password2)
     //    int account = MIN+ (rand()%(MAX-MIN));
 
     //    qDebug() << account;
-//    qDebug() << name;
-//    qDebug() << password1;
-//    qDebug() << password2;
+
     QSqlQuery ql;
 
     QString strql = "select u_account from User";
@@ -178,7 +174,9 @@ int Mysql::registersave(QString name, QString password1, QString password2)
         vector<int> temp;
         int id = 0;
         int account = 10000;
+
         vector<int>accounts;
+
         strql = "select u_id from User";
         ql.exec(strql);
         while(ql.next()){
@@ -204,6 +202,7 @@ int Mysql::registersave(QString name, QString password1, QString password2)
             if(i>account){
                 account = i;
             }
+
         }
         account = account + 1;
         //ON DUPLICATE KEY UPDATE u_id=u_id+1
@@ -339,10 +338,6 @@ int Mysql::informationmadofy(QString name, QString oldpassword, QString newpassw
 
         QString strql = QString("update User set u_name = '%1' ,u_password = '%2'  where u_id = '%3'").arg(name).arg(newpassword1).arg(getid());
         ql.exec(strql);
-
-        //        QString strql1 = QString("update User set u_avatar = '%1' where u_id = '%3'").arg(var).arg(getid());
-        //        ql.exec(strql1);
-        //        QString strql1 = "update User set u_avatar = ? where u_id = ?";
         ql.prepare("update User set u_avatar = ? where u_id = ?");
         ql.addBindValue(avatarpath);
         ql.addBindValue(getid());
@@ -399,7 +394,6 @@ int Mysql::historysave(QString history)
 
     return flag;
 }
-
 
 int Mysql::getid()
 {
@@ -461,6 +455,7 @@ void Mysql::gethistroys()
       }
     }
 }
+
 Mysql::~Mysql(){
 
 }

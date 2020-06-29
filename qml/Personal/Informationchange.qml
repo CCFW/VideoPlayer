@@ -41,6 +41,7 @@ Page{
 
 
 
+
         RowLayout{
             id:infomaltionlayout
 //            anchors.fill: parent
@@ -104,7 +105,9 @@ Page{
                         anchors.centerIn: parent
                         smooth: true
                         visible: false
+
                         //                        source: "../../assets/1.jpg"
+
                         source: sql.getavatar()
                     }
                     Rectangle {
@@ -124,7 +127,9 @@ Page{
                             onClicked: {
                                 sql.getavatorpath()
                                 pesonaliamgechange.source = sql.gettempavatar()
+
                                 //                                personalpage.iamgefile = sql.getavatar()
+
                             }
                         }
                     }
@@ -133,7 +138,9 @@ Page{
 
                     id:nichenginput
                     text: personalpage.personaltext
+
                     //                    text: qsTr("请输入新昵称")
+
                     //                            font.pointSize: 15
                     Layout.preferredWidth: dp(200)
                     showClearButton: true
@@ -142,9 +149,11 @@ Page{
                     borderWidth: !Theme.isAndroid ? dp(2) : 0
                 }
                 AppTextField{
+
 //                    x:400
                     id:passwordinput1
                     //                    text: qsTr("请输入旧密码")
+
                     //                            font.pointSize: 15
                     Layout.preferredWidth: dp(200)
                     showClearButton: true
@@ -156,6 +165,7 @@ Page{
 //                    x:400
                     id:passwordinput2
                     //                    text: qsTr("请输入新密码")
+
                     //                            font.pointSize: 15
                     Layout.preferredWidth: dp(200)
                     showClearButton: true
@@ -164,9 +174,11 @@ Page{
                     borderWidth: !Theme.isAndroid ? dp(2) : 0
                 }
                 AppTextField{
+
 //                    x:400
                     id:passwordinput3
                     //                    text: qsTr("请再次输入新密码")
+
                     //                            font.pointSize: 15
                     Layout.preferredWidth: dp(200)
                     showClearButton: true
@@ -177,6 +189,7 @@ Page{
             }
 
         }
+
 
 
 
@@ -206,6 +219,7 @@ Page{
                     }
                     else if(result == 3){
                         samepasswordfault.open()
+
                     }else if(result == 4){
                         personalpage.iamgefile = sql.getavatar()
                         homepage.homepageimage = sql.getavatar()
@@ -232,6 +246,7 @@ Page{
                         passwordinput1.text = ""
                         passwordinput2.text = ""
                         passwordinput3.text = ""
+
                     }
                 }
             }

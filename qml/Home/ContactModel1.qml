@@ -1,3 +1,4 @@
+
 //import QtQuick 2.0
 
 //ListModel {
@@ -123,4 +124,5 @@ ListModel {
     onFirstValueChanged: {
         if(completed) setProperty(0, "value", leftGrid.firstValue);
     }
+
 }

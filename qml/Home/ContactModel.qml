@@ -73,6 +73,26 @@ ListModel {
 //        portrait: "../../assets/d1.jpg"
 
 //    }
+//import QtQuick 2.0
+
+//ListModel {
+
+//    property real firstValue: 2
+//    id: leftGrid
+
+//    // 1. Initialize the list model:
+//    property bool completed: false
+//    Component.onCompleted: {
+//        append({"number": introduceSql.getIntroduce(), value: leftGrid.firstValue});
+//        completed = true;
+//    }
+
+//    // 2. Update the list model:
+//    onFirstValueChanged: {
+//        if(completed) setProperty(0, "value", leftGrid.firstValue);
+//    }
+//}
+
 //    ListElement {
 
 //        name: "Sam Wise"
@@ -117,4 +137,8 @@ ListModel {
 
 //    }
 
+<<<<<<< HEAD
 //}
+=======
+}
+>>>>>>> 904e136fd129aacce13e5233d04547594dbea21e

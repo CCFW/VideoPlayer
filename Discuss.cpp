@@ -105,6 +105,7 @@ int Discuss::getDanMuCount(){
     
     int count = 0;
     while (sqlQuery.next()) {
+
         if(sqlQuery.value(0).toString() != ""){
             count ++;
         }

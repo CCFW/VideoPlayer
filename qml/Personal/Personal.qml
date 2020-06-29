@@ -1,4 +1,3 @@
-
 import QtQuick 2.0
 import QtQuick.Controls 2.5
 import QtQuick.Layouts 1.2
@@ -49,11 +48,13 @@ Page {
             Image {
                 id: personalimage
                 source: "../../assets/personal.png"
+
             }
         }
 
 
         RowLayout{
+
             Layout.alignment: Qt.AlignLeft
             //            anchors.leftMargin: 30
             id:bar2
@@ -61,6 +62,7 @@ Page {
             Text {
                 id: personalkongbaitext
                 text: qsTr("   ")
+
             }
             Item {
                 visible: true
@@ -139,7 +141,6 @@ Page {
                 }
             }
         }
-
 
         RowLayout{
             Button{
@@ -339,8 +340,6 @@ Page {
 
     }
 
-
-
     Dialog{
         id: withlogindialog
         title: "请先登录！"
@@ -385,6 +384,7 @@ Page {
             sql.clearVector()
             personalpage.historylistview.clear()
             //            danMuSql.playExit()
+
             personalpage.iamgefile = sql.getavatar()
             personalname.text = sql.getname()
             exitdialog.close()

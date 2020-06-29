@@ -24,6 +24,7 @@ public:
     void sethistory(QString history);
     void setdownload(QString download);
 
+
     void settitle(QString title);
     void setdirector(QString director);
     void setintroduce(QString introduce);
@@ -36,6 +37,7 @@ public:
     Q_INVOKABLE int informationmadofy(QString name,QString oldpassword,QString newpassword1,QString newpassword2);
     Q_INVOKABLE void getavatorpath();
     Q_INVOKABLE int historysave(QString history);
+
     Q_INVOKABLE int getid();
     Q_INVOKABLE QString getname();
     Q_INVOKABLE QString getpassword();
@@ -76,6 +78,7 @@ private:
     std::vector<QString> m_introduce;
     std::vector<QString> m_role;
     std::vector<QString> m_portrait;
+
 };
 
 #endif // MYSQL_H

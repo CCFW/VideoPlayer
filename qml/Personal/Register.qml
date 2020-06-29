@@ -32,6 +32,7 @@ Page {
         }
     }
 
+
     GridLayout {
         id: content
         anchors.centerIn: loginForm

@@ -1,7 +1,5 @@
 # allows to add DEPLOYMENTFOLDERS and links to the Felgo library and QtCreator auto-completion
 CONFIG += felgo
-Qt += widgets
-QT += core
 
 # uncomment this line to add the Live Client Module and use live reloading with your custom C++ code
 # for the remaining steps to build a custom Live Code Reload app see here: https://felgo.com/custom-code-reload-app/
@@ -9,7 +7,7 @@ QT += core
 
 # Project identifier and version
 # More information: https://felgo.com/doc/felgo-publishing/#project-configuration
-PRODUCT_IDENTIFIER = com.yourcompany.wizardEVAP.Tencent
+PRODUCT_IDENTIFIER = com.yourcompany.wizardEVAP.M
 PRODUCT_VERSION_NAME = 1.0.0
 PRODUCT_VERSION_CODE = 1
 
@@ -27,7 +25,8 @@ DEPLOYMENTFOLDERS += assetsFolder
 
 # Add more folders to ship with the application here
 
-RESOURCES += #    resources.qrc # uncomment for publishing
+RESOURCES += \ #    resources.qrc # uncomment for publishing
+    img.qrc
 
 # NOTE: for PUBLISHING, perform the following steps:
 # 1. comment the DEPLOYMENTFOLDERS += qmlFolder line above, to avoid shipping your qml files with the application (instead they get compiled to the app binary)
@@ -41,16 +40,7 @@ RESOURCES += #    resources.qrc # uncomment for publishing
 
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += main.cpp \
-    Imagefile.cpp \
-    Mysql.cpp \
-    Discuss.cpp \
-<<<<<<< HEAD
-    VideoInfo.cpp \
-    MoveDB.cpp \
-    MovieInfo.cpp
-=======
-    VideoInfo.cpp
->>>>>>> 904e136fd129aacce13e5233d04547594dbea21e
+    mainwindow.cpp
 
 
 android {
@@ -72,26 +62,12 @@ macx {
 }
 
 DISTFILES += \
-    Playinterface.qml \
-<<<<<<< HEAD
-    qml/Home/ContactModel1.qml \
-    qml/Home/ContactModel2.qml \
-    qml/Informationchange.qml \
-    qml/Personal/HistoryModel.qml \
-    qml/Search/SearchDialog.qml
-=======
-    qml/Informationchange.qml \
-    qml/Home/ContactModel1.qml
->>>>>>> 904e136fd129aacce13e5233d04547594dbea21e
+    3.jpg \
+    ../img/5.jpg \
+    qml/ContactModel.qml \
+    qml/Cont.qml \
+    ../Tencent/qml/home.qml \
+    ../Tencent/qml/home/ContactModel.qml
 
 HEADERS += \
-    Imagefile.h \
-    Mysql.h \
-    Discuss.h \
-<<<<<<< HEAD
-    VideoInfo.h \
-    MoveDB.h \
-    MovieInfo.h
-=======
-    VideoInfo.h
->>>>>>> 904e136fd129aacce13e5233d04547594dbea21e
+    mainwindow.h

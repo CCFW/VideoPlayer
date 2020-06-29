@@ -12,6 +12,7 @@ Rectangle{
 
     SearchModel{id:model1}
 
+
     TitleBar{
         id:titlebar
         z:3
@@ -41,7 +42,9 @@ Rectangle{
                 id:view
                 anchors.fill: parent
                 width: parent.width
+
                 model:model1
+
 
                 header:headerdeleget
 
@@ -74,6 +77,7 @@ Rectangle{
                         anchors.left: parent.left
                         anchors.leftMargin: 20
 
+
                         Rectangle{
                                                     anchors.bottom: moveimage.bottom
                                                     anchors.bottomMargin: 5
@@ -91,6 +95,7 @@ Rectangle{
                                                     text: '<font size="3" color="white">'+time+'</font>'+"分钟"
                                                 }
                                                 }
+
 
                         MouseArea{
                             id: mouseArea
@@ -139,7 +144,9 @@ Rectangle{
 
                         Text {
                             id: titletext
+
                             text: '<pre>视频  '+'<font size="5" color="orange">'+title+'</font>'+'</pre>'
+
                         }
                         Row{
                             spacing: 200
@@ -149,7 +156,9 @@ Rectangle{
                             }
                             Text {
                                 id: actortext
+
                                 text: "主演："+role
+
                             }
                         }
                         Text {
@@ -164,7 +173,9 @@ Rectangle{
                             height: 150
                             cellWidth: 50
                             cellHeight: 50
+
                             model:episodes
+
 
                             delegate: authologyDelegate
                         }
@@ -206,10 +217,12 @@ Rectangle{
                 }
             }
         }
+
         SearchDialog{
             id:searchDialog
         }
     }
+
 
     Component{
         id:headerdeleget
@@ -221,6 +234,7 @@ Rectangle{
             //            color: "red"
 
             //头部
+
             HeadTop{
                 id:head_top
                 color: "black"
@@ -232,6 +246,7 @@ Rectangle{
             TitleBar{
                 id:search_re
                 anchors.top:head_top.bottom
+
                 color: "#F1F1F1"
 
 

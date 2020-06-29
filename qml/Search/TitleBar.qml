@@ -1,12 +1,13 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.5
+
 import Felgo 3.0
+
 Rectangle{
     id:titlebar
     width: parent.width
     height: 70
     color: "whitesmoke"
-
     Rectangle {
         id: searchBkgnd;
 
@@ -25,6 +26,7 @@ Rectangle{
             anchors.verticalCenter: parent.verticalCenter
             width: parent.width/4*3
             height: parent.height-2
+
             TextField{
                 id:searchlater
                 clip: true
@@ -78,6 +80,7 @@ Rectangle{
                 }
 
             }
+
             Image {
                 id: searchImg
                 source: "../../assets/search.png"
@@ -95,5 +98,4 @@ Rectangle{
             }
         }
     }
-
 }
