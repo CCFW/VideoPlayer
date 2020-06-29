@@ -35,7 +35,7 @@ ListModel{
     //        num4=0
     //    }
 
-    ListElement{title:"";director:"";introduce:"";role:"";episodes:0;portrait:""}
+      ListElement{title:"";director:"";introduce:"";role:"";episodes:0;portrait:"";time:0}
 
 }
 

@@ -60,10 +60,10 @@ void Discuss::danMu(QString comment){
     int u_id = m_id;
     QString u_name = m_name;
     //    id = id + 1;
-    qDebug() << id;
-    qDebug() << u_id;
-    qDebug() << "d_danMu:"+comment;
-    qDebug() << "u_name:"+u_name;
+//    qDebug() << id;
+//    qDebug() << u_id;
+//    qDebug() << "d_danMu:"+comment;
+//    qDebug() << "u_name:"+u_name;
     QString strql = QString("insert into Discuss(d_id,u_id, d_danMu,u_name) values('%1','%2','%3','%4')").arg(id).arg(u_id).arg(comment).arg(u_name);
     ql.exec(strql);
 }
@@ -126,7 +126,7 @@ void Discuss::setName(QString name)
 
 void Discuss::setComments(QString comments)
 {
-    qDebug() << "comments: " + comments;
+//    qDebug() << "comments: " + comments;
     QSqlQuery sqlQuery;
     QString strql = "select d_id from Discuss";
     sqlQuery.exec(strql);
@@ -146,10 +146,10 @@ void Discuss::setComments(QString comments)
     //加1为下一位d_id的值
 
     id = id + 1;
-    qDebug() << id;
-    qDebug() << m_id;
-    qDebug() << "d_comment:"+comments;
-    qDebug() << "u_name:"+m_name;
+//    qDebug() << id;
+//    qDebug() << m_id;
+//    qDebug() << "d_comment:"+comments;
+//    qDebug() << "u_name:"+m_name;
 
     int u_id = m_id;
     QString u_name = m_name;
@@ -171,11 +171,11 @@ QString Discuss::getComments()
     while (sqlQuery.next()) {
         if(sqlQuery.value(0).toString() != ""){
             arr1.push_back(sqlQuery.value(0).toString());
-            qDebug() << sqlQuery.value(0).toString();
+//            qDebug() << sqlQuery.value(0).toString();
         }
     }
 
-    qDebug() << arr1.size();
+//    qDebug() << arr1.size();
 
     static int i = -1;
     i = i + 1;
@@ -213,12 +213,12 @@ QString Discuss::getName()
     while (sqlQuery.next()) {
         if(sqlQuery.value(0).toString() != ""){
             arr1.push_back(sqlQuery.value(1).toString());
-            qDebug() << sqlQuery.value(1).toString();
+//            qDebug() << sqlQuery.value(1).toString();
         }
 
     }
 
-    qDebug() << arr1.size();
+//    qDebug() << arr1.size();
 
     static int i = -1;
     i = i + 1;
@@ -233,7 +233,7 @@ QString Discuss::getAvatar()
     vector<QString> arr1;
 
     vector<int> arr = getId();
-    qDebug() << arr;
+//    qDebug() << arr;
 
     QSqlQuery sqlQuery;
     QString strql1 = "select u_id,u_avatar from User";
@@ -243,7 +243,7 @@ QString Discuss::getAvatar()
         while (sqlQuery.next()) {
             if(sqlQuery.value(0).toInt() == arr[i]){
                 arr1.push_back(sqlQuery.value(1).toString());
-                qDebug() << sqlQuery.value(1).toString();
+//                qDebug() << sqlQuery.value(1).toString();
                 break;
             }
         }
@@ -272,7 +272,7 @@ vector<int> Discuss::getId()
         //找到评论内容不为空的用户ID
         if(sqlQuery.value(1).toString() != ""){
             arr1.push_back(sqlQuery.value(0).toInt());
-            qDebug() << sqlQuery.value(0).toInt();
+//            qDebug() << sqlQuery.value(0).toInt();
         }
     }
     return arr1;

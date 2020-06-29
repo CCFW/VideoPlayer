@@ -7,10 +7,8 @@ Rectangle{
     height: parent.height
 
     property alias listmodes: model1
-    property alias flag: home.flag
-    property int flag: 0
-    //    property alias search_re: search_re
-    //    property alias seacrchtext: titletext.text
+    property alias searchDialog: searchDialog
+
 
     SearchModel{id:model1}
 
@@ -76,6 +74,24 @@ Rectangle{
                         anchors.left: parent.left
                         anchors.leftMargin: 20
 
+                        Rectangle{
+                                                    anchors.bottom: moveimage.bottom
+                                                    anchors.bottomMargin: 5
+                                                    anchors.right: parent.right
+                                                    anchors.rightMargin: 5
+                                                    width: 50
+                                                    height: 25
+                                                    color: "black"
+                        //                            opacity: 0.5
+                                                Label {
+                                                    id: timeText
+                                                    anchors.horizontalCenter: parent.horizontalCenter
+                                                    anchors.verticalCenter: parent.verticalCenter
+                                                    color: "white"
+                                                    text: '<font size="3" color="white">'+time+'</font>'+"分钟"
+                                                }
+                                                }
+
                         MouseArea{
                             id: mouseArea
                             anchors.fill: parent
@@ -102,6 +118,7 @@ Rectangle{
                                     }
 
                                 }
+                                stackView.push(playInterface)
 
                                 //                                view.currentIndex=index
                                 //                                console.log("currentIndex"+view.currentIndex)
@@ -187,6 +204,9 @@ Rectangle{
                     }
                 }
             }
+        }
+        SearchDialog{
+            id:searchDialog
         }
     }
 
