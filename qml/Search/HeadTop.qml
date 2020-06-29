@@ -35,7 +35,6 @@ Rectangle{
         MouseArea{
             anchors.fill: parent
             onClicked: {
-//                dataManage.clearVector()
                 stackView.pop()
                 console.log(dataManage.getName().length)
                 searchhomepage.listmodes.clear()

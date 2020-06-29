@@ -15,7 +15,7 @@ Mysql::Mysql(QGuiApplication& app, QQmlApplicationEngine &engine)
 
     db.setHostName("localhost");
     db.setUserName("root");
-    db.setPassword("root");
+    db.setPassword("mysql");
     db.setDatabaseName("VideoPlayer");
     if(!db.open()){
         qDebug()<<"failed";
@@ -97,8 +97,8 @@ void Mysql::setportrait(QString portrait)
 }
 int Mysql::loginvefied(QString account,QString password)
 {
-    qDebug() << account;
-    qDebug() << password;
+//    qDebug() << account;
+//    qDebug() << password;
 
     if(account == "" || password == ""){
         return 3;
@@ -126,7 +126,7 @@ int Mysql::loginvefied(QString account,QString password)
             setdownload(ql.value(6).toString());
 
             //            qDebug() <<m_id;
-            qDebug() <<"name = " +m_name;
+//            qDebug() <<"name = " +m_name;
             //            qDebug() <<"password = " +m_password;
             //            qDebug() <<m_account;
             //            qDebug() <<"avatar = " +m_avatar;
@@ -152,9 +152,9 @@ int Mysql::registersave(QString name, QString password1, QString password2)
     //    int account = MIN+ (rand()%(MAX-MIN));
 
     //    qDebug() << account;
-    qDebug() << name;
-    qDebug() << password1;
-    qDebug() << password2;
+//    qDebug() << name;
+//    qDebug() << password1;
+//    qDebug() << password2;
     QSqlQuery ql;
 
     QString strql = "select u_account from User";
@@ -356,7 +356,7 @@ void Mysql::getavatorpath()
 {
     Imagefile avatarpath;
     QString imagepath = avatarpath.getimagepath();
-    qDebug()<<"imagepath : "+imagepath;
+//    qDebug()<<"imagepath : "+imagepath;
     temp_avatar = imagepath;
 }
 
@@ -371,8 +371,8 @@ int Mysql::historysave(QString history)
     strql = QString("select u_history from User where u_account = '%1'").arg(m_account);
     ql.exec(strql);
     while(ql.next()){
-        qDebug()<<"history : "+history;
-        qDebug()<<"value : "+ql.value(0).toString();
+//        qDebug()<<"history : "+history;
+//        qDebug()<<"value : "+ql.value(0).toString();
         if(ql.value(0).toString() == history){
             flag = 0;
         }
@@ -448,7 +448,7 @@ void Mysql::gethistroys()
     strql = QString("select u_history from User where u_account = '%1'").arg(m_account);
     ql.exec(strql);
     while(ql.next()){
-        qDebug()<<ql.value(0).toString();
+//        qDebug()<<ql.value(0).toString();
         QSqlQuery ql1;
       QString strql1 = QString("select * from VedioInfo0 where ve_name = '%1'").arg(ql.value(0).toString());
       ql1.exec(strql1);

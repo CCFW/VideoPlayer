@@ -7,8 +7,6 @@ Rectangle{
     height: 70
     color: "whitesmoke"
 
-    property alias searchInputlater: searchlater.placeholderText
-
     Rectangle {
         id: searchBkgnd;
 
@@ -27,14 +25,6 @@ Rectangle{
             anchors.verticalCenter: parent.verticalCenter
             width: parent.width/4*3
             height: parent.height-2
-            //            TextInput{
-            //                clip: true
-            //                width: parent.width
-            //                autoScroll:true
-            //                color: "gray"
-            //                anchors.verticalCenter: parent.verticalCenter
-            //                text: homepage.searchInputText; renderType: TextInput.NativeRendering; font.hintingPreference: Font.PreferVerticalHinting
-            //            }
             TextField{
                 id:searchlater
                 clip: true
@@ -46,7 +36,7 @@ Rectangle{
                 anchors.verticalCenter: parent.verticalCenter
                 renderType: TextInput.NativeRendering; font.hintingPreference: Font.PreferVerticalHinting
                 onAccepted: {
-                        searchInputText.text=searchInputText.text
+                    searchInputText.text=searchInputText.text
                 }
             }
         }
@@ -63,20 +53,25 @@ Rectangle{
 
                     //输入关键字为空的情况
                     if(searchlater.text==""){
-                        searchDiaolognull.open()
+
+                        searchhomepage.searchDialog.searchDiaolognull.open()
                     }else if(dataManage.setKey(searchlater.text)==0){//不为空，搜索匹配
+
+                        //在这个页面一开始就把之前搜索的清空
                         var count=searchhomepage.listmodes.count
-                        for(var i=0; i<count;i++){
+                        for(var i=count-1; i>=0;i--){
                             searchhomepage.listmodes.remove(i)
                         }
+                        //追加
                         for(var i=0; i<dataManage.getName().length;i++){
-                            searchhomepage.listmodes.append({"title":dataManage.getName()[i],"director":dataManage.getDirector()[i],"introduce": dataManage.getIntroduce()[i],"role":dataManage.getRole()[i],"episodes":dataManage.getEpisodes()[i],"portrait":dataManage.getmoveImage()[i]})
+                            searchhomepage.listmodes.append({"title":dataManage.getName()[i],"director":dataManage.getDirector()[i],"introduce": dataManage.getIntroduce()[i],"role":dataManage.getRole()[i],"episodes":dataManage.getEpisodes()[i],"portrait":dataManage.getmoveImage()[i],"time":dataManage.getTime()[i]})
                         }
-                        searchhomepage.listmodes.remove(0)
+                        //清空已有的listElement里面的东西
+                        //                        searchhomepage.listmodes.remove(0)
                         searchlater.text=""
-                         dataManage.clearVector()
+                        dataManage.clearVector()
                     }else if(dataManage.setKey(searchlater.text)==-1){//不为空但是输入的关键字不匹配的情况
-                        searchDiaologno.open()
+                        searchhomepage.searchDialog.searchDiaologno.open()
                     }
 
 
@@ -100,28 +95,5 @@ Rectangle{
             }
         }
     }
-    Dialog{
-        id: searchDiaolognull
-        title: "搜索框不能为空，请重新输入"
-        positiveActionLabel: "确定"
-        negativeActionLabel: "取消"
-        onCanceled:{
-            searchDiaolognull.close()
-        }
-        onAccepted: {
-            searchDiaolognull.close()
-        }
-    }
-    Dialog{
-        id: searchDiaologno
-        title: "没有搜索到您输入的视频相关信息，请重新输入"
-        positiveActionLabel: "确定"
-        negativeActionLabel: "取消"
-        onCanceled:{
-            searchDiaologno.close()
-        }
-        onAccepted: {
-            searchDiaologno.close()
-        }
-    }
+
 }
