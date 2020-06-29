@@ -1,5 +1,7 @@
+
 #ifndef MOVEDB_H
 #define MOVEDB_H
+
 
 #include <QtSql/QSqlDatabase>
 #include <QDebug>
@@ -58,4 +60,6 @@ private:
     QGuiApplication *m_app;
     QQmlApplicationEngine *m_engine;
 };
+
 #endif // DATAMANAGE_H
+

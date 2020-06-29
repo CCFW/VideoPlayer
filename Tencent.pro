@@ -1,7 +1,9 @@
 # allows to add DEPLOYMENTFOLDERS and links to the Felgo library and QtCreator auto-completion
 CONFIG += felgo
+
 Qt += widgets
 QT += core
+
 
 # uncomment this line to add the Live Client Module and use live reloading with your custom C++ code
 # for the remaining steps to build a custom Live Code Reload app see here: https://felgo.com/custom-code-reload-app/
@@ -40,6 +42,7 @@ RESOURCES += #    resources.qrc # uncomment for publishing
 
 
 # The .cpp file which was generated for your project. Feel free to hack it.
+
 SOURCES += main.cpp \
     Imagefile.cpp \
     Mysql.cpp \
@@ -68,6 +71,7 @@ macx {
 
 DISTFILES += \
     Playinterface.qml \
+
     qml/Home/ContactModel1.qml \
     qml/Home/ContactModel2.qml \
     qml/Informationchange.qml \
@@ -80,3 +84,4 @@ HEADERS += \
     Discuss.h \
     VideoInfo.h \
     MoveDB.h
+
