@@ -2,9 +2,11 @@ import Felgo 3.0
 import QtQuick 2.0
 import QtQuick.Controls 2.5
 import "./Personal"
+
 import "./PlayPage"
 import "./Search"
 import "./Home"
+
 
 App {
     // You get free licenseKeys from https://felgo.com/licenseKey
@@ -37,6 +39,7 @@ App {
     }
     SearchHome{
         id:searchhomepage
+
     }
 
     PlayInterface{
@@ -53,6 +56,7 @@ App {
 //    HeadTop{
 //        id:searchheadtoppage
 //    }
+
 
     Scene{
         anchors.fill: parent;

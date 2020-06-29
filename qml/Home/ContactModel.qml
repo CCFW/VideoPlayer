@@ -1,3 +1,4 @@
+
 //import QtQuick 2.0
 
 //ListModel {
@@ -111,5 +112,6 @@ ListModel {
 //        portrait: "../assets/4.jpg"
 
 //    }
+
 
 }

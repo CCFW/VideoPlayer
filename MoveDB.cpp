@@ -1,5 +1,7 @@
 #include "MoveDB.h"
+
 MoveDB::MoveDB(QGuiApplication &app,QQmlApplicationEngine &engine)
+
 {
     QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
 
@@ -22,7 +24,9 @@ MoveDB::MoveDB(QGuiApplication &app,QQmlApplicationEngine &engine)
     m_engine = &engine;
     m_app = &app;
 }
+
 void MoveDB::InsertInfo1(){
+
     QSqlQuery query;
 
     query.exec("create table VedioInfo0(chen_id int primary key auto_increment, ve_name varchar(255), ve_director varchar(255),introduce varchar(255), ve_role varchar(255),ve_episodes int, ve_image longblob, ve_time int)");
@@ -69,7 +73,9 @@ void MoveDB::InsertInfo1(){
     query.execBatch();
 }
 
+
 void MoveDB::queryInfo()
+
 {
     QSqlQuery query;
     QString str1=QString("select * from VedioInfo0 where ve_name like '%1'").arg('%'+m_timeSearch+'%');
@@ -85,7 +91,9 @@ void MoveDB::queryInfo()
     }
 }
 
+
 int MoveDB::setKey(QString key)
+
 {
     m_key=key;
     m_timeSearch=key;
@@ -109,6 +117,8 @@ int MoveDB::setKey(QString key)
         }
 }
 
+
 MoveDB::~MoveDB(){
+
 
 }

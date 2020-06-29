@@ -2,6 +2,7 @@ import QtQuick 2.0
 
 Rectangle{
     //头像
+
 //    Image {
 //        id: touxiang
 //        anchors.right: parent.right
@@ -22,6 +23,7 @@ Rectangle{
 //            }
 //        }
 //    }
+
     //返回按钮
     Image{
         id:backbutton
@@ -35,6 +37,7 @@ Rectangle{
         MouseArea{
             anchors.fill: parent
             onClicked: {
+
                 stackView.pop()
                 console.log(dataManage.getName().length)
                 searchhomepage.listmodes.clear()
@@ -42,6 +45,7 @@ Rectangle{
 //                    console.log(dataManage.getName().length)
 //                searchhomepage.listmodes.remove(i)
 //                }
+
             }
         }
     }

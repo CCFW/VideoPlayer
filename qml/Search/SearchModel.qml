@@ -1,4 +1,5 @@
 import QtQuick 2.0
+
 ListModel{
     //    property var titleValue: dataManage.getName()
     //    property var directorValue: dataManage.getDirector()
@@ -35,7 +36,9 @@ ListModel{
     //        num4=0
     //    }
 
+
       ListElement{title:"";director:"";introduce:"";role:"";episodes:0;portrait:"";time:0}
+
 
 }
 
@@ -78,8 +81,4 @@ ListModel{
 //    onFlagaChanged: {
 //        setProperty(0,"title",leftGrid.titleValue[0])
 //    }
-
-
-
-
 

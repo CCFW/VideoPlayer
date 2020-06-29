@@ -1,5 +1,5 @@
-#ifndef DATAMANAGE_H
-#define DATAMANAGE_H
+#ifndef MOVEDB_H
+#define MOVEDB_H
 
 #include <QtSql/QSqlDatabase>
 #include <QDebug>
@@ -10,11 +10,13 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <vector>
+
 class MoveDB:public QObject{
     Q_OBJECT
 public:
     MoveDB(QGuiApplication &app,QQmlApplicationEngine &engine);
     ~MoveDB();
+
     void InsertInfo1();
     Q_INVOKABLE void queryInfo();
 
@@ -59,3 +61,4 @@ private:
     QQmlApplicationEngine *m_engine;
 };
 #endif // DATAMANAGE_H
+

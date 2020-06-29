@@ -3,7 +3,7 @@ import QtQuick 2.0
 import QtQuick.Layouts 1.1
 
 Page {
-    id: registerPages
+    id: loginPage
     title: qsTr("注册")
 
     //  backgroundColor: Qt.rgba(0,0,0, 0.75)
@@ -18,19 +18,6 @@ Page {
         radius: dp(4)
     }
 
-    Image {
-        anchors.left: parent.left
-        anchors.leftMargin: 20
-        width: 30
-        height: 30
-        source: "../../assets/back.png"
-        MouseArea{
-            anchors.fill: parent
-            onClicked: {
-                stackView.pop()
-            }
-        }
-    }
 
     GridLayout {
         id: content
@@ -99,108 +86,28 @@ Page {
             Layout.topMargin: dp(12)
 
 
-
             AppButton {
                 text: qsTr("注册")
                 flat: false
-                //                anchors.centerIn:parent
+//                anchors.centerIn:parent
                 Layout.fillWidth: true
                 Layout.columnSpan: 2
                 Layout.topMargin: dp(12)
                 anchors.horizontalCenter: parent.horizontalCenter
                 onClicked: {
-                    var flag = sql.registersave(txtUsername.text,txtPassword.text,txtPasswordagin.text)
-                    if(flag == 0){
-                        nullfalut.open()
-                    }
-                    else if (flag== 1){
-                        passwordfalut.open()
-                    }
-                    else if (flag == 2){
-                        registerfalut.open()
-                    }
-                    else if (flag== 3){
-                        loginpage.personalaccount = sql.getaccount()
-                        registersuccess.open()
-                    }
-
-                    //                    stackView.pop()
+                    stackView.pop()
                 }
             }
-            //            AppButton {
-            //                text: qsTr("登录")
-            //                flat: false
-            ////                anchors.horizontalCenter: parent.horizontalCenter
-            //                onClicked: {
-            //                }
-            //            }
+//            AppButton {
+//                text: qsTr("登录")
+//                flat: false
+////                anchors.horizontalCenter: parent.horizontalCenter
+//                onClicked: {
+//                }
+//            }
 
 
 
-        }
-    }
-    Dialog{
-        id: nullfalut
-        title: "用户名和密码不能为空！"
-        positiveActionLabel: "确定"
-        negativeActionLabel: "取消"
-        //                anchors.centerIn: loginPage
-        onCanceled:{
-            nullfalut.close()
-        }
-
-        onAccepted: {
-            nullfalut.close()
-        }
-    }
-    Dialog{
-        id: passwordfalut
-        title: "两次输入的密码不同"
-        positiveActionLabel: "确定"
-        negativeActionLabel: "取消"
-        //                anchors.centerIn: loginPage
-        onCanceled:{
-            passwordfalut.close()
-        }
-
-        onAccepted: {
-            passwordfalut.close()
-        }
-    }
-    Dialog{
-        id: registerfalut
-        title: "该帐号已注册，请直接登录！"
-        positiveActionLabel: "确定"
-        negativeActionLabel: "取消"
-        //                anchors.centerIn: loginPage
-        onCanceled:{
-            registerfalut.close()
-        }
-
-        onAccepted: {
-            txtUsername.text = ""
-            txtPassword.text = ""
-            txtPasswordagin.text = ""
-            registerfalut.close()
-            stackView.pop()
-        }
-    }
-    Dialog{
-        id: registersuccess
-        title: "注册成功!"
-        positiveActionLabel: "确定"
-        negativeActionLabel: "取消"
-        //                anchors.centerIn: loginPage
-        onCanceled:{
-            registersuccess.close()
-        }
-
-        onAccepted: {
-            txtUsername.text = ""
-            txtPassword.text = ""
-            txtPasswordagin.text = ""
-            registersuccess.close()
-            stackView.pop()
         }
     }
 

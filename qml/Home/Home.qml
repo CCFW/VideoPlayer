@@ -1,3 +1,4 @@
+
 ﻿import "../Search"
 import QtQuick 2.0
 import QtQuick.Controls 2.5
@@ -101,19 +102,23 @@ Rectangle {
         //        anchors.fill: parent
         anchors.top: parent.top
         anchors.topMargin: 50
+
         color: "whitesmoke"
         ToolBar{
             id:toolbar
             width: parent.width
+
             ToolButton{
                 id:button1
                 text: qsTr("首页")
+
 
             }
             ToolButton{
                 id:button2
                 anchors.left: button1.left
                 anchors.leftMargin: button1.width
+
                 text: qsTr("电视剧")
                 onClicked:stackView.push(tview)
                 //                //                        onClicked: stack.push(tv)
@@ -460,10 +465,12 @@ Rectangle {
                         grid_view1.currentIndex = -1
                         mouse.accepted = false
                         console.log("*******List_currentIndex**********"+index)
+
                     }
                 }
             }
         }
+
 
         Component{
             id:lisview_gridview2
@@ -535,10 +542,12 @@ Rectangle {
                         grid_view2.currentIndex = -1
                         mouse.accepted = false
                         console.log("*******List_currentIndex**********"+index)
+
                     }
                 }
             }
         }
+
 
         ScrollView{
             anchors.left: parent.left
@@ -612,6 +621,7 @@ Rectangle {
         id:searchDialog
     }
 }
+
 
 
 

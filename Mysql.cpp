@@ -1,9 +1,11 @@
 #include "Mysql.h"
+
 #include <typeinfo>
 #define MIN 10000
 #define MAX 100000
 using namespace std;
 Mysql::Mysql(QGuiApplication& app, QQmlApplicationEngine &engine)
+
 {
 
     //创建连接
@@ -15,7 +17,9 @@ Mysql::Mysql(QGuiApplication& app, QQmlApplicationEngine &engine)
 
     db.setHostName("localhost");
     db.setUserName("root");
+
     db.setPassword("mysql");
+
     db.setDatabaseName("VideoPlayer");
     if(!db.open()){
         qDebug()<<"failed";
@@ -23,6 +27,7 @@ Mysql::Mysql(QGuiApplication& app, QQmlApplicationEngine &engine)
         qDebug()<<"successed";
 
     }
+
     m_id = 0;
     ve_id = 0;
     m_name = "请登录";

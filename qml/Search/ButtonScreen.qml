@@ -7,6 +7,7 @@ Rectangle{
         onClicked: menu.open()
         opacity: 0
 
+
         function chooseTime(min,max){
             var countnum=searchhomepage.listmodes.count
             for(var i=countnum-1; i>=0;i--){
@@ -50,18 +51,21 @@ Rectangle{
             Action {
                 text: "0-10分钟"
                 onTriggered: {
+
                     fileButton.chooseTime(0,10)
                 }
             }
             Action {
                 text: "11-30分钟"
                 onTriggered: {
+
                     fileButton.chooseTime(11,30)
                 }
             }
             Action {
                 text: "31-60分钟"
                 onTriggered: {
+
                     fileButton.chooseTime(31,60)
                 }
             }
