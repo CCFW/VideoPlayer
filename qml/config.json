@@ -1,6 +1,8 @@
 {
+
     "title": "Tencent",
     "identifier": "com.yourcompany.wizardEVAP.Tencent",
+
     "orientation": "auto",
     "versioncode": 1,
     "versionname": "1.0.0",

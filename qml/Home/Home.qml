@@ -1,3 +1,4 @@
+
 ﻿import "../Search"
 import QtQuick 2.0
 import QtQuick.Controls 2.5
@@ -101,19 +102,23 @@ Rectangle {
         //        anchors.fill: parent
         anchors.top: parent.top
         anchors.topMargin: 50
+
         color: "whitesmoke"
         ToolBar{
             id:toolbar
             width: parent.width
+
             ToolButton{
                 id:button1
                 text: qsTr("首页")
+
 
             }
             ToolButton{
                 id:button2
                 anchors.left: button1.left
                 anchors.leftMargin: button1.width
+
                 text: qsTr("电视剧")
                 onClicked:stackView.push(tview)
                 //                //                        onClicked: stack.push(tv)
@@ -187,6 +192,7 @@ Rectangle {
             anchors.verticalCenter: parent.verticalCenter
             width: parent.width/4*3
             height: parent.height-2
+
             TextField{
                 id:searchInputText
                 clip: true
@@ -196,6 +202,7 @@ Rectangle {
                 autoScroll:true
                 color: "gray"
                 selectByMouse: true
+
                 anchors.verticalCenter: parent.verticalCenter
                 placeholderText: "传闻中的陈千千";
                 renderType: TextInput.NativeRendering; font.hintingPreference: Font.PreferVerticalHinting
@@ -207,6 +214,7 @@ Rectangle {
                         searchInputText.text=searchInputText.text
                     }
                 }
+
                 property bool editing: false
                 onTextEdited: editing=true;
                 onEditingFinished: editing=false;
@@ -276,6 +284,7 @@ Rectangle {
                     width: 12
                     policy: ScrollBar.AlwaysOn
                 }
+
             }
         }
 
@@ -522,10 +531,12 @@ Rectangle {
                         grid_view1.currentIndex = -1
                         mouse.accepted = false
                         console.log("*******List_currentIndex**********"+index)
+
                     }
                 }
             }
         }
+
 
         Component{
             id:lisview_gridview2
@@ -597,6 +608,7 @@ Rectangle {
                         grid_view2.currentIndex = -1
                         mouse.accepted = false
                         console.log("*******List_currentIndex**********"+index)
+
                     }
                 }
             }
@@ -674,8 +686,6 @@ Rectangle {
         id:searchDialog
     }
 }
-
-
 
 
 

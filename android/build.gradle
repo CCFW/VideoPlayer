@@ -41,6 +41,7 @@ android {
      * Changing them manually might break the compilation!
      *******************************************************/
 
+
     compileSdkVersion    androidCompileSdkVersion.toInteger()
     buildToolsVersion    androidBuildToolsVersion
 
@@ -57,6 +58,7 @@ android {
         resValue('array', 'bundled_in_lib', "")
         resValue('array', 'bundled_in_assets', "")
       }
+
     }
 
     sourceSets {

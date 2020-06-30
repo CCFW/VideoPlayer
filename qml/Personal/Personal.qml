@@ -3,7 +3,9 @@ import QtQuick 2.0
 import QtQuick.Controls 2.5
 import QtQuick.Layouts 1.2
 import QtGraphicalEffects 1.0
+
 import QtQuick.Layouts 1.12
+
 import QtQuick.Dialogs 1.2 as QQD
 import ".."
 import Felgo 3.0
@@ -49,11 +51,13 @@ Page {
             Image {
                 id: personalimage
                 source: "../../assets/personal.png"
+
             }
         }
 
 
         RowLayout{
+
             Layout.alignment: Qt.AlignLeft
             //            anchors.leftMargin: 30
             id:bar2
@@ -61,6 +65,7 @@ Page {
             Text {
                 id: personalkongbaitext
                 text: qsTr("   ")
+
             }
             Item {
                 visible: true
@@ -72,7 +77,9 @@ Page {
                     anchors.centerIn: parent
                     smooth: true
                     visible: false
+
                     source: sql.getavatar()
+
                 }
                 Rectangle {
                     id: mask
@@ -89,12 +96,14 @@ Page {
                     MouseArea{
                         anchors.fill: parent
                         onClicked: {
+
                             var id = sql.getid()
                             if(id ==0){
                                 stackView.push(loginpage)
                             }else{
                                 persondialog.open()
                             }
+
                         }
 
                     }
@@ -103,7 +112,9 @@ Page {
 
             Text{
                 id:personalname
+
                 text:sql.getname()
+
             }
 
             Button{
@@ -112,6 +123,7 @@ Page {
                 width: 10
                 //flat: true
                 onClicked: {
+
                     var id = sql.getid()
                     if(id == 0){
                         withlogindialog.open()
@@ -119,6 +131,7 @@ Page {
                         informationchangpage.informationimage = sql.getavatar()
                         stackView.push(informationchangpage)
                     }
+
                 }
             }
             Button{
@@ -127,6 +140,7 @@ Page {
                 width: 10
                 // flat: true
                 onClicked: {
+
                     var id = sql.getid();
                     if(id == 0){
                         exitdialogagin.open()
@@ -136,9 +150,11 @@ Page {
                     }
 
 
+
                 }
             }
         }
+
 
 
         RowLayout{
@@ -404,6 +420,7 @@ Page {
             persondialog.close()
         }
     }
+
 
 }
 

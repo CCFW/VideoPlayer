@@ -1,4 +1,5 @@
 import QtQuick 2.0
+
 ListModel{
     //    property var titleValue: dataManage.getName()
     //    property var directorValue: dataManage.getDirector()

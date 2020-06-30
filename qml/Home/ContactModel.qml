@@ -1,3 +1,4 @@
+
 //import QtQuick 2.0
 
 //ListModel {
@@ -17,9 +18,11 @@
 //        if(completed) setProperty(0, "value", leftGrid.firstValue);
 //    }
 //}
+
 import QtQuick 2.0
 
 ListModel {
+
 
 
 
