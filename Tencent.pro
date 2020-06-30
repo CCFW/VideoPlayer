@@ -44,6 +44,7 @@ SOURCES += main.cpp \
     Imagefile.cpp \
     Mysql.cpp \
     Discuss.cpp \
+
     VideoInfo.cpp \
     MoveDB.cpp
 
@@ -68,15 +69,19 @@ macx {
 
 DISTFILES += \
     Playinterface.qml \
+
     qml/Home/ContactModel1.qml \
     qml/Home/ContactModel2.qml \
     qml/Informationchange.qml \
     qml/Personal/HistoryModel.qml \
     qml/Search/SearchDialog.qml
 
+
 HEADERS += \
     Imagefile.h \
     Mysql.h \
     Discuss.h \
+
     VideoInfo.h \
     MoveDB.h
+

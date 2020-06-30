@@ -105,6 +105,7 @@ Rectangle {
         ToolBar{
             id:toolbar
             width: parent.width
+
             ToolButton{
                 id:button1
                 text: qsTr("首页")

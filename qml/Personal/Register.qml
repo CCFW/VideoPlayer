@@ -18,6 +18,7 @@ Page {
         radius: dp(4)
     }
 
+
     Image {
         anchors.left: parent.left
         anchors.leftMargin: 20
@@ -31,6 +32,7 @@ Page {
             }
         }
     }
+
 
     GridLayout {
         id: content

@@ -1,4 +1,5 @@
 
+
 import QtQuick 2.0
 import QtQuick.Controls 2.5
 import QtQuick.Layouts 1.2
@@ -49,11 +50,13 @@ Page {
             Image {
                 id: personalimage
                 source: "../../assets/personal.png"
+
             }
         }
 
 
         RowLayout{
+
             Layout.alignment: Qt.AlignLeft
             //            anchors.leftMargin: 30
             id:bar2
@@ -61,6 +64,7 @@ Page {
             Text {
                 id: personalkongbaitext
                 text: qsTr("   ")
+
             }
             Item {
                 visible: true
@@ -72,7 +76,9 @@ Page {
                     anchors.centerIn: parent
                     smooth: true
                     visible: false
+
                     source: "../../assets/touxiang.png"
+
                 }
                 Rectangle {
                     id: mask
@@ -382,6 +388,7 @@ Page {
 
         onAccepted: {
             sql.exitlogin()
+
             sql.clearVector()
             personalpage.historylistview.clear()
             //            danMuSql.playExit()
@@ -390,6 +397,7 @@ Page {
             exitdialog.close()
             playInterface.controlComment2Visible=true
             homepage.homepageimage = sql.getavatar()
+
         }
     }
     Dialog{

@@ -6,11 +6,13 @@ Rectangle{
     width: parent.width
     height: parent.height
 
+
     property alias listmodes: model1
     property alias searchDialog: searchDialog
 
 
     SearchModel{id:model1}
+
 
     TitleBar{
         id:titlebar
@@ -30,6 +32,8 @@ Rectangle{
         //        color: "linen"//内容部分的背景颜色
         color: "#F9F9F9"
 
+
+
         ScrollView{
             id:control
             anchors.fill: parent
@@ -41,7 +45,9 @@ Rectangle{
                 id:view
                 anchors.fill: parent
                 width: parent.width
+
                 model:model1
+
 
                 header:headerdeleget
 
@@ -74,6 +80,7 @@ Rectangle{
                         anchors.left: parent.left
                         anchors.leftMargin: 20
 
+
                         Rectangle{
                             anchors.bottom: moveimage.bottom
                             anchors.bottomMargin: 5
@@ -92,6 +99,7 @@ Rectangle{
                             }
                         }
 
+
                         MouseArea{
                             id: mouseArea
                             anchors.fill: parent
@@ -103,6 +111,7 @@ Rectangle{
                             onEntered: moveimage.scale=1.05
                             onExited: moveimage.scale=1
                             onClicked: {
+
                                 view.currentIndex=index
                                 personalpage.personalpageview = true
                                 var id = sql.getid()
@@ -132,6 +141,7 @@ Rectangle{
                                 //                                console.log("currentIndex"+view.currentIndex)
 
                                 //                                console.log("dataManage"+model1.get(view.currentIndex).title)
+
                             }
                         }
 
@@ -146,7 +156,9 @@ Rectangle{
 
                         Text {
                             id: titletext
+
                             text: '<pre>视频  '+'<font size="5" color="orange">'+title+'</font>'+'</pre>'
+
                         }
                         Row{
                             spacing: 200
@@ -156,7 +168,9 @@ Rectangle{
                             }
                             Text {
                                 id: actortext
+
                                 text: "主演："+role
+
                             }
                         }
                         Text {
@@ -171,7 +185,9 @@ Rectangle{
                             height: 150
                             cellWidth: 50
                             cellHeight: 50
+
                             model:episodes
+
 
                             delegate: authologyDelegate
                         }
@@ -200,6 +216,8 @@ Rectangle{
                                     Text{
                                         id:authologyNum
 
+
+
                                         text:index+1
                                         anchors.horizontalCenter: parent.horizontalCenter
                                         anchors.verticalCenter: parent.verticalCenter
@@ -213,10 +231,12 @@ Rectangle{
                 }
             }
         }
+
         SearchDialog{
             id:searchDialog
         }
     }
+
 
     Component{
         id:headerdeleget
@@ -235,6 +255,8 @@ Rectangle{
                 height: 50
                 anchors.top: parent.top
             }
+
+
 
             TitleBar{
                 id:search_re
