@@ -82,7 +82,6 @@ QString Discuss::getDanMu(){
         if(sqlQuery.value(0).toString() != ""){
             arr1.push_back(sqlQuery.value(0).toString());
         }
-
     }
     //    qDebug() << arr1.size();
     
@@ -277,7 +276,6 @@ vector<int> Discuss::getId()
     }
     return arr1;
 }
-
 Discuss::~Discuss(){
     
 }

@@ -41,6 +41,7 @@ private:
     int m_id;
     QString m_name;
     QString m_avatar;
+
 };
 
 #endif // DISCUSS_H

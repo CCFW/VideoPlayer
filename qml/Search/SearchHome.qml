@@ -175,7 +175,6 @@ Rectangle{
 
                                     Text{
                                         id:authologyNum
-
                                         text:index+1
                                         anchors.horizontalCenter: parent.horizontalCenter
                                         anchors.verticalCenter: parent.verticalCenter
@@ -201,17 +200,58 @@ Rectangle{
             //            color: "red"
 
             //头部
-            HeadTop{
-                id:head_top
-                color: "black"
-                width: parent.width
-                height: 50
-                anchors.top: parent.top
-            }
+//            HeadTop{
+//                id:head_top
+//                color: "black"
+//                width: parent.width
+//                height: 50
+//                anchors.top: parent.top
+//            }
+           Rectangle{
+               id:touxiangrectangle
+               color: "black"
+               width: parent.width
+               height: 50
+               anchors.top: parent.top
+               Image {
+                   id: touxiang
+                   anchors.right: parent.right
+                   anchors.rightMargin: 20
+                   anchors.top: parent.top
+                   anchors.topMargin: 10
+                   width: 32
+                   height: 32
+                   source: "../../assets/touxiang.png"
+                   MouseArea{
+                       anchors.fill: parent
+                       onClicked: {
+                           stackView.push(personalpage)
+                       }
+                   }
+               }
+               //返回按钮
+               Image{
+                   id:backbutton
+                   width: 30
+                   height: 30
+                   anchors.left: parent.left
+                   anchors.leftMargin: 20
+                   anchors.top: parent.top
+                   anchors.topMargin: 10
+                   source: "../../assets/back.png"
+                   MouseArea{
+                       anchors.fill: parent
+                       onClicked: {
+                           stackView.pop()
+                       }
+                   }
+               }
+
+           }
 
             TitleBar{
                 id:search_re
-                anchors.top:head_top.bottom
+                anchors.top:touxiangrectangle.bottom
                 color: "#F1F1F1"
 
 

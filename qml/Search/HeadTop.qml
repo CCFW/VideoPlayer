@@ -43,6 +43,7 @@ Rectangle{
 //                    console.log(dataManage.getName().length)
 //                searchhomepage.listmodes.remove(i)
 //                }
+
             }
         }
     }

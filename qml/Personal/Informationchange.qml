@@ -179,7 +179,6 @@ Page{
         }
 
 
-
         RowLayout{
 //            anchors.fill: parent
             anchors.top:infomaltionlayout.bottom
@@ -209,24 +208,20 @@ Page{
                     }else if(result == 4){
                         personalpage.iamgefile = sql.getavatar()
                         homepage.homepageimage = sql.getavatar()
-//                        searchhomepage.searchpageimage =sql.getavatar()
                         imagesuccessdilog.open()
                     }else if(result == 5){
                         personalpage.iamgefile = sql.getavatar()
                         homepage.homepageimage = sql.getavatar()
-//                        searchhomepage.searchpageimage =sql.getavatar()
                         personalpage.personaltext = sql.getname()
                         imagetextsuccessdilog.open()
                     }
                     else if(result == 6){
-                        personalpage.personaltext = sql.getname()
                         textsuccessdilog.open()
                     }
 
                     else if(result == 7){
                         personalpage.iamgefile = sql.getavatar()
                         homepage.homepageimage = sql.getavatar()
-//                        searchhomepage.searchpageimage =sql.getavatar()
                         personalpage.personaltext = sql.getname()
                         successdilog.open()
                         passwordinput1.text = ""
@@ -241,6 +236,9 @@ Page{
                 text: qsTr("取消")
                 flat: false
                 onClicked: {
+                    passwordinput1.text = ""
+                    passwordinput2.text = ""
+                    passwordinput3.text = ""
                     stackView.pop()
                 }
 

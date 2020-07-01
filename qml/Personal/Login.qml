@@ -96,7 +96,6 @@ Page {
                         danMuSql.setId(sql.getid())
                         danMuSql.setName(sql.getname())
                         homepage.homepageimage = sql.getavatar()
-//                        searchhomepage.searchpageimage =sql.getavatar()
                         loginsucess.open()
                         txtUsername.text = ""
                         txtPassword.text = ""
