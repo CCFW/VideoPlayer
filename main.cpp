@@ -6,6 +6,7 @@
 #include "Mysql.h"
 #include "Discuss.h"
 #include "VideoInfo.h"
+//#include "FfmpegDecoding.h"
 
 // uncomment this line to add the Live Client Module and use live reloading with your custom C++ code
 //#include <FelgoLiveClient>
@@ -15,6 +16,7 @@ int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
     FelgoApplication felgo;
+//    qmlRegisterType<FfmpegDecoding>("FfmpegDecoding",1,0,"FfmpegDecoding");
     felgo.setPreservePlatformFonts(true);
     QQmlApplicationEngine engine;
     felgo.initialize(&engine);

@@ -35,8 +35,8 @@ void VideoInfo::introduce(){
     string.push_back("秦岚揭秘娱乐圈");
     string.push_back("怪你过分美丽");
     for (int i = 0;i<string.size();i++) {
-        qDebug()<<string[i];
-        qDebug()<< i;
+//        qDebug()<<string[i];
+//        qDebug()<< i;
         QString str = QString("insert into VideoInfo(ve_id,ve_title) values('%1','%2')").arg(i+1).arg(string[i]);
         sql.exec(str);
 
@@ -57,12 +57,12 @@ QString VideoInfo::getIntroduce(){
 
     }
     static int count = -1;
-    qDebug() <<temp;
+//    qDebug() <<temp;
 
     count = count + 1;
 
-    qDebug() << count;
-    qDebug() <<temp[count];
+//    qDebug() << count;
+//    qDebug() <<temp[count];
 
     return temp[count];
 }

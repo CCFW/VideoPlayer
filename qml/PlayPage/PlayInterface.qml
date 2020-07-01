@@ -7,8 +7,12 @@ import QtQuick.Controls 1.4 as Controls14
 import QtQuick.Window 2.3
 import QtQuick.Controls.Styles 1.4
 import QtGraphicalEffects 1.0
+import QtQuick.Controls 2.5 as Controls25
+
+//import FfmpegDecoding 1.0
 
 //import QtQuick.Dialogs 1.2 as QQD
+
 
 //Rectangle {
 
@@ -27,6 +31,8 @@ Rectangle{
     property int flag: 0
     property alias mediaPlayer: mediaPlayer
     property alias controlComment2Visible: controlComment2.visible
+    property alias mediaPlayersource: mediaPlayer.source
+
 
     Rectangle{
         id: playWindow
@@ -66,11 +72,14 @@ Rectangle{
 
         MediaPlayer{
             id: mediaPlayer
+//            source:ffmpeg
+
+//            source: ffmpegDecoding.ffmpeg1()
             source: "../../assets/video/vedio1.mp4"
+//            source: ffmpeg.Ffmpeg1()
             //            autoPlay: true
             volume: volumeControl.value
             //                loops: MediaPlayer.Infinite
-
             //此信号在回放停止时发出。相应的处理程序是onstop。当视频播放完过后，暂停键显示
             onStopped: {
                 pauseKey.visible=true
@@ -78,6 +87,11 @@ Rectangle{
             }
 
         }
+
+//        FfmpegDecoding{
+//            id: ffmpeg
+//            ffmpeg1()
+//        }
 
         //视频播放进度条的控制
         Rectangle{
@@ -215,6 +229,7 @@ Rectangle{
                     playKey.visible=false
                     pauseKey.visible=true
                     mediaPlayer.pause()
+//                    ffmpegDecoding.ffmpeg1()
                 }
             }
         }
@@ -435,20 +450,16 @@ Rectangle{
                 font.pixelSize: 20
 
                 onClicked: {
-                    var id = sql.getid()
+                    //                    liststr.push("danMuSql")
+                    //                    console.log(danMuSql.getDanMu())
                     //往容器（liststr）中push添加输入的弹幕内容
-                    if(id == 0){
-                        withlogindialog.open()
+                    if(danMuComment.text){
+                        liststr.push((danMuComment.text).toString())
+                        danMuSql.danMu((danMuComment.text).toString())
                     }else{
-                        if(danMuComment.text){
-                            liststr.push((danMuComment.text).toString())
-                            danMuSql.danMu((danMuComment.text).toString())
-                        }else{
-                            dialogInfo.open()
-                        }
+//                        dialogInfo.open()
+                        dialoginfo.dialogInfo.open()
                     }
-
-
 
                 }
             }
@@ -626,7 +637,6 @@ Rectangle{
                     }
                 }
             }
-
         }
 
         Rectangle{
@@ -790,6 +800,7 @@ Rectangle{
             width: parent.width / 1.1
             height: parent.height / 1.2
             //            height: operation.height
+
             color: "transparent"
             anchors.top: jieMuInfo.bottom
             anchors.topMargin: 20
@@ -803,12 +814,12 @@ Rectangle{
             }
             Rectangle{
                 id: rectangle
+
                 width: parent.width
                 height: parent.height
                 anchors.top: allComment.bottom
                 anchors.topMargin: 20
                 color: "transparent"
-
                 Component{
                     id: contactDelegate1
 
@@ -884,7 +895,7 @@ Rectangle{
                 ListView {
                     id:view
                     width: commentDescription.width
-                    height: rectangle.height
+                    height: operation.height / 1.35
                     model:model1
                     delegate: contactDelegate1
                     //                    highlight: Rectangle { color: "lightsteelblue"; radius: 5 }
@@ -896,17 +907,24 @@ Rectangle{
                         active: true
                         policy: ScrollBar.AsNeeded
                         position: 0
-//                        background: Item {            //滚动条的背景样式
-//                            Rectangle {
-//                                anchors.centerIn: parent
-//                                height: parent.height
-//                                width: 10
-//                                color: 'grey'
-//                                radius: width/2
-//                            }
-//                        }
+
+                        background: Item {            //滚动条的背景样式
+                            Rectangle {
+                                anchors.centerIn: parent
+                                height: parent.height
+                                width: 10
+                                color: 'grey'
+                                radius: width/2
+                            }
+                        }
                     }
+//                    Controls25.ScrollView{
+//                        width: 20
+//                        height: 20
+//                        anchors.right: parent.right
+//                    }
                 }
+
 
             }
         }
@@ -945,7 +963,8 @@ Rectangle{
                     onClicked: {
                         var id = sql.getid()
                         if(id == 0){
-                            withlogindialog.open()
+//                            withlogindialog.open()
+                            dialoginfo.withlogindialog.open()
                             //                            danMuComment.visible = false
                             //                            controlComment2.visible = false
                         }else{
@@ -1039,64 +1058,62 @@ Rectangle{
             font.pixelSize: 20
             text: "发送"
             onClicked: {
-                var id = sql.getid()
-                if(id == 0){
-                    withlogindialog.open()
+                var data = {"portrait": sql.getavatar(),"name": sql.getname(), "commenttext": inputComment1.text}
+                model1.append(data)
+                if(inputComment1.text){
+                    danMuSql.setComments(inputComment1.text)
                 }else{
-                    var data = {"portrait": sql.getavatar(),"name": sql.getname(), "commenttext": inputComment1.text}
-                    model1.append(data)
-                    if(inputComment1.text){
-                        danMuSql.setComments(inputComment1.text)
-                    }else{
-                        dialogInfo.open()
-                    }
+//                    dialogInfo.open()
+                    dialoginfo.dialogInfo.open()
                 }
-
-
             }
         }
 
     }
 
-    //如果未登录点击右下角的写评论弹出的提示对话框
-    Dialog{
-        id: withlogindialog
-        title: "请先登录！"
-        positiveActionLabel: "确定"
-        negativeActionLabel: "取消"
-        //                anchors.centerIn: loginPage
-        onCanceled:{
-            withlogindialog.close()
-        }
-
-        onAccepted: {
-            stackView.push(loginpage)
-            withlogindialog.close()
-            controlComment.visible=false
-            controlComment1.visible=true
-            controlComment2.visible = false
-            //            danMuComment.visible = true
-            //            danMuOpen.visible = true
-            //            flag = 1
-            danMuComment.visible = false
-            controlComment2.visible = false
-        }
+    DialogInfo{
+        id: dialoginfo
     }
 
-    //当输入的弹幕和评论内容为空时弹出的提示对话框
-    Dialog{
-        id: dialogInfo
-        title: "输入的内容不能为空,请重新输入!"
-        positiveActionLabel: "确定"
-        negativeActionLabel: "取消"
-        onCanceled:{
-            dialogInfo.close()
-        }
+//    //如果未登录点击右下角的写评论弹出的提示对话框
+//    Dialog{
+//        id: withlogindialog
+//        title: "请先登录！"
+//        positiveActionLabel: "确定"
+//        negativeActionLabel: "取消"
+//        //                anchors.centerIn: loginPage
+//        onCanceled:{
+//            withlogindialog.close()
+//        }
 
-        onAccepted: {
-            dialogInfo.close()
-        }
-    }
+//        onAccepted: {
+//            stackView.push(loginpage)
+//            withlogindialog.close()
+//            controlComment.visible=false
+//            controlComment1.visible=true
+//            controlComment2.visible = false
+//            //            danMuComment.visible = true
+//            //            danMuOpen.visible = true
+//            //            flag = 1
+//            danMuComment.visible = false
+//            controlComment2.visible = false
+//        }
+//    }
+
+//    //当输入的弹幕和评论内容为空时弹出的提示对话框
+//    Dialog{
+//        id: dialogInfo
+//        title: "输入的内容不能为空,请重新输入!"
+//        positiveActionLabel: "确定"
+//        negativeActionLabel: "取消"
+//        onCanceled:{
+//            dialogInfo.close()
+//        }
+
+//        onAccepted: {
+//            dialogInfo.close()
+//        }
+//    }
 }
 //}
 

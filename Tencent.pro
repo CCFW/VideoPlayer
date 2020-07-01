@@ -68,6 +68,8 @@ macx {
 
 DISTFILES += \
     Playinterface.qml \
+    qml/Home/ContactModel1.qml \
+    qml/Home/ContactModel2.qml \
     qml/Informationchange.qml \
     qml/Personal/HistoryModel.qml
 

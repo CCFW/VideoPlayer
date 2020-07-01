@@ -104,13 +104,12 @@ Page {
 
                         //历史记录
                         sql.gethistroys()
-                        console.log(sql.gettileName().length)
+//                        console.log(sql.gettileName().length)
                         if(sql.gettileName().length == 0){
                             personalpage.personalpageview = false
                         }else{
                             personalpage.personalpageview = true
-//                            sql.gethistroys()
-                             console.log(sql.gettileName().length)
+//                             console.log(sql.gettileName().length)
                             for(var i=0; i<sql.gettileName().length;i++){
 
                                 personalpage.historylistview.append({"title":sql.gettileName()[i],"director":sql.getDirector()[i],"introduce":sql.getIntroduce()[i],"role":sql.getRole()[i],"portrait":sql.getEpisodes()[i]})

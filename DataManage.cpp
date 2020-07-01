@@ -93,7 +93,7 @@ int DataManage::setKey(QString key)
     QString str1=QString("select * from VedioInfo0 where ve_name like '%1'").arg('%'+m_key+'%');
     query.exec(str1);
     if(query.size()!=0){
-        qDebug()<<query.exec(str1);
+//        qDebug()<<query.exec(str1);
         while (query.next()) {
             setName(query.value(1).toString());
             setDirector(query.value(2).toString());
@@ -104,7 +104,7 @@ int DataManage::setKey(QString key)
         }
         return 0;
         }else{
-             qDebug()<<"query.value(1).toString()";
+//             qDebug()<<"query.value(1).toString()";
         return -1;
         }
 }

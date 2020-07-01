@@ -102,6 +102,7 @@ Rectangle{
                                     }
 
                                 }
+                                stackView.push(playInterface)
 
                                 //                                view.currentIndex=index
                                 //                                console.log("currentIndex"+view.currentIndex)
