@@ -15,7 +15,9 @@ Mysql::Mysql(QGuiApplication& app, QQmlApplicationEngine &engine)
 
     db.setHostName("localhost");
     db.setUserName("root");
+
     db.setPassword("mysql");
+
     db.setDatabaseName("VideoPlayer");
     if(!db.open()){
         qDebug()<<"failed";
@@ -24,11 +26,13 @@ Mysql::Mysql(QGuiApplication& app, QQmlApplicationEngine &engine)
 
     }
     m_id = 0;
+
     ve_id = 0;
     m_name = "请登录";
     m_password = "";
     m_account = 0;
     m_avatar = "./../assets/touxiang.png";
+
     m_history = "";
     m_download = "";
     temp_avatar = "";
@@ -71,6 +75,7 @@ void Mysql::setdownload(QString download)
     m_download = download;
 }
 
+
 void Mysql::settitle(QString title)
 {
     m_title.push_back(title);
@@ -100,6 +105,7 @@ int Mysql::loginvefied(QString account,QString password)
 //    qDebug() << account;
 //    qDebug() << password;
 
+
     if(account == "" || password == ""){
         return 3;
     }
@@ -115,18 +121,22 @@ int Mysql::loginvefied(QString account,QString password)
             setaccount(ql.value(3).toInt());
 
 
+
             //            //从数据库读取照片
             //            QByteArray byteText;
             //            byteText = ql.value(4).toByteArray();
             //            QPixmap pix;
             //            pix.loadFromData(byteText,"png");
             //            qDebug()<<""+pix;
+
             setavatar(ql.value(4).toString());
             sethistory(ql.value(5).toString());
             setdownload(ql.value(6).toString());
 
             //            qDebug() <<m_id;
+
 //            qDebug() <<"name = " +m_name;
+
             //            qDebug() <<"password = " +m_password;
             //            qDebug() <<m_account;
             //            qDebug() <<"avatar = " +m_avatar;
@@ -152,9 +162,11 @@ int Mysql::registersave(QString name, QString password1, QString password2)
     //    int account = MIN+ (rand()%(MAX-MIN));
 
     //    qDebug() << account;
+
 //    qDebug() << name;
 //    qDebug() << password1;
 //    qDebug() << password2;
+
     QSqlQuery ql;
 
     QString strql = "select u_account from User";
@@ -178,7 +190,9 @@ int Mysql::registersave(QString name, QString password1, QString password2)
         vector<int> temp;
         int id = 0;
         int account = 10000;
+
         vector<int>accounts;
+
         strql = "select u_id from User";
         ql.exec(strql);
         while(ql.next()){
@@ -198,12 +212,14 @@ int Mysql::registersave(QString name, QString password1, QString password2)
         ql2.exec(strql2);
         while (ql2.next()) {
             account = ql2.value(0).toInt();
+
             accounts.push_back(ql2.value(0).toInt());
         }
         for(auto i:accounts){
             if(i>account){
                 account = i;
             }
+
         }
         account = account + 1;
         //ON DUPLICATE KEY UPDATE u_id=u_id+1
@@ -227,11 +243,13 @@ int Mysql::registersave(QString name, QString password1, QString password2)
 void Mysql::exitlogin()
 {
     m_id = 0;
+
     ve_id = 0;
     m_name = "请登录";
     m_password = "";
     m_account = 0;
     m_avatar = "../../assets/touxiang.png";
+
     m_history = "";
     m_download = "";
     temp_avatar = "";
@@ -253,6 +271,7 @@ int Mysql::informationmadofy(QString name, QString oldpassword, QString newpassw
         return 3;
     }
     else if(m_avatar != temp_avatar && m_name == name && (oldpassword == "" || newpassword1 == "" || newpassword2 == "")){
+
 
         QString avatarpath = temp_avatar;
         //        QByteArray bytes;
@@ -295,6 +314,7 @@ int Mysql::informationmadofy(QString name, QString oldpassword, QString newpassw
 
         QSqlQuery ql;
         //        QString avatarpath = temp_avatar;
+
         ql.prepare("update User set u_avatar = ? where u_id = ?");
         ql.addBindValue(avatarpath);
         ql.addBindValue(getid());
@@ -322,7 +342,9 @@ int Mysql::informationmadofy(QString name, QString oldpassword, QString newpassw
         setname(name);
         return 6;
     }
+
     //    if(m_avatar != temp_avatar && m_name != name && oldpassword != "" && newpassword1 != "" && newpassword2 != "")
+
     else if(oldpassword != "" && newpassword1 != "" && newpassword2 != ""){
         QSqlQuery ql;
         setname(name);
@@ -356,6 +378,7 @@ void Mysql::getavatorpath()
 {
     Imagefile avatarpath;
     QString imagepath = avatarpath.getimagepath();
+
 //    qDebug()<<"imagepath : "+imagepath;
     temp_avatar = imagepath;
 }
@@ -401,6 +424,7 @@ int Mysql::historysave(QString history)
 }
 
 
+
 int Mysql::getid()
 {
     return m_id;
@@ -441,6 +465,7 @@ QString Mysql::gettempavatar()
     return temp_avatar;
 }
 
+
 void Mysql::gethistroys()
 {
     QSqlQuery ql;
@@ -461,6 +486,7 @@ void Mysql::gethistroys()
       }
     }
 }
+
 Mysql::~Mysql(){
 
 }

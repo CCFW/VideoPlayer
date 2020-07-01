@@ -105,6 +105,7 @@ Rectangle {
         ToolBar{
             id:toolbar
             width: parent.width
+
             ToolButton{
                 id:button1
                 text: qsTr("首页")
@@ -115,7 +116,9 @@ Rectangle {
                 anchors.left: button1.left
                 anchors.leftMargin: button1.width
                 text: qsTr("电视剧")
+
                 onClicked:stackView.push(playInterface)
+
 
                 //                //                        onClicked: stack.push(tv)
 
@@ -497,7 +500,9 @@ Rectangle {
                                 id: img1
                                 width: parent.width
                                 height: parent.height
+
                                 source: portrait 
+
                             }
                             width: {grid_view2.cellWidth - grid_view2.spacing}
                             height: {grid_view2.cellHeight - grid_view2.spacing}

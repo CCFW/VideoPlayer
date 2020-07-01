@@ -7,12 +7,14 @@ import QtQuick.Dialogs 1.2 as QQD
 
 Page{
 
+
     id:informationdetailepage
 //    width: 1080
 //    height: 960
 ////    anchors.fill: parent
     width: parent.width
     height: parent.height
+
     property alias informationimage: pesonaliamgechange.source
     Rectangle{
         color: "white"
@@ -21,12 +23,14 @@ Page{
         id:infomaltion
         width: parent.width
         height: parent.height
+
         anchors.fill: parent
         AppText {
 //            x:parent.width/2-150
 //            height: parent.height/8
             leftPadding: parent.width/2-150
             topPadding: 50
+
             id: infomaltiontext
             text: qsTr("修改个人信息")
             Layout.topMargin: dp(8)
@@ -35,6 +39,7 @@ Page{
             Layout.alignment: Qt.AlignHCenter
             //                    font.pointSize: 30
         }
+
 
 
 
@@ -50,6 +55,7 @@ Page{
             anchors.leftMargin: parent.width/2.99
 //            anchors.topMargin: 100
             ColumnLayout{
+
                 spacing: 30
 
                 AppText {
@@ -90,9 +96,11 @@ Page{
             }
 
 
+
             ColumnLayout{
                 spacing: 5
 //                y:parent.height-infomaltiontext.height-700
+
                 //                     x:parent.width/2-300
                 Item {
                     visible: true
@@ -104,7 +112,9 @@ Page{
                         anchors.centerIn: parent
                         smooth: true
                         visible: false
+
                         //                        source: "../../assets/1.jpg"
+
                         source: sql.getavatar()
                     }
                     Rectangle {
@@ -124,7 +134,9 @@ Page{
                             onClicked: {
                                 sql.getavatorpath()
                                 pesonaliamgechange.source = sql.gettempavatar()
+
                                 //                                personalpage.iamgefile = sql.getavatar()
+
                             }
                         }
                     }
@@ -133,7 +145,9 @@ Page{
 
                     id:nichenginput
                     text: personalpage.personaltext
+
                     //                    text: qsTr("请输入新昵称")
+
                     //                            font.pointSize: 15
                     Layout.preferredWidth: dp(200)
                     showClearButton: true
@@ -142,9 +156,11 @@ Page{
                     borderWidth: !Theme.isAndroid ? dp(2) : 0
                 }
                 AppTextField{
+
 //                    x:400
                     id:passwordinput1
                     //                    text: qsTr("请输入旧密码")
+
                     //                            font.pointSize: 15
                     Layout.preferredWidth: dp(200)
                     showClearButton: true
@@ -153,9 +169,11 @@ Page{
                     borderWidth: !Theme.isAndroid ? dp(2) : 0
                 }
                 AppTextField{
+
 //                    x:400
                     id:passwordinput2
                     //                    text: qsTr("请输入新密码")
+
                     //                            font.pointSize: 15
                     Layout.preferredWidth: dp(200)
                     showClearButton: true
@@ -164,9 +182,11 @@ Page{
                     borderWidth: !Theme.isAndroid ? dp(2) : 0
                 }
                 AppTextField{
+
 //                    x:400
                     id:passwordinput3
                     //                    text: qsTr("请再次输入新密码")
+
                     //                            font.pointSize: 15
                     Layout.preferredWidth: dp(200)
                     showClearButton: true
@@ -189,6 +209,7 @@ Page{
             spacing: 50
 //            x:parent.width/2-300
 //            y:parent.height/2
+
             AppButton{
                 id:quedingbutton
                 text: qsTr("确定")
@@ -209,24 +230,32 @@ Page{
                     }else if(result == 4){
                         personalpage.iamgefile = sql.getavatar()
                         homepage.homepageimage = sql.getavatar()
+
 //                        searchhomepage.searchpageimage =sql.getavatar()
+
                         imagesuccessdilog.open()
                     }else if(result == 5){
                         personalpage.iamgefile = sql.getavatar()
                         homepage.homepageimage = sql.getavatar()
+
 //                        searchhomepage.searchpageimage =sql.getavatar()
+
                         personalpage.personaltext = sql.getname()
                         imagetextsuccessdilog.open()
                     }
                     else if(result == 6){
+
                         personalpage.personaltext = sql.getname()
+
                         textsuccessdilog.open()
                     }
 
                     else if(result == 7){
                         personalpage.iamgefile = sql.getavatar()
                         homepage.homepageimage = sql.getavatar()
+
 //                        searchhomepage.searchpageimage =sql.getavatar()
+
                         personalpage.personaltext = sql.getname()
                         successdilog.open()
                         passwordinput1.text = ""
@@ -250,6 +279,7 @@ Page{
 
 
     }
+
     Dialog{
         id: nullfalut
         title: "新旧密码不能为空！！！"
@@ -359,5 +389,6 @@ Page{
             textsuccessdilog.close()
         }
     }
+
 }
 

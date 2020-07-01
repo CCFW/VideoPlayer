@@ -1,3 +1,4 @@
+
 //import QtQuick 2.0
 
 //ListModel {
@@ -18,6 +19,7 @@
 //    }
 //}
 import QtQuick 2.0
+
 
 ListModel {
 
@@ -68,6 +70,7 @@ ListModel {
         portrait: "../../assets/d1.jpg"
 
     }
+
 //    ListElement {
 
 //        name: "Sam Wise"
@@ -111,5 +114,6 @@ ListModel {
 //        portrait: "../assets/4.jpg"
 
 //    }
+
 
 }

@@ -52,7 +52,9 @@ void MoveDB::InsertInfo1(){
     ve_timeList<<5<<20<<10<<800<<45<<800<<2<<45;
 
     QVariantList ve_sourceList;
+
     ve_sourceList<<"../../assets/video/vedio1.mp4"<<"../../assets/video/audio.mp4"<<"http://192.168.43.104/1.mp4"<<"http://192.168.43.104/2.mp4"<<"../../assets/video/vedio1.mp4"<<"../../assets/video/audio.mp4"<<"../../assets/video/vedio1.mp4"<<"../../assets/video/audio.mp4";
+
 //    QVariantList moveImageList;
 //    for (int i=0; i<2;i++) {
 

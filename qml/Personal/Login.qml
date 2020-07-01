@@ -18,6 +18,7 @@ Page {
         height: content.height + dp(960)
         radius: dp(4)
     }
+
     Image {
         anchors.left: parent.left
         anchors.leftMargin: 20
@@ -31,6 +32,7 @@ Page {
             }
         }
     }
+
 
     GridLayout {
         id: content
@@ -93,14 +95,17 @@ Page {
                     if(sql.loginvefied(txtUsername.text,txtPassword.text) == 1){
                         personalpage.personaltext = sql.getname()
                         personalpage.iamgefile = sql.getavatar()
+
                         danMuSql.setId(sql.getaccount())
                         danMuSql.setName(sql.getname())
                         homepage.homepageimage = sql.getavatar()
 //                        searchhomepage.searchpageimage =sql.getavatar()
+
                         loginsucess.open()
                         txtUsername.text = ""
                         txtPassword.text = ""
                         playInterface.controlComment2Visible = false
+
 
                         //历史记录
                         sql.gethistroys()
