@@ -152,6 +152,7 @@ int FfmpegDecoding::ffmpeg1()
     screen = SDL_CreateWindow("Simplest ffmpeg player's Window", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
                               screen_w, screen_h,
                               SDL_WINDOW_OPENGL);
+
 //    screen =
 
     if(!screen) {

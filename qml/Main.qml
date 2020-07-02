@@ -6,9 +6,6 @@ import "./PlayPage"
 import "./Search"
 import "./Home"
 
-//import FfmpegDecoding 1.0
-//import AudioDecoding 1.0
-
 App {
     // You get free licenseKeys from https://felgo.com/licenseKey
     // With a licenseKey you can:
@@ -22,14 +19,6 @@ App {
     height: 960
 
     id:mainwindow
-
-//    FfmpegDecoding{
-//        id: ffmpegDecoding
-//    }
-
-//    AudioDecoding{
-//        id:audioDecoding
-//    }
 
     Home{
         id:homepage

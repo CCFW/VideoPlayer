@@ -49,11 +49,13 @@ Page {
             Image {
                 id: personalimage
                 source: "../../assets/personal.png"
+
             }
         }
 
 
         RowLayout{
+
             Layout.alignment: Qt.AlignLeft
             //            anchors.leftMargin: 30
             id:bar2
@@ -61,6 +63,7 @@ Page {
             Text {
                 id: personalkongbaitext
                 text: qsTr("   ")
+
             }
             Item {
                 visible: true
@@ -72,7 +75,11 @@ Page {
                     anchors.centerIn: parent
                     smooth: true
                     visible: false
-                    source: "../../assets/touxiang.png"
+
+                   // source: "../../assets/touxiang.png"
+
+                    source: sql.getavatar()
+
                 }
                 Rectangle {
                     id: mask
@@ -139,7 +146,6 @@ Page {
                 }
             }
         }
-
 
         RowLayout{
             Button{
@@ -340,7 +346,6 @@ Page {
     }
 
 
-
     Dialog{
         id: withlogindialog
         title: "请先登录！"
@@ -390,6 +395,12 @@ Page {
             exitdialog.close()
             playInterface.controlComment2Visible=true
             homepage.homepageimage = sql.getavatar()
+
+
+           // personalpage.iamgefile = sql.getavatar()
+           // personalname.text = sql.getname()
+            //exitdialog.close()
+
         }
     }
     Dialog{

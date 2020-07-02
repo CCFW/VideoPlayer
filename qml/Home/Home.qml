@@ -290,7 +290,6 @@ Rectangle {
                                     width: 12
                                     policy: ScrollBar.AlwaysOn
                                 }
-
             }
         }
 
@@ -321,8 +320,10 @@ Rectangle {
                         searchDialog.searchDiaolognull.open()
                     }else if(dataManage.setKey(searchInputText.text)==0){//不为空，搜索匹配
                         for(var i=0; i<dataManage.getName().length;i++){
-                            searchhomepage.listmodes.append({"title":dataManage.getName()[i],"director":dataManage.getDirector()[i],"introduce": dataManage.getIntroduce()[i],"role":dataManage.getRole()[i],"episodes":dataManage.getEpisodes()[i],"portrait":dataManage.getmoveImage()[i],"time":dataManage.getTime()[i],"source":dataManage.getSource()[i]})
-                            console.log(typeof(dataManage.getSource()[i]))
+                            //searchhomepage.listmodes.append({"title":dataManage.getName()[i],"director":dataManage.getDirector()[i],"introduce": dataManage.getIntroduce()[i],"role":dataManage.getRole()[i],"episodes":dataManage.getEpisodes()[i],"portrait":dataManage.getmoveImage()[i],"time":dataManage.getTime()[i],"source":dataManage.getSource()[i]})
+                            //console.log(typeof(dataManage.getSource()[i]))
+                            searchhomepage.listmodes.append({"title":dataManage.getName()[i],"director":dataManage.getDirector()[i],"introduce": dataManage.getIntroduce()[i],"role":dataManage.getRole()[i],"episodes":dataManage.getEpisodes()[i],"portrait":dataManage.getmoveImage()[i],"time":dataManage.getTime()[i]})
+
                         }
                         if(searchhomepage.listmodes.get(0).title==""){
                             searchhomepage.listmodes.remove(0)
@@ -340,7 +341,6 @@ Rectangle {
 
             }
 
-
             Text {
                 id: searchtext
                 anchors.left: searchImg.right
@@ -350,8 +350,6 @@ Rectangle {
             }
         }
     }
-
-
 
     Rectangle{
         id:moive
@@ -631,6 +629,7 @@ Rectangle {
                 id:listview2
                 //                x:60
                 y:52
+
                 width: parent.width
                 //                height: 466
                 height: 400

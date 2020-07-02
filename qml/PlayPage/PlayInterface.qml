@@ -26,7 +26,9 @@ Rectangle{
     anchors.fill: parent
 
     color: "DimGrey"
+
     property alias vedioName: vedioName.text
+
 
     //flag此属性用来判断弹幕可见不
     property int flag: 0
@@ -35,6 +37,7 @@ Rectangle{
     property alias mediaPlayersource: mediaPlayer.source
     property alias playKeyVisible: playKey.visible
     property alias introductionDescText: introductionDescText.text
+
 
 
     Rectangle{
@@ -75,6 +78,7 @@ Rectangle{
 
         MediaPlayer{
             id: mediaPlayer
+
             //            source:ffmpeg
 
             //            source: ffmpegDecoding.ffmpeg1()
@@ -90,11 +94,6 @@ Rectangle{
             }
 
         }
-
-        //        FfmpegDecoding{
-        //            id: ffmpeg
-        //            ffmpeg1()
-        //        }
 
         //视频播放进度条的控制
         Rectangle{
@@ -221,7 +220,6 @@ Rectangle{
         //在实例化对象之后发出。一旦建立了完整的QML环境，就可以使用它在启动时执行脚本代码。
         //对应的处理程序是onCompleted。它可以在任何对象上声明。运行onCompleted处理程序的顺序未定义
         addItem()
-        //        danMu()
     }
     Timer {
         id: timer
@@ -255,7 +253,6 @@ Rectangle{
                     playKey.visible=false
                     pauseKey.visible=true
                     mediaPlayer.pause()
-                    //                    ffmpegDecoding.ffmpeg1()
                 }
             }
         }
@@ -359,11 +356,11 @@ Rectangle{
                     }*/
 
                     //                    danMu()
+
                     danMuClose.visible=false
                     danMuOpen.visible=true
-                    //                    danMuClose.visible=false
-                    //                    danMuOpen.visible=true
-                    //                    danMuComment.visible=true
+                    danMuComment.visible=true
+
                     flag = 1
                     //                    console.log("danMuCLose  "+flag)
                 }
@@ -389,10 +386,12 @@ Rectangle{
                         //                        controlComment2.visible = false
                     }
 
+
                     danMuClose.visible=true
                     danMuOpen.visible=false
-                    //                    danMuComment.visible=false
-                    //                    controlComment2.visible = false
+                    danMuComment.visible=false
+                    controlComment2.visible = false
+
                     flag = 0
                     //                    console.log("danMuOPen  "+flag)
                 }
@@ -432,14 +431,19 @@ Rectangle{
                             stackView.push(loginpage)
 
                         }else{
+
                             danMuComment.visible = true
+
                             //                            danMuOpen.visible = true
                             danMuComment.visible = false
                             controlComment2.visible = false
+
+
                         }
                     }
                 }
             }
+
             //            Text {
             //                id: danMuPrompt1
             //                font.pixelSize: 20
@@ -468,7 +472,7 @@ Rectangle{
             //                        stackView.push(registerpage)
             //                    }
             //                }
-            //            }
+
             Text {
                 id: danMuPrompt3
                 font.pixelSize: 20
@@ -497,16 +501,16 @@ Rectangle{
                 onClicked: {
                     //                    liststr.push("danMuSql")
                     //                    console.log(danMuSql.getDanMu())
-                    //往容器（liststr）中push添加输入的弹幕内容
 
+                    //往容器（liststr）中push添加输入的弹幕内容
                     if(danMuComment.text){
                         liststr.push((danMuComment.text).toString())
                         danMuSql.danMu((danMuComment.text).toString())
-                        danMuComment.text = ""
                     }else{
-                        //                        dialogInfo.open()
+
+//                        dialogInfo.open()
                         dialoginfo.dialogInfo.open()
-                    }
+
 
 
                 }
@@ -630,7 +634,6 @@ Rectangle{
             anchors.topMargin: 20
             Text {
                 id: jieMuInfoText
-                //                anchors.fill: parent
                 text: qsTr("视频")
                 font.pixelSize: 30
                 color: "Green"
@@ -653,6 +656,7 @@ Rectangle{
                 //                anchors.fill: parent
                 anchors.left: jieMuInfoText.right
                 anchors.leftMargin: 50
+
                 text: qsTr("评论")
                 font.pixelSize: 30
                 color: "white"
@@ -661,26 +665,12 @@ Rectangle{
                     anchors.fill: parent
                     cursorShape: Qt.PointingHandCursor
                     onClicked: {
-                        //                        var a = danMuSql.getCommentsCount();
-                        //                        console.log("aaaaaaa:  "+a);
-                        //                        var i = 0;
-                        //                        while(i < a){
-                        //                            //评论内容初始化
-                        //                            model1.append({"portrait": danMuSql.getAvatar(),"name": danMuSql.getName(),"commenttext": danMuSql.getComments()});
-
-
-                        //                            i++;
-                        //                        }
-                        //                        if(model1.get(0).name == ""){
-                        //                            model1.remove(0)
-                        //                        }
 
                         commentsText.color = "Green"
                         jieMuInfoText.color = "white"
                         description.visible = false
                         commentDescription.visible = true
-                        //                        comment()
-                        //                        playInterface.comment()
+
                     }
                 }
             }
@@ -709,6 +699,7 @@ Rectangle{
                     }
                 }
             }
+
         }
 
         Rectangle{
@@ -728,6 +719,7 @@ Rectangle{
             Text {
                 id: vedioName
                 text: qsTr("机械画皮")
+
                 font.pixelSize: 25
                 color: "white"
             }
@@ -738,9 +730,9 @@ Rectangle{
                 anchors.top: parent.top
                 anchors.topMargin: 5
                 text: qsTr("简介 >")
-                color: "white"
                 font.pixelSize: 20
-                //                color: mouseArea2.containsMouse ? "Green" : "white"
+                color: mouseArea2.containsMouse ? "Green" : "white"
+
                 MouseArea{
                     id: mouseArea2
                     anchors.fill: parent
@@ -769,11 +761,13 @@ Rectangle{
                 }
             }
 
+
             Text {
                 id: select
                 text: qsTr("选集")
                 font.pixelSize: 25
                 anchors.top: introductionDesc.bottom
+
                 anchors.topMargin: 30
                 color: "white"
             }
@@ -782,6 +776,7 @@ Rectangle{
                 id: fenJiJuQing
                 anchors.right: parent.right
                 anchors.top: introductionDesc.bottom
+
                 anchors.topMargin: 35
                 text: qsTr("分集剧情 >")
                 font.pixelSize: 20
@@ -828,6 +823,7 @@ Rectangle{
                     ListElement{ number: 18;}
                     ListElement{ number: 19;}
                     ListElement{ number: 20;}
+
                 }
                 GridView{
                     id: grid
@@ -878,10 +874,6 @@ Rectangle{
                         Text {
                             id: jiShu
                             text: number
-                            //                            width: parent.width
-                            //                            height: parent.height
-                            //                            anchors.horizontalCenter: parent.horizontalCenter
-                            //                            anchors.verticalCenter: parent.verticalCenter
                             font.pixelSize: 25
                             anchors.centerIn: parent
                             color: "white"
@@ -898,7 +890,6 @@ Rectangle{
             width: parent.width / 1.1
             height: parent.height / 1.2
             //            height: operation.height
-
             color: "transparent"
             anchors.top: jieMuInfo.bottom
             anchors.topMargin: 20
@@ -994,6 +985,7 @@ Rectangle{
                     id:view
                     width: commentDescription.width
                     height: operation.height / 1.35
+
                     model:model1
                     delegate: contactDelegate1
                     //                    highlight: Rectangle { color: "lightsteelblue"; radius: 5 }
@@ -1021,6 +1013,25 @@ Rectangle{
                     //                        height: 20
                     //                        anchors.right: parent.right
                     //                    }
+                }
+
+
+
+                        //background: Item {            //滚动条的背景样式
+                            //Rectangle {
+                               // anchors.centerIn: parent
+                                //height: parent.height
+                                //width: 10
+                                //color: 'grey'
+                                //radius: width/2
+                           // }
+                        //}
+                    //}
+//                    Controls25.ScrollView{
+//                        width: 20
+//                        height: 20
+//                        anchors.right: parent.right
+//                    }
                 }
 
 
@@ -1102,8 +1113,6 @@ Rectangle{
         Image {
             id: download
             source: "../../assets/playInterface/download.png"
-            //            anchors.right: comment.right
-            //            anchors.rightMargin: 90
             anchors.left: comment.right
             anchors.leftMargin: 40
             anchors.top: parent.top
@@ -1164,6 +1173,7 @@ Rectangle{
             font.pixelSize: 20
             text: "发送"
             onClicked: {
+
                 var data = {"portrait": sql.getavatar(),"name": sql.getname(), "commenttext": inputComment1.text}
                 model1.append(data)
                 if(inputComment1.text){
@@ -1174,6 +1184,7 @@ Rectangle{
                     //                    dialogInfo.open()
                     dialoginfo.dialogInfo.open()
                 }
+
             }
         }
 

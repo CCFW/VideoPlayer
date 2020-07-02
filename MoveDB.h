@@ -26,7 +26,9 @@ public:
     Q_INVOKABLE int setKey(QString key);
     Q_INVOKABLE std::vector<QString> getmoveImage(){return m_moveImage;}
     Q_INVOKABLE std::vector<int> getTime(){return m_time;}
+
     Q_INVOKABLE std::vector<QString> getSource(){return m_source;}
+
 
     void setName(QString name){m_name.push_back(name);}
     void setDirector(QString director){m_director.push_back(director);}
@@ -35,7 +37,9 @@ public:
     void setEpisodes(int episodes){m_episodes.push_back(episodes);}
     void setmoveImage(QString moveImage){m_moveImage.push_back(moveImage);}
     void setTime(int time){m_time.push_back(time);}
+
     void setSource(QString source){m_source.push_back(source);}
+
 
     Q_INVOKABLE void clearVector(){
         m_name.clear();
@@ -46,6 +50,7 @@ public:
         m_moveImage.clear();
         m_time.clear();
         m_source.clear();
+
     }
 
 private:
@@ -61,5 +66,6 @@ private:
     QGuiApplication *m_app;
     QQmlApplicationEngine *m_engine;
     std::vector<QString> m_source;
+
 };
 #endif // DATAMANAGE_H

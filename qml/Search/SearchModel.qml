@@ -37,6 +37,7 @@ ListModel{
 
       ListElement{title:"";director:"";introduce:"";role:"";episodes:0;portrait:"";time:0;source:""}
 
+
 }
 
 //    Component.onCompleted: {

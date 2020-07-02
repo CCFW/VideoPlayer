@@ -43,6 +43,7 @@ Rectangle{
                 width: parent.width
                 model:model1
 
+
                 header:headerdeleget
 
                 onContentYChanged: {
@@ -111,6 +112,7 @@ Rectangle{
                                 playInterface.vedioName=model1.get(view.currentIndex).title;
                                 playInterface.introductionDescText=model1.get(view.currentIndex).introduce
 //                                playInterface.danMu()
+
                                 if(id != 0){
                                     var flag = sql.historysave(model1.get(view.currentIndex).title)
                                     console.log("flag : "+flag)
@@ -128,6 +130,7 @@ Rectangle{
                                 stackView.push(playInterface)
                                 playInterface.mediaPlayer.play()
 //                                playInterface.playKeyVisible = true
+
 
                                 //                                view.currentIndex=index
                                 //                                console.log("currentIndex"+view.currentIndex)
@@ -148,6 +151,7 @@ Rectangle{
                         Text {
                             id: titletext
                             text: '<pre>视频  '+'<font size="5" color="orange">'+title+'</font>'+'</pre>'
+
                         }
                         Row{
                             spacing: 200
@@ -158,6 +162,7 @@ Rectangle{
                             Text {
                                 id: actortext
                                 text: "主演："+role
+
                             }
                         }
                         Text {
@@ -214,10 +219,12 @@ Rectangle{
                 }
             }
         }
+
         SearchDialog{
             id:searchDialog
         }
     }
+
 
     Component{
         id:headerdeleget

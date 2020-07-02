@@ -1,12 +1,12 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.5
 import Felgo 3.0
+
 Rectangle{
     id:titlebar
     width: parent.width
     height: 70
     color: "whitesmoke"
-
     Rectangle {
         id: searchBkgnd;
 
@@ -65,6 +65,7 @@ Rectangle{
                         //追加
                         for(var i=0; i<dataManage.getName().length;i++){
                             searchhomepage.listmodes.append({"title":dataManage.getName()[i],"director":dataManage.getDirector()[i],"introduce": dataManage.getIntroduce()[i],"role":dataManage.getRole()[i],"episodes":dataManage.getEpisodes()[i],"portrait":dataManage.getmoveImage()[i],"time":dataManage.getTime()[i],"source":dataManage.getSource()[i]})
+
                         }
                         //清空已有的listElement里面的东西
                         //                        searchhomepage.listmodes.remove(0)

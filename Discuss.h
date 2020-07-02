@@ -14,7 +14,9 @@
 #include <QQmlApplicationEngine>
 #include <vector>
 
+
 //using namespace std;
+
 
 class Discuss : public QObject{
 
@@ -36,6 +38,7 @@ public:
 
     std::vector<int> getId();
 
+
 private:
     QGuiApplication *m_app;
     QQmlApplicationEngine *m_engine;
@@ -43,6 +46,7 @@ private:
     QString m_name;
     QString m_avatar;
     QString m_vename;
+
 };
 
 #endif // DISCUSS_H

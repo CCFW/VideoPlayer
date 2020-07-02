@@ -76,6 +76,7 @@ private:
     std::vector<QString> m_introduce;
     std::vector<QString> m_role;
     std::vector<QString> m_portrait;
+
 };
 
 #endif // MYSQL_H

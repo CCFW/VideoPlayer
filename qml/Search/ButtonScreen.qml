@@ -75,6 +75,7 @@ Rectangle{
                     dataManage.queryInfo()
                     for(var i=0; i<dataManage.getName().length;i++){
                         searchhomepage.listmodes.append({"title":dataManage.getName()[i],"director":dataManage.getDirector()[i],"introduce": dataManage.getIntroduce()[i],"role":dataManage.getRole()[i],"episodes":dataManage.getEpisodes()[i],"portrait":dataManage.getmoveImage()[i],"time":dataManage.getTime()[i],"source":dataManage.getSource()[i]})
+
                     }
                     for(var j=searchhomepage.listmodes.count-1; j>=0;j--){
                         if(searchhomepage.listmodes.get(j).time<61){

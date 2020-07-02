@@ -3,6 +3,7 @@
 #include <typeinfo>
 #include <iostream>
 //using namespace std;
+
 //#define MIN 0
 //#define MAX 9
 
@@ -31,6 +32,7 @@ Discuss::Discuss(QGuiApplication &app, QQmlApplicationEngine &engine){
     m_avatar = "";
     m_vename = "";
 
+
 }
 
 void Discuss::danMu(QString comment){
@@ -40,6 +42,7 @@ void Discuss::danMu(QString comment){
     int id = 0;
     
     std::vector<int>temp;
+
     QSqlQuery sqlQuery;
     QString strql1 = "select d_id from Discuss";
     sqlQuery.exec(strql1);
@@ -67,6 +70,7 @@ void Discuss::danMu(QString comment){
 //    qDebug() << "d_danMu:"+comment;
 //    qDebug() << "u_name:"+u_name;
     QString strql = QString("insert into Discuss(d_id,u_id,ve_name,d_danMu,u_name) values('%1','%2','%3','%4','%5')").arg(id).arg(u_id).arg(m_vename).arg(comment).arg(u_name);
+
     ql.exec(strql);
 }
 
@@ -109,6 +113,7 @@ int Discuss::getDanMuCount(){
     
     QSqlQuery sqlQuery;
     QString strql1 = QString("select d_danMu from Discuss where ve_name = '%1'").arg(m_vename);
+
     sqlQuery.exec(strql1);
     
     int count = 0;
@@ -119,6 +124,7 @@ int Discuss::getDanMuCount(){
 
     }
         qDebug() << count;
+
     return count;
 }
 
@@ -141,6 +147,7 @@ void Discuss::setComments(QString comments)
 
     int id = 0;
     std::vector<int>temp;
+
     //查找discuss数据表当前d_id的最大值
     while(sqlQuery.next()){
         id = sqlQuery.value(0).toInt();
@@ -164,6 +171,7 @@ void Discuss::setComments(QString comments)
 
     QSqlQuery ql;
     QString strql1 = QString("insert into Discuss(d_id,u_id,ve_name,d_comment,u_name) values('%1','%2','%3','%4','%5')").arg(id).arg(u_id).arg(m_vename).arg(comments).arg(u_name);
+
     ql.exec(strql1);
 
 }
@@ -192,6 +200,7 @@ std::vector<QString> Discuss::getComments()
     return arr1;
 
 //    m_vename = "";
+
 }
 
 //获取评论的总数量
@@ -219,6 +228,7 @@ std::vector<QString> Discuss::getName()
     sqlQuery.exec(strql1);
 
     std::vector<QString> arr1;
+
     while (sqlQuery.next()) {
         if(sqlQuery.value(0).toString() != ""){
             arr1.push_back(sqlQuery.value(1).toString());
@@ -278,12 +288,14 @@ void Discuss::setVeName(QString vename)
 
 //在Discuss表中获取每一个评论用户的ID
 std::vector<int> Discuss::getId()
+
 {
     QSqlQuery sqlQuery;
     QString strql1 = "select u_id,d_comment from Discuss";
     sqlQuery.exec(strql1);
 
     std::vector<int> arr1;
+
     while (sqlQuery.next()) {
         //找到评论内容不为空的用户ID
         if(sqlQuery.value(1).toString() != ""){

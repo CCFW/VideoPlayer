@@ -19,8 +19,8 @@ Item {
 
         onAccepted: {
 
-                stackView.push(loginpage)
-                withlogindialog.close()
+
+    
 //                controlComment.visible=false
 //                controlComment1.visible=true
 //                controlComment2.visible = false
@@ -32,6 +32,17 @@ Item {
 
 
 
+
+            stackView.push(loginpage)
+            withlogindialog.close()
+            controlComment.visible=false
+            controlComment1.visible=true
+            controlComment2.visible = false
+            //            danMuComment.visible = true
+            //            danMuOpen.visible = true
+            //            flag = 1
+            danMuComment.visible = false
+            controlComment2.visible = false
         }
     }
 
