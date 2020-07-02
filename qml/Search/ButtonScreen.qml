@@ -7,6 +7,10 @@ Rectangle{
         onClicked: menu.open()
         opacity: 0
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 55acfdc4f4779ebff16813ad69836cd0604d289b
         function chooseTime(min,max){
             var countnum=searchhomepage.listmodes.count
             for(var i=countnum-1; i>=0;i--){
@@ -15,7 +19,11 @@ Rectangle{
             dataManage.queryInfo()
             console.log(searchhomepage.listmodes.count)
             for(var i=0; i<dataManage.getName().length;i++){
+<<<<<<< HEAD
                 searchhomepage.listmodes.append({"title":dataManage.getName()[i],"director":dataManage.getDirector()[i],"introduce": dataManage.getIntroduce()[i],"role":dataManage.getRole()[i],"episodes":dataManage.getEpisodes()[i],"portrait":dataManage.getmoveImage()[i],"time":dataManage.getTime()[i],"source":dataManage.getSource()[i]})
+=======
+                searchhomepage.listmodes.append({"title":dataManage.getName()[i],"director":dataManage.getDirector()[i],"introduce": dataManage.getIntroduce()[i],"role":dataManage.getRole()[i],"episodes":dataManage.getEpisodes()[i],"portrait":dataManage.getmoveImage()[i],"time":dataManage.getTime()[i]})
+>>>>>>> 55acfdc4f4779ebff16813ad69836cd0604d289b
             }
 
             for(var i=searchhomepage.listmodes.count-1; i>=0;i--){
@@ -42,7 +50,11 @@ Rectangle{
 
                     console.log(searchhomepage.listmodes.count)
                     for(var i=0; i<dataManage.getName().length;i++){
+<<<<<<< HEAD
                         searchhomepage.listmodes.append({"title":dataManage.getName()[i],"director":dataManage.getDirector()[i],"introduce": dataManage.getIntroduce()[i],"role":dataManage.getRole()[i],"episodes":dataManage.getEpisodes()[i],"portrait":dataManage.getmoveImage()[i],"time":dataManage.getTime()[i],"source":dataManage.getSource()[i]})
+=======
+                        searchhomepage.listmodes.append({"title":dataManage.getName()[i],"director":dataManage.getDirector()[i],"introduce": dataManage.getIntroduce()[i],"role":dataManage.getRole()[i],"episodes":dataManage.getEpisodes()[i],"portrait":dataManage.getmoveImage()[i],"time":dataManage.getTime()[i]})
+>>>>>>> 55acfdc4f4779ebff16813ad69836cd0604d289b
                     }
                     dataManage.clearVector()
                 }
@@ -50,18 +62,30 @@ Rectangle{
             Action {
                 text: "0-10分钟"
                 onTriggered: {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 55acfdc4f4779ebff16813ad69836cd0604d289b
                     fileButton.chooseTime(0,10)
                 }
             }
             Action {
                 text: "11-30分钟"
                 onTriggered: {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 55acfdc4f4779ebff16813ad69836cd0604d289b
                     fileButton.chooseTime(11,30)
                 }
             }
             Action {
                 text: "31-60分钟"
                 onTriggered: {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 55acfdc4f4779ebff16813ad69836cd0604d289b
                     fileButton.chooseTime(31,60)
                 }
             }
@@ -74,7 +98,11 @@ Rectangle{
                     }
                     dataManage.queryInfo()
                     for(var i=0; i<dataManage.getName().length;i++){
+<<<<<<< HEAD
                         searchhomepage.listmodes.append({"title":dataManage.getName()[i],"director":dataManage.getDirector()[i],"introduce": dataManage.getIntroduce()[i],"role":dataManage.getRole()[i],"episodes":dataManage.getEpisodes()[i],"portrait":dataManage.getmoveImage()[i],"time":dataManage.getTime()[i],"source":dataManage.getSource()[i]})
+=======
+                        searchhomepage.listmodes.append({"title":dataManage.getName()[i],"director":dataManage.getDirector()[i],"introduce": dataManage.getIntroduce()[i],"role":dataManage.getRole()[i],"episodes":dataManage.getEpisodes()[i],"portrait":dataManage.getmoveImage()[i],"time":dataManage.getTime()[i]})
+>>>>>>> 55acfdc4f4779ebff16813ad69836cd0604d289b
                     }
                     for(var j=searchhomepage.listmodes.count-1; j>=0;j--){
                         if(searchhomepage.listmodes.get(j).time<61){

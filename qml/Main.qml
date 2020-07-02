@@ -2,12 +2,15 @@ import Felgo 3.0
 import QtQuick 2.0
 import QtQuick.Controls 2.5
 import "./Personal"
+
 import "./PlayPage"
 import "./Search"
 import "./Home"
 
+
 //import FfmpegDecoding 1.0
 //import AudioDecoding 1.0
+
 
 App {
     // You get free licenseKeys from https://felgo.com/licenseKey
@@ -23,6 +26,7 @@ App {
 
     id:mainwindow
 
+
 //    FfmpegDecoding{
 //        id: ffmpegDecoding
 //    }
@@ -30,6 +34,7 @@ App {
 //    AudioDecoding{
 //        id:audioDecoding
 //    }
+
 
     Home{
         id:homepage
@@ -49,6 +54,7 @@ App {
     }
     SearchHome{
         id:searchhomepage
+
     }
 
     PlayInterface{
@@ -65,6 +71,7 @@ App {
 //    HeadTop{
 //        id:searchheadtoppage
 //    }
+
 
     Scene{
         anchors.fill: parent;

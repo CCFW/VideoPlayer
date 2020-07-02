@@ -1,7 +1,9 @@
 import Felgo 3.0
 import QtQuick 2.0
 import QtQuick.Layouts 1.1
+
 import QtQuick.Dialogs 1.2 as QQD
+
 Page {
     id: loginPage
     title: qsTr("登录")
@@ -9,7 +11,9 @@ Page {
 
     //  backgroundColor: Qt.rgba(0,0,0, 0.75)
     useSafeArea: false
+
     property alias personalaccount: txtUsername.text
+
     Rectangle {
         id: loginForm
         anchors.centerIn: parent
@@ -18,6 +22,7 @@ Page {
         height: content.height + dp(960)
         radius: dp(4)
     }
+
     Image {
         anchors.left: parent.left
         anchors.leftMargin: 20
@@ -31,6 +36,7 @@ Page {
             }
         }
     }
+
 
     GridLayout {
         id: content
@@ -85,11 +91,13 @@ Page {
             Layout.columnSpan: 2
             Layout.topMargin: dp(12)
 
+
             AppButton {
                 text: qsTr("登录")
                 flat: false
                 anchors.horizontalCenter: parent.horizontalCenter
                 onClicked: {
+
                     if(sql.loginvefied(txtUsername.text,txtPassword.text) == 1){
                         personalpage.personaltext = sql.getname()
                         personalpage.iamgefile = sql.getavatar()
@@ -135,18 +143,22 @@ Page {
 
 
 
+
             AppButton {
                 text: qsTr("还没有帐号？马上注册")
                 flat: true
                 anchors.horizontalCenter: parent.horizontalCenter
                 onClicked: {
+
                     txtUsername.text = ""
                     txtPassword.text = ""
+
                     stackView.push(registerpage)
                 }
             }
         }
     }
+
 
     Dialog{
         id: loginsucess
@@ -201,5 +213,6 @@ Page {
             stackView.push(registerpage)
         }
     }
+
 
 }

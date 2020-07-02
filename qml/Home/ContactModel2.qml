@@ -4,6 +4,7 @@ ListModel{
 
        id:model
 
+
        ListElement{portrait:"../../assets/p1.jpg"}
 
        ListElement{portrait:"../../assets/p2.jpg"}
@@ -13,5 +14,6 @@ ListModel{
        ListElement{portrait:"../../assets/p4.jpg"}
 
        ListElement{portrait:"../../assets/p1.jpg"}
+
 
    }

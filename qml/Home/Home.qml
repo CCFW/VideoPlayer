@@ -1,3 +1,4 @@
+
 ﻿import "../Search"
 import QtQuick 2.0
 import QtQuick.Controls 2.5
@@ -31,12 +32,14 @@ Rectangle {
                 source: portrait
                 width: delegateItem.width
                 height: delegateItem.height
+
                 MouseArea{
                     anchors.fill: parent
                     onClicked: {
                         stackView.push(playInterface)
                     }
                 }
+
             }
             ShaderEffect {
                 anchors.top: image.bottom
@@ -107,21 +110,26 @@ Rectangle {
         //        anchors.fill: parent
         anchors.top: parent.top
         anchors.topMargin: 50
+
         color: "whitesmoke"
         ToolBar{
             id:toolbar
             width: parent.width
+
             ToolButton{
                 id:button1
                 text: qsTr("首页")
+
 
             }
             ToolButton{
                 id:button2
                 anchors.left: button1.left
                 anchors.leftMargin: button1.width
+
                 text: qsTr("电视剧")
                 onClicked:stackView.push(playInterface)
+
 
                 //                //                        onClicked: stack.push(tv)
 
@@ -221,6 +229,7 @@ Rectangle {
                         searchInputText.text=searchInputText.text
                     }
                 }
+
                 property bool editing: false
                                 onTextEdited: editing=true;
                                 onEditingFinished: editing=false;
@@ -298,6 +307,7 @@ Rectangle {
 
 
 
+
         Rectangle{
             id:a
             anchors.right: parent.right
@@ -323,8 +333,10 @@ Rectangle {
                         searchDialog.searchDiaolognull.open()
                     }else if(dataManage.setKey(searchInputText.text)==0){//不为空，搜索匹配
                         for(var i=0; i<dataManage.getName().length;i++){
+
                             searchhomepage.listmodes.append({"title":dataManage.getName()[i],"director":dataManage.getDirector()[i],"introduce": dataManage.getIntroduce()[i],"role":dataManage.getRole()[i],"episodes":dataManage.getEpisodes()[i],"portrait":dataManage.getmoveImage()[i],"time":dataManage.getTime()[i],"source":dataManage.getSource()[i]})
                             console.log(typeof(dataManage.getSource()[i]))
+
                         }
                         if(searchhomepage.listmodes.get(0).title==""){
                             searchhomepage.listmodes.remove(0)
@@ -540,10 +552,12 @@ Rectangle {
                         grid_view1.currentIndex = -1
                         mouse.accepted = false
                         console.log("*******List_currentIndex**********"+index)
+
                     }
                 }
             }
         }
+
 
         Component{
             id:lisview_gridview2
@@ -575,14 +589,18 @@ Rectangle {
                                 id: img1
                                 width: parent.width
                                 height: parent.height
+
                                 source: portrait 
+
                             }
                             width: {grid_view2.cellWidth - grid_view2.spacing}
                             height: {grid_view2.cellHeight - grid_view2.spacing}
                             Text{
                                 //                                anchors.centerIn: parent
                                 anchors.top: parent.bottom
+
                                 text:number
+
                                 font.pixelSize: 26
                                 //                                color: "#ffffff"
                                 color: "black"
@@ -615,10 +633,12 @@ Rectangle {
                         grid_view2.currentIndex = -1
                         mouse.accepted = false
                         console.log("*******List_currentIndex**********"+index)
+
                     }
                 }
             }
         }
+
 
         ScrollView{
             anchors.left: parent.left
@@ -678,9 +698,11 @@ Rectangle {
         }
 
         Component.onCompleted: {
+
             phoneModel.append({"manufacture":"其他"})
                         phoneModel1.append({"manufacture":"电影"})
                         phoneModel2.append({"manufacture":"电视剧"})
+
             //                    phoneModel1.append({"manufacture":"年代"})
             //                    phoneModel1.append({"manufacture":"流派"})
             //                    phoneModel1.append({"manufacture":"语种"})
@@ -692,8 +714,6 @@ Rectangle {
         id:searchDialog
     }
 }
-
-
 
 
 

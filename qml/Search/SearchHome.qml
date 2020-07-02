@@ -6,11 +6,13 @@ Rectangle{
     width: parent.width
     height: parent.height
 
+
     property alias listmodes: model1
     property alias searchDialog: searchDialog
 
 
     SearchModel{id:model1}
+
 
     TitleBar{
         id:titlebar
@@ -27,8 +29,10 @@ Rectangle{
     Rectangle{
         id:bglistview
         anchors.fill: parent
+
         //        color: "linen"//内容部分的背景颜色
         color: "#F9F9F9"
+
 
         ScrollView{
             id:control
@@ -41,7 +45,9 @@ Rectangle{
                 id:view
                 anchors.fill: parent
                 width: parent.width
+
                 model:model1
+
 
                 header:headerdeleget
 
@@ -63,6 +69,7 @@ Rectangle{
                     color: bglistview.color
 
                     opacity: 0.9
+
                     //                    border.width: 1
 
                     Image {
@@ -73,6 +80,7 @@ Rectangle{
                         anchors.verticalCenter: parent.verticalCenter
                         anchors.left: parent.left
                         anchors.leftMargin: 20
+
 
                         Rectangle{
                             anchors.bottom: moveimage.bottom
@@ -92,6 +100,7 @@ Rectangle{
                             }
                         }
 
+
                         MouseArea{
                             id: mouseArea
                             anchors.fill: parent
@@ -102,15 +111,18 @@ Rectangle{
                             onReleased: moveimage.opacity=1
                             onEntered: moveimage.scale=1.05
                             onExited: moveimage.scale=1
+
                             onClicked: {
                                 view.currentIndex=index
                                 personalpage.personalpageview = true
                                 var id = sql.getid()
+
                                 playInterface.mediaPlayersource = model1.get(view.currentIndex).source;
                                 danMuSql.setVeName(model1.get(view.currentIndex).title)
                                 playInterface.vedioName=model1.get(view.currentIndex).title;
                                 playInterface.introductionDescText=model1.get(view.currentIndex).introduce
 //                                playInterface.danMu()
+
                                 if(id != 0){
                                     var flag = sql.historysave(model1.get(view.currentIndex).title)
                                     console.log("flag : "+flag)
@@ -123,17 +135,20 @@ Rectangle{
                                     }
 
                                 }
+
                                 playInterface.danMu()
                                 playInterface.comment()
                                 stackView.push(playInterface)
                                 playInterface.mediaPlayer.play()
 //                                playInterface.playKeyVisible = true
 
+
                                 //                                view.currentIndex=index
                                 //                                console.log("currentIndex"+view.currentIndex)
 
                                 //                                console.log("dataManage"+model1.get(view.currentIndex).title)
                             }
+
                         }
 
                     }
@@ -157,7 +172,9 @@ Rectangle{
                             }
                             Text {
                                 id: actortext
+
                                 text: "主演："+role
+
                             }
                         }
                         Text {
@@ -172,7 +189,9 @@ Rectangle{
                             height: 150
                             cellWidth: 50
                             cellHeight: 50
+
                             model:episodes
+
 
                             delegate: authologyDelegate
                         }
@@ -181,7 +200,9 @@ Rectangle{
 
                             Rectangle{
                                 width: 50;height: 50
+
                                 //                                color: "linen"
+
                                 color: bglistview.color
                                 Rectangle{
                                     id:inauthology
@@ -225,8 +246,10 @@ Rectangle{
             id:headerItem
             width: home.width
             height: 170
+
             //            color: search_re.color
             //            color: "red"
+
 
             //头部
             HeadTop{

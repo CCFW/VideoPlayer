@@ -41,14 +41,17 @@ RESOURCES += #    resources.qrc # uncomment for publishing
 
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += main.cpp \
+
     Imagefile.cpp \
     Mysql.cpp \
     Discuss.cpp \
     VideoInfo.cpp \
+
     MoveDB.cpp \
     FfmpegDecoding.cpp \
     AudioDecoding.cpp \
     HistorySearchModel.cpp
+
 
 
 android {
@@ -71,6 +74,7 @@ macx {
 
 DISTFILES += \
     Playinterface.qml \
+
     qml/Home/ContactModel1.qml \
     qml/Home/ContactModel2.qml \
     qml/Informationchange.qml \
@@ -82,6 +86,7 @@ HEADERS += \
     Mysql.h \
     Discuss.h \
     VideoInfo.h \
+
     MoveDB.h \
     FfmpegDecoding.h \
     AudioDecoding.h \
@@ -98,3 +103,4 @@ LIBS += -lSDL2 \
         -lavutil \
         -lswscale \
         -lswresample
+

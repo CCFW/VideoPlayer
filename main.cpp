@@ -7,9 +7,11 @@
 #include "Discuss.h"
 #include "VideoInfo.h"
 
+
 #include "HistorySearchModel.h"
 //#include "FfmpegDecoding.h"
 //#include "AudioDecoding.h"
+
 
 // uncomment this line to add the Live Client Module and use live reloading with your custom C++ code
 //#include <FelgoLiveClient>
@@ -20,7 +22,9 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
     FelgoApplication felgo;
 //    qmlRegisterType<FfmpegDecoding>("FfmpegDecoding",1,0,"FfmpegDecoding");
+
 //    qmlRegisterType<AudioDecoding>("AudioDecoding",1,0,"AudioDecoding");
+
     felgo.setPreservePlatformFonts(true);
     QQmlApplicationEngine engine;
     felgo.initialize(&engine);
@@ -29,8 +33,10 @@ int main(int argc, char *argv[])
   engine.rootContext()->setContextProperty("dataManage",&dataManage);
 
 
+
   HistorySearchModel historySearch(app,engine);
   engine.rootContext()->setContextProperty("myModel",&historySearch);
+
 
 
     Mysql sql(app,engine);

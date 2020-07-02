@@ -26,15 +26,19 @@ Rectangle{
     anchors.fill: parent
 
     color: "DimGrey"
+
     property alias vedioName: vedioName.text
+
 
     //flag此属性用来判断弹幕可见不
     property int flag: 0
     property alias mediaPlayer: mediaPlayer
     property alias controlComment2Visible: controlComment2.visible
     property alias mediaPlayersource: mediaPlayer.source
+
     property alias playKeyVisible: playKey.visible
     property alias introductionDescText: introductionDescText.text
+
 
 
     Rectangle{
@@ -75,11 +79,13 @@ Rectangle{
 
         MediaPlayer{
             id: mediaPlayer
+
             //            source:ffmpeg
 
             //            source: ffmpegDecoding.ffmpeg1()
             source: "../../assets/video/audio.mp4"
             //            source: ffmpeg.Ffmpeg1()
+
             //            autoPlay: true
             volume: volumeControl.value
             //                loops: MediaPlayer.Infinite
@@ -91,10 +97,12 @@ Rectangle{
 
         }
 
+
         //        FfmpegDecoding{
         //            id: ffmpeg
         //            ffmpeg1()
         //        }
+
 
         //视频播放进度条的控制
         Rectangle{
@@ -148,6 +156,7 @@ Rectangle{
     //从c++端获取弹幕已有的数量并遍历push放入到liststr数组中
     function danMu(){
         var a = danMuSql.getDanMuCount();
+
         //        console.log("a:"+a)
         var i = 0;
         while(i < a){
@@ -155,9 +164,11 @@ Rectangle{
             var temp = danMuSql.getDanMu()[i]
             //            console.log(typeof(temp))
             liststr.push(temp);
+
             i++;
         }
     }
+
 
     function comment(){
         var a = danMuSql.getCommentsCount();
@@ -177,6 +188,7 @@ Rectangle{
         }
         //        model1.clear()
     }
+
 
     //动态加载
     function addItem()
@@ -221,7 +233,9 @@ Rectangle{
         //在实例化对象之后发出。一旦建立了完整的QML环境，就可以使用它在启动时执行脚本代码。
         //对应的处理程序是onCompleted。它可以在任何对象上声明。运行onCompleted处理程序的顺序未定义
         addItem()
+
         //        danMu()
+
     }
     Timer {
         id: timer
@@ -255,7 +269,9 @@ Rectangle{
                     playKey.visible=false
                     pauseKey.visible=true
                     mediaPlayer.pause()
+
                     //                    ffmpegDecoding.ffmpeg1()
+
                 }
             }
         }
@@ -350,6 +366,7 @@ Rectangle{
                 anchors.fill: parent
                 cursorShape: Qt.PointingHandCursor
                 onClicked: {
+
                     var id = sql.getid()
                     if(id != 0){
 
@@ -364,6 +381,7 @@ Rectangle{
                     //                    danMuClose.visible=false
                     //                    danMuOpen.visible=true
                     //                    danMuComment.visible=true
+
                     flag = 1
                     //                    console.log("danMuCLose  "+flag)
                 }
@@ -383,6 +401,7 @@ Rectangle{
                 anchors.fill: parent
                 cursorShape: Qt.PointingHandCursor
                 onClicked: {
+
                     var id = sql.getid()
                     if(id != 0){
                         danMuComment.visible=false
@@ -393,6 +412,7 @@ Rectangle{
                     danMuOpen.visible=false
                     //                    danMuComment.visible=false
                     //                    controlComment2.visible = false
+
                     flag = 0
                     //                    console.log("danMuOPen  "+flag)
                 }
@@ -431,7 +451,9 @@ Rectangle{
                         if(id == 0){
                             stackView.push(loginpage)
 
+
                         }else{
+
                             danMuComment.visible = true
                             //                            danMuOpen.visible = true
                             danMuComment.visible = false
@@ -499,6 +521,7 @@ Rectangle{
                     //                    console.log(danMuSql.getDanMu())
                     //往容器（liststr）中push添加输入的弹幕内容
 
+
                     if(danMuComment.text){
                         liststr.push((danMuComment.text).toString())
                         danMuSql.danMu((danMuComment.text).toString())
@@ -507,6 +530,7 @@ Rectangle{
                         //                        dialogInfo.open()
                         dialoginfo.dialogInfo.open()
                     }
+
 
 
                 }
@@ -630,7 +654,9 @@ Rectangle{
             anchors.topMargin: 20
             Text {
                 id: jieMuInfoText
+
                 //                anchors.fill: parent
+
                 text: qsTr("视频")
                 font.pixelSize: 30
                 color: "Green"
@@ -650,7 +676,9 @@ Rectangle{
 
             Text {
                 id: commentsText
+
                 //                anchors.fill: parent
+
                 anchors.left: jieMuInfoText.right
                 anchors.leftMargin: 50
                 text: qsTr("评论")
@@ -661,6 +689,7 @@ Rectangle{
                     anchors.fill: parent
                     cursorShape: Qt.PointingHandCursor
                     onClicked: {
+
                         //                        var a = danMuSql.getCommentsCount();
                         //                        console.log("aaaaaaa:  "+a);
                         //                        var i = 0;
@@ -675,22 +704,27 @@ Rectangle{
                         //                            model1.remove(0)
                         //                        }
 
+
                         commentsText.color = "Green"
                         jieMuInfoText.color = "white"
                         description.visible = false
                         commentDescription.visible = true
+
                         //                        comment()
                         //                        playInterface.comment()
+
                     }
                 }
             }
 
             Image {
                 id: back
+
                 //                width: 40
                 //                height: 36
                 anchors.right: parent.right
                 //                anchors.leftMargin: 50
+
                 source: "../../assets/playInterface/back.png"
                 MouseArea{
                     anchors.fill: parent
@@ -698,6 +732,7 @@ Rectangle{
                     onClicked: {
                         mediaPlayer.pause()
                         stackView.pop()
+
                         liststr = []
                         //                        console.log(liststr)
                         flag = 0
@@ -705,6 +740,7 @@ Rectangle{
                         //                        model1.remove()
                         model1.clear()
                         playKey.visible = true
+
 
                     }
                 }
@@ -727,7 +763,9 @@ Rectangle{
 
             Text {
                 id: vedioName
+
                 text: qsTr("机械画皮")
+
                 font.pixelSize: 25
                 color: "white"
             }
@@ -738,9 +776,11 @@ Rectangle{
                 anchors.top: parent.top
                 anchors.topMargin: 5
                 text: qsTr("简介 >")
+
                 color: "white"
                 font.pixelSize: 20
                 //                color: mouseArea2.containsMouse ? "Green" : "white"
+
                 MouseArea{
                     id: mouseArea2
                     anchors.fill: parent
@@ -752,6 +792,7 @@ Rectangle{
 
                 }
             }
+
             Rectangle{
                 id: introductionDesc
                 anchors.top: introduction.bottom
@@ -769,11 +810,14 @@ Rectangle{
                 }
             }
 
+
             Text {
                 id: select
                 text: qsTr("选集")
                 font.pixelSize: 25
+
                 anchors.top: introductionDesc.bottom
+
                 anchors.topMargin: 30
                 color: "white"
             }
@@ -781,7 +825,9 @@ Rectangle{
             Text {
                 id: fenJiJuQing
                 anchors.right: parent.right
+
                 anchors.top: introductionDesc.bottom
+
                 anchors.topMargin: 35
                 text: qsTr("分集剧情 >")
                 font.pixelSize: 20
@@ -820,6 +866,7 @@ Rectangle{
                     ListElement{ number: 10;}
                     ListElement{ number: 11;}
                     ListElement{ number: 12;}
+
                     ListElement{ number: 13;}
                     ListElement{ number: 14;}
                     ListElement{ number: 15;}
@@ -828,6 +875,7 @@ Rectangle{
                     ListElement{ number: 18;}
                     ListElement{ number: 19;}
                     ListElement{ number: 20;}
+
                 }
                 GridView{
                     id: grid
@@ -1006,6 +1054,7 @@ Rectangle{
                         policy: ScrollBar.AsNeeded
                         position: 0
 
+
                         //                        background: Item {            //滚动条的背景样式
                         //                            Rectangle {
                         //                                anchors.centerIn: parent
@@ -1021,6 +1070,7 @@ Rectangle{
                     //                        height: 20
                     //                        anchors.right: parent.right
                     //                    }
+
                 }
 
 
@@ -1061,13 +1111,16 @@ Rectangle{
                     onClicked: {
                         var id = sql.getid()
                         if(id == 0){
+
                             //                            withlogindialog.open()
+
                             dialoginfo.withlogindialog.open()
                             //                            danMuComment.visible = false
                             //                            controlComment2.visible = false
                         }else{
                             controlComment.visible=false
                             controlComment1.visible=true
+
                             controlComment2.visible = false
                             //            danMuComment.visible = true
                             //            danMuOpen.visible = true
@@ -1076,6 +1129,7 @@ Rectangle{
                             //                            controlComment2.visible = false
                             //                            controlComment.visible=false
                             //                            controlComment1.visible=true
+
                         }
 
                         //                        personalpage.withlogindialog.open()
@@ -1168,10 +1222,12 @@ Rectangle{
                 model1.append(data)
                 if(inputComment1.text){
                     danMuSql.setComments(inputComment1.text)
+
                     //评论发送过后把评论框内容清空
                     inputComment1.text = ""
                 }else{
                     //                    dialogInfo.open()
+
                     dialoginfo.dialogInfo.open()
                 }
             }
@@ -1182,6 +1238,7 @@ Rectangle{
     DialogInfo{
         id: dialoginfo
     }
+
 
     //    //如果未登录点击右下角的写评论弹出的提示对话框
     //    Dialog{
@@ -1222,6 +1279,7 @@ Rectangle{
     //            dialogInfo.close()
     //        }
     //    }
+
 }
 //}
 

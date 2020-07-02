@@ -19,6 +19,7 @@ Item {
 
         onAccepted: {
 
+
                 stackView.push(loginpage)
                 withlogindialog.close()
 //                controlComment.visible=false
@@ -29,6 +30,7 @@ Item {
 //                //            flag = 1
 //                danMuComment.visible = false
 //                controlComment2.visible = false
+
 
 
 

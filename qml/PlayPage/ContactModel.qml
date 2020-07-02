@@ -3,6 +3,7 @@ import QtQuick 2.0
 ListModel {
 
 
+
         ListElement {
             portrait: ""
             name: ""
@@ -29,4 +30,5 @@ ListModel {
 //    onFirstValueChanged: {
 //        if(completed) setProperty(0);
 //    }
+
 }

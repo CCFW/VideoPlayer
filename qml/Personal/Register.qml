@@ -3,7 +3,9 @@ import QtQuick 2.0
 import QtQuick.Layouts 1.1
 
 Page {
+
     id: registerPages
+
     title: qsTr("注册")
 
     //  backgroundColor: Qt.rgba(0,0,0, 0.75)
@@ -18,6 +20,7 @@ Page {
         radius: dp(4)
     }
 
+
     Image {
         anchors.left: parent.left
         anchors.leftMargin: 20
@@ -31,6 +34,7 @@ Page {
             }
         }
     }
+
 
     GridLayout {
         id: content
@@ -100,15 +104,18 @@ Page {
 
 
 
+
             AppButton {
                 text: qsTr("注册")
                 flat: false
                 //                anchors.centerIn:parent
+
                 Layout.fillWidth: true
                 Layout.columnSpan: 2
                 Layout.topMargin: dp(12)
                 anchors.horizontalCenter: parent.horizontalCenter
                 onClicked: {
+
                     var flag = sql.registersave(txtUsername.text,txtPassword.text,txtPasswordagin.text)
                     if(flag == 0){
                         nullfalut.open()
@@ -201,6 +208,7 @@ Page {
             txtPasswordagin.text = ""
             registersuccess.close()
             stackView.pop()
+
         }
     }
 

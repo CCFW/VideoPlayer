@@ -30,6 +30,7 @@ void VideoInfo::introduce(){
 
 
 
+
     string.push_back("月上重火");
     string.push_back("隐秘的角落");
     string.push_back("怪你过分美丽");
@@ -44,6 +45,7 @@ void VideoInfo::introduce(){
             sql.exec(str);
 
         }
+
 }
 
 QString VideoInfo::getIntroduce(){
@@ -60,12 +62,14 @@ QString VideoInfo::getIntroduce(){
 
     }
     static int count = -1;
+
     //    qDebug() <<temp;
 
     count = count + 1;
 
     //    qDebug() << count;
     //    qDebug() <<temp[count];
+
 
     return temp[count];
 }

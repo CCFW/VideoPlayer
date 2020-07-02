@@ -149,9 +149,11 @@ int FfmpegDecoding::ffmpeg1()
     //SDL 2.0 Support for multiple windows
     //创建窗口SDL_Window
     //可以更改视频窗口的宽高，二倍宽高
+
     screen = SDL_CreateWindow("Simplest ffmpeg player's Window", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
                               screen_w, screen_h,
                               SDL_WINDOW_OPENGL);
+
 //    screen =
 
     if(!screen) {

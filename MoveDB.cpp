@@ -1,5 +1,7 @@
 #include "MoveDB.h"
+
 MoveDB::MoveDB(QGuiApplication &app,QQmlApplicationEngine &engine)
+
 {
     QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
 
@@ -22,12 +24,14 @@ MoveDB::MoveDB(QGuiApplication &app,QQmlApplicationEngine &engine)
     m_engine = &engine;
     m_app = &app;
 }
+
 void MoveDB::InsertInfo1(){
     QSqlQuery query;
 
     query.exec("create table VedioInfo0(chen_id int primary key auto_increment, ve_name varchar(255), ve_director varchar(255),introduce varchar(255), ve_role varchar(255),ve_episodes int, ve_image longblob, ve_time int,ve_source varchar(255))");
 
     query.prepare("insert into VedioInfo0(ve_name, ve_director,introduce, ve_role,ve_episodes,ve_image,ve_time,ve_source) values(:name, :director, :introduce, :role, :episodes,:moveimage,:time, :source)");
+
     QVariantList ve_nameList;
     ve_nameList << "传闻中的陈芊芊"<<"传闻中的陈芊芊片段1"<<"传闻中的陈芊芊片段2"<< "传闻中的陈芊芊2"<<"传闻中的陈芊芊片段3"<< "隐秘的角落"<<"《隐秘的角落》花絮：小演员们疯狂吐槽"<<"《隐秘的角落》花絮：哭到情绪崩溃是一种怎样的体验";
 
@@ -51,8 +55,10 @@ void MoveDB::InsertInfo1(){
     QVariantList ve_timeList;
     ve_timeList<<5<<20<<10<<800<<45<<800<<2<<45;
 
+
     QVariantList ve_sourceList;
     ve_sourceList<<"../../assets/video/vedio1.mp4"<<"../../assets/video/audio.mp4"<<"http://192.168.43.104/1.mp4"<<"http://192.168.43.104/2.mp4"<<"../../assets/video/vedio1.mp4"<<"../../assets/video/audio.mp4"<<"../../assets/video/vedio1.mp4"<<"../../assets/video/audio.mp4";
+
 //    QVariantList moveImageList;
 //    for (int i=0; i<2;i++) {
 
@@ -67,12 +73,16 @@ void MoveDB::InsertInfo1(){
     query.bindValue(":episodes",ve_episodesList);
     query.bindValue(":moveimage",ve_imageList);
     query.bindValue(":time",ve_timeList);
+
     query.bindValue(":source",ve_sourceList);
+
 
     query.execBatch();
 }
 
+
 void MoveDB::queryInfo()
+
 {
     QSqlQuery query;
     QString str1=QString("select * from VedioInfo0 where ve_name like '%1'").arg('%'+m_timeSearch+'%');
@@ -85,11 +95,13 @@ void MoveDB::queryInfo()
         setEpisodes(query.value(5).toInt());
         setmoveImage(query.value(6).toString());
         setTime(query.value(7).toInt());
+
         setSource(query.value(8).toString());
     }
 }
 
 int MoveDB::setKey(QString key)
+
 {
     m_key=key;
     m_timeSearch=key;
@@ -106,8 +118,10 @@ int MoveDB::setKey(QString key)
             setEpisodes(query.value(5).toInt());
             setmoveImage(query.value(6).toString());
             setTime(query.value(7).toInt());
+
             setSource(query.value(8).toString());
              qDebug()<<query.value(8).toString();
+
         }
         return 0;
         }else{
@@ -115,6 +129,8 @@ int MoveDB::setKey(QString key)
         }
 }
 
+
 MoveDB::~MoveDB(){
+
 
 }
